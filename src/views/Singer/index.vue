@@ -73,16 +73,37 @@
                   />
                   <i>1<em>st</em></i>
                 </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
               </li>
             </ul>
           </div>
         </div>
         <div class="buttom">
-          <ul>
+          <ul class="bottomList">
             <li>
               <span>19</span>
               <span></span>
-              <a>王杰</a>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>19</span>
+              <span></span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>19</span>
+              <span></span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>19</span>
+              <span></span>
+              <a class="text">王杰</a>
             </li>
           </ul>
         </div>
@@ -153,18 +174,67 @@ export default {}
       width: 770px;
       height: 240px;
       border: 1px solid;
+      .pic {
+        position: relative;
+        display: block;
+        height: 80px;
+        /* background: url(./images/other.png) no-repeat -82px -152px; */
+        padding: 3px 0 0 4px;
+        i {
+          display: block;
+          color: #fff;
+          position: absolute;
+          top: 49px;
+          left: 4px;
+          width: 63px;
+          height: 22px;
+          padding-left: 5px;
+          background: -webkit-linear-gradient(
+            left,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(255, 255, 255, 0) 100%
+          );
+        }
+      }
+      strong {
+        width: 70px;
+        color: #212121;
+        font-size: 14px;
+        font-weight: 400;
+        margin: 0;
+        display: block;
+        padding-left: 2px;
+        height: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .bottomList {
+    width: 192px;
+    height: 96px;
+    li {
+      width: 184px;
+      height: 23px;
+      border: 1px solid;
+      line-height: 23px;
+      span {
+        margin-right: 10px;
+      }
+      .text {
+        display: inline;
+        width: 122px;
+        height: 23px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
   }
   .active {
     background: rgba(133, 210, 242);
     color: white;
-    .list ul li .pic {
-      display: block;
-      height: 80px;
-      background: url(../images/other.png?v=png_8&time=2014_02_27_05_17_36)
-        no-repeat -82px -152px;
-      padding: 3px 0 0 4px;
-    }
   }
 }
 </style>>
