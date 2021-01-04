@@ -4,19 +4,11 @@
       <div class="left">
         <ul>
           <li class="active">全部歌手</li>
-          <li>华语男歌手</li>
-          <li>华语女歌手</li>
-          <li>华语组合</li>
+        </ul>
+        <ul v-for="item in singer.list" :key="item.classid">
+          <li @click="singerList(item.classid)">{{ item.classname }}</li>
         </ul>
         <ul>
-          <li>日韩男歌手</li>
-          <li>日韩女歌手</li>
-          <li>日韩组合</li>
-        </ul>
-        <ul>
-          <li>欧美男歌手</li>
-          <li>欧美女歌手</li>
-          <li>欧美组合</li>
           <li class="other">其他</li>
         </ul>
       </div>
@@ -53,12 +45,10 @@
         </div>
         <div class="farstUrl">
           <div class="list">
-            <ul class="imgList">
+            <ul class="imgList"> 
               <li>
                 <a
                   title="周杰伦"
-                  class="pic"
-                  onclick="sdnClick(12070)"
                   hidefocus="true"
                 >
                   <img
@@ -677,18 +667,29 @@
 </template>
 
 <script>
-import { getSinger } from '@api/singer'
+import { getSinger, getSingerList } from '@api/singer'
 export default {
   name: 'singer',
   data() {
     return {
       singer: {},
+      listAll: {},
+      farst: [],
+      last: [],
     }
+  },
+  methods: {
+    async singerList(id) {
+      const singerList = await getSingerList(id)
+      this.listAll = singerList
+      this.farst = this.listAll.singers.list.info.slice(0, 18)
+     /*  this.last = this.listAll.singers.list.info.slice(18,49) */
+      
+    },
   },
   async mounted() {
     const singer = await getSinger()
     this.singer = singer
-    console.log(singer)
   },
 }
 </script>
@@ -714,7 +715,7 @@ export default {
     /* text-align: center; */
     margin-top: 20px;
     ul {
-      margin-bottom: 50px;
+      margin-bottom: 10px;
       width: 210px;
       li:hover {
         background: rgba(133, 210, 242);
@@ -751,7 +752,7 @@ export default {
         font-size: 15px;
         font-family: '微软雅黑';
       }
-      .top a:hover {
+      a:hover {
         background: rgba(133, 210, 242);
         color: white;
       }
