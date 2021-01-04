@@ -1,15 +1,10 @@
 <template>
-  <div>home</div>
+  <div></div>
 </template>
 
 <script>
-import { getHomeData } from "@api/home";
 export default {
   name: "Home",
-  async mounted() {
-    let banners = await getHomeData();
-    console.log(banners);
-  },
 };
 </script>
 
