@@ -23,12 +23,16 @@ instance.interceptors.response.use(
     (res) => {
         // 不管是不是成功还是失败，都结束进度条
         NProgress.done();
-        // if (res.data.code === 200) {
-        //     return res.data.data;
-        // }
-        return res.data
+        let { data, config } = res
+        if (config.url.indexOf('kugou') !== -1) {
+            return res.data
+        }
+        if (data.code === 200) {
+            return data.data;
+        }
 
-        // return Promise.reject(res.data.message);
+
+        return Promise.reject(data.message);
     },
     (error) => {
         NProgress.done();
