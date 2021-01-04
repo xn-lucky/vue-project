@@ -10,6 +10,9 @@ const instance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use(
     (config) => {
+        if (config.url.indexOf('kugou') !== -1) {
+            config.baseURL = ''
+        }
         // 开始设置进度条
         NProgress.start();
         return config;
@@ -20,11 +23,12 @@ instance.interceptors.response.use(
     (res) => {
         // 不管是不是成功还是失败，都结束进度条
         NProgress.done();
-        if (res.data.code === 200) {
-            return res.data.data;
-        }
+        // if (res.data.code === 200) {
+        //     return res.data.data;
+        // }
+        return res.data
 
-        return Promise.reject(res.data.message);
+        // return Promise.reject(res.data.message);
     },
     (error) => {
         NProgress.done();
