@@ -7,3 +7,4 @@ export const getHomeData = () => {
         url: '/getbanners'
     });
 };
+

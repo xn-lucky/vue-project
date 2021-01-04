@@ -53,7 +53,449 @@
         </div>
         <div class="farstUrl">
           <div class="list">
-            <ul>
+            <ul class="imgList">
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
+              <li>
+                <a
+                  title="周杰伦"
+                  class="pic"
+                  onclick="sdnClick(12070)"
+                  hidefocus="true"
+                >
+                  <img
+                    alt="周杰伦"
+                    src="https://imgessl.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _src="http://singerimg.kugou.com/uploadpic/pass/softhead/100/20180515/20180515002522714.jpg"
+                    _def="https://www.kugou.com/yy/static/images/default3.jpg"
+                    width="68"
+                    height="68"
+                    loading="1"
+                    class="loadPic"
+                  />
+                  <i>1<em>st</em></i>
+                </a>
+                <strong
+                  onclick="sdnClick(12070)"
+                  href="https://www.kugou.com/yy/singer/home/3520.html"
+                  title="周杰伦"
+                  >周杰伦</strong
+                >
+              </li>
               <li>
                 <a
                   title="周杰伦"
@@ -83,26 +525,148 @@
             </ul>
           </div>
         </div>
-        <div class="buttom">
+        <div id="buttom">
           <ul class="bottomList">
             <li>
               <span>19</span>
-              <span></span>
               <a class="text">王杰</a>
             </li>
             <li>
-              <span>19</span>
-              <span></span>
+              <span>20</span>
               <a class="text">王杰</a>
             </li>
             <li>
-              <span>19</span>
-              <span></span>
+              <span>21</span>
               <a class="text">王杰</a>
             </li>
             <li>
+              <span>22</span>
+              <a class="text">王杰</a>
+            </li>
+          </ul>
+          <ul class="bottomList">
+            <li>
               <span>19</span>
-              <span></span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>20</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>21</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>22</span>
+              <a class="text">王杰</a>
+            </li>
+          </ul>
+          <ul class="bottomList">
+            <li>
+              <span>19</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>20</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>21</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>22</span>
+              <a class="text">王杰</a>
+            </li>
+          </ul>
+          <ul class="bottomList">
+            <li>
+              <span>19</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>20</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>21</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>22</span>
+              <a class="text">王杰</a>
+            </li>
+          </ul>
+          <ul class="bottomList">
+            <li>
+              <span>19</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>20</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>21</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>22</span>
+              <a class="text">王杰</a>
+            </li>
+          </ul>
+          <ul class="bottomList">
+            <li>
+              <span>19</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>20</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>21</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>22</span>
+              <a class="text">王杰</a>
+            </li>
+          </ul>
+          <ul class="bottomList">
+            <li>
+              <span>19</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>20</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>21</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>22</span>
+              <a class="text">王杰</a>
+            </li>
+          </ul>
+          <ul class="bottomList">
+            <li>
+              <span>19</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>20</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>21</span>
+              <a class="text">王杰</a>
+            </li>
+            <li>
+              <span>22</span>
               <a class="text">王杰</a>
             </li>
           </ul>
@@ -113,7 +677,20 @@
 </template>
 
 <script>
-export default {}
+import { getSinger } from '@api/singer'
+export default {
+  name: 'singer',
+  data() {
+    return {
+      singer: {},
+    }
+  },
+  async mounted() {
+    const singer = await getSinger()
+    this.singer = singer
+    console.log(singer)
+  },
+}
 </script>
 
 <style lang="less" scoped>
@@ -139,6 +716,10 @@ export default {}
     ul {
       margin-bottom: 50px;
       width: 210px;
+      li:hover {
+        background: rgba(133, 210, 242);
+        color: white;
+      }
       li {
         height: 30px;
         width: 142px;
@@ -161,6 +742,7 @@ export default {}
       height: 35px;
       width: 100%;
       border-bottom: 1px solid rgba(212, 212, 212);
+
       a {
         display: inline-block;
         padding: 0 7px;
@@ -169,11 +751,15 @@ export default {}
         font-size: 15px;
         font-family: '微软雅黑';
       }
+      .top a:hover {
+        background: rgba(133, 210, 242);
+        color: white;
+      }
     }
     .farstUrl {
-      width: 770px;
+      width: 790px;
       height: 240px;
-      border: 1px solid;
+
       .pic {
         position: relative;
         display: block;
@@ -211,27 +797,56 @@ export default {}
       }
     }
   }
-  .bottomList {
-    width: 192px;
-    height: 96px;
+  .imgList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 790px;
+    height: 240px;
+    justify-content: space-evenly;
+    padding-top: 10px;
     li {
-      width: 184px;
-      height: 23px;
-      border: 1px solid;
-      line-height: 23px;
-      span {
-        margin-right: 10px;
-      }
-      .text {
-        display: inline;
-        width: 122px;
-        height: 23px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+      margin-right: 5px;
+      img:hover {
+        /*  border: 1px solid blue; */
+        box-shadow: 2px 2px 5px blue;
       }
     }
   }
+
+  #buttom {
+    width: 770px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    padding-top: 30px;
+    .bottomList {
+      margin-bottom: 20px;
+      li:nth-child(odd) {
+        background: rgba(231, 231, 231);
+      }
+      li {
+        width: 180px;
+        height: 30px;
+        line-height: 30px;
+        padding-left: 10px;
+        margin-right: 10px;
+        span {
+          margin-right: 10px;
+        }
+        .text {
+          display: inline;
+          width: 102px;
+          height: 23px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+
   .active {
     background: rgba(133, 210, 242);
     color: white;
