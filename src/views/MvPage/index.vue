@@ -17,22 +17,170 @@
         </div>
       </div>
       <!-- mvhotlist -->
-      <div class="mvhotlist">
-      <h3 class="title">
-        <span class="">MV分类</span>
-        <span class="more">更多</span>
-      </h3>
-        <ul>
-          <li>新歌推荐</li>
+      <div class="mv-hotlist">
+        <h3 class="title">
+          <span class="rank">MV热播总排行</span>
+          <span class="more">更多</span>
+        </h3>
+        <ul class="hotlist">
+          <li><span>1</span>AAAAAAAAA</li>
+          <li><span>2</span>AAAAAAAAA</li>
+          <li><span>3</span>AAAAAAAAA</li>
+          <li><span>4</span>AAAAAAAAA</li>
+          <li><span>5</span>AAAAAAAAA</li>
+          <li><span>6</span>AAAAAAAAA</li>
+          <li><span>7</span>AAAAAAAAA</li>
+          <li><span>8</span>AAAAAAAAA</li>
+          <li><span>9</span>AAAAAAAAA</li>
+          <li><span>10</span>AAAAAAAAA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mvpage-content">
+      <div class="left">
+        <div class="title">MV分类</div>
+        <ul class="list">
+          <li class="active">新歌推荐</li>
           <li>华语精选</li>
           <li>日韩精选</li>
           <li>欧美精选</li>
         </ul>
       </div>
-    </div>
-    <div class="mvpage-content">
-      <div class="left"></div>
-      <div class="right"></div>
+      <div class="right">
+        <div class="title">新歌推荐(12345)</div>
+        <div class="video-container">
+          <ul class="video-list">
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+            <li class="item">
+              <a class="link">
+                <img src="./images/1.png" alt="" />
+                <em></em>
+                <i></i>
+              </a>
+              <span>景象12345674324234865432谁依</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   <!-- 底部组件 -->
@@ -85,10 +233,10 @@ export default {
     height: 100%;
   }
 }
-.mvhotlist {
+.mv-hotlist {
   width: 317px;
   height: 325px;
-  background-color: aqua;
+  // background-color: aqua;
   .title {
     height: 30px;
     line-height: 30px;
@@ -109,7 +257,7 @@ export default {
       background: #363636;
     }
   }
-  .hotList {
+  .hotlist {
     width: 100%;
     background: #363636;
     color: #fff;
@@ -119,6 +267,9 @@ export default {
       height: 30px;
       line-height: 30px;
       display: flex;
+      &:hover {
+        background-color: #959595;
+      }
       span {
         width: 37px;
         text-align: center;
@@ -133,12 +284,81 @@ export default {
   .left {
     width: 210px;
     height: 300px;
-    background-color: red;
+    // background-color: red;
+    text-align: center;
+    .title {
+      height: 30px;
+      line-height: 30px;
+      background-color: #cfcfcf;
+      font-size: 16px;
+      color: #fff;
+    }
+    .list {
+      padding-top: 10px;
+      li {
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+        &:hover {
+          color: #fff;
+          background-color: #85d4f3;
+        }
+        &.active {
+          background-color: #85d4f3;
+          color: #fff;
+        }
+      }
+    }
   }
   .right {
     width: 780px;
     height: 300px;
-    background-color: green;
+    // background-color: green;
+    text-align: center;
+    .title {
+      height: 30px;
+      line-height: 30px;
+      background-color: #cfcfcf;
+      font-size: 16px;
+      color: #fff;
+    }
+    .video-container {
+      width: 780px;
+      overflow: hidden;
+      .video-list {
+        width: 800px;
+        padding-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        .item {
+          width: 140px;
+          height: 110px;
+          margin: 0px 20px 10px 0px;
+          display: flex;
+          flex-direction: column;
+          .link {
+            width: 140px;
+            height: 78px;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 10px;
+            }
+          }
+          span {
+            height: 20px;
+            width: 124px;
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0 0 3px;
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
   }
 }
 </style>
