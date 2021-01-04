@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-const Home = () => import(/* webpackChunkName: "Home" */'@views/Home')
-
+const Home = () => import(/* webpackChunkName: "Home" */'@views/Home');
+const hotSongs =() => import(/* webpackChunkName: "hotSongs" */'@views/hotSongs');
 Vue.use(VueRouter)
 
 
@@ -14,6 +14,10 @@ const router = new VueRouter({
         {
             path: '/',
             component: Home,
+        },
+        {   
+            path:'/hotsongs',
+            component:hotSongs
         }
     ],
     // 每次切换路由页面滚动条位置
