@@ -10,6 +10,13 @@ module.exports = {
                     '^/api': ''
                 }
             },
+            "/kugou": {
+                target: "http://m.kugou.com",
+                // changeOrigin: true, // 允许跨域
+                pathRewrite: { // 重写路径: 去掉路径中开头的'/dev-api'
+                    '^/kugou': ''
+                }
+            },
         },
     },
     // 配置路径别名,可以简写路径
