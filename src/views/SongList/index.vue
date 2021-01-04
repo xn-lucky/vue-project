@@ -42,42 +42,14 @@
             <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
             <div class="btn">
               <a href="javascript:void(0)"
-                ><span><i class="t2"></i>播放全部</span></a
+                ><span
+                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
+                </span></a
               >
               <a href="javascript:void(0)"
-                ><span><i class="t2"></i>分享</span></a
-              >
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="pic">
-            <a href="#">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="detail">
-            <div class="top">
-              <strong
-                ><a
-                  title="一键收藏！100首抖音热歌合集"
-                  href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
-                >
-                <!--<span>()</span>-->
-              </strong>
-              <em>制作人：下雨啦</em>
-            </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
-            <div class="btn">
-              <a href="javascript:void(0)"
-                ><span><i class="t2"></i>播放全部</span></a
-              >
-              <a href="javascript:void(0)"
-                ><span><i class="t2"></i>分享</span></a
+                ><span
+                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
+                </span></a
               >
             </div>
           </div>
@@ -106,42 +78,14 @@
             <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
             <div class="btn">
               <a href="javascript:void(0)"
-                ><span><i class="t2"></i>播放全部</span></a
+                ><span
+                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
+                </span></a
               >
               <a href="javascript:void(0)"
-                ><span><i class="t2"></i>分享</span></a
-              >
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="pic">
-            <a href="#">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="detail">
-            <div class="top">
-              <strong
-                ><a
-                  title="一键收藏！100首抖音热歌合集"
-                  href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
-                >
-                <!--<span>()</span>-->
-              </strong>
-              <em>制作人：下雨啦</em>
-            </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
-            <div class="btn">
-              <a href="javascript:void(0)"
-                ><span><i class="t2"></i>播放全部</span></a
-              >
-              <a href="javascript:void(0)"
-                ><span><i class="t2"></i>分享</span></a
+                ><span
+                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
+                </span></a
               >
             </div>
           </div>
@@ -170,42 +114,14 @@
             <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
             <div class="btn">
               <a href="javascript:void(0)"
-                ><span><i class="t2"></i>播放全部</span></a
+                ><span
+                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
+                </span></a
               >
               <a href="javascript:void(0)"
-                ><span><i class="t2"></i>分享</span></a
-              >
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="pic">
-            <a href="#">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="detail">
-            <div class="top">
-              <strong
-                ><a
-                  title="一键收藏！100首抖音热歌合集"
-                  href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
-                >
-                <!--<span>()</span>-->
-              </strong>
-              <em>制作人：下雨啦</em>
-            </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
-            <div class="btn">
-              <a href="javascript:void(0)"
-                ><span><i class="t2"></i>播放全部</span></a
-              >
-              <a href="javascript:void(0)"
-                ><span><i class="t2"></i>分享</span></a
+                ><span
+                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
+                </span></a
               >
             </div>
           </div>
@@ -234,10 +150,86 @@
             <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
             <div class="btn">
               <a href="javascript:void(0)"
-                ><span><i class="t2"></i>播放全部</span></a
+                ><span
+                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
+                </span></a
               >
               <a href="javascript:void(0)"
-                ><span><i class="t2"></i>分享</span></a
+                ><span
+                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
+                </span></a
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="pic">
+            <a href="#">
+              <img
+                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="detail">
+            <div class="top">
+              <strong
+                ><a
+                  title="一键收藏！100首抖音热歌合集"
+                  href="https://www.kugou.com/yy/special/single/3205324.html"
+                  >一键收藏！100首抖音热歌合集</a
+                >
+                <!--<span>()</span>-->
+              </strong>
+              <em>制作人：下雨啦</em>
+            </div>
+            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
+            <div class="btn">
+              <a href="javascript:void(0)"
+                ><span
+                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
+                </span></a
+              >
+              <a href="javascript:void(0)"
+                ><span
+                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
+                </span></a
+              >
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="pic">
+            <a href="#">
+              <img
+                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="detail">
+            <div class="top">
+              <strong
+                ><a
+                  title="一键收藏！100首抖音热歌合集"
+                  href="https://www.kugou.com/yy/special/single/3205324.html"
+                  >一键收藏！100首抖音热歌合集</a
+                >
+                <!--<span>()</span>-->
+              </strong>
+              <em>制作人：下雨啦</em>
+            </div>
+            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
+            <div class="btn">
+              <a href="javascript:void(0)"
+                ><span
+                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
+                </span></a
+              >
+              <a href="javascript:void(0)"
+                ><span
+                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
+                </span></a
               >
             </div>
           </div>
@@ -256,7 +248,6 @@ export default {
 <style lang="less" scoped>
 .songContainer {
   width: 1000px;
-  height: 1000px;
   margin: 0 auto;
   display: flex;
   .left {
@@ -288,13 +279,16 @@ export default {
           color: #555;
           text-align: center;
           text-decoration: none;
+          &:hover {
+            background: #169af3;
+            color: white;
+          }
         }
       }
     }
   }
   .right {
     width: 790px;
-    height: 1000px;
     color: #8e8e8e;
     margin-top: 20px;
     position: relative;
@@ -319,9 +313,12 @@ export default {
             display: block;
             width: 102px;
             height: 102px;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             text-decoration: none;
-
+            &:hover {
+              border: 2px solid #169af3;
+              box-shadow: 0px 0px 2px #169af3;
+            }
             img {
               padding: 1px;
               width: 100px;
@@ -365,12 +362,15 @@ export default {
               text-decoration: none;
             }
             span {
-              padding: 7px 25px 7px 40px;
+              padding: 7px 20px 7px 20px;
               background: #169af3;
               margin-right: 30px;
               text-align: center;
               color: white;
-              .t2 {
+              i {
+                width: 16px;
+                height: 16px;
+                margin-left: 5px;
               }
             }
           }
