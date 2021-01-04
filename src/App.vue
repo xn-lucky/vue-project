@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    app
-    <Home />
+    <MvPage />
   </div>
 </template>
 
 <script>
-import Home from "@views/Home";
+// import Home from "@views/Home";
+import MvPage from "@views/MvPage";
 
 export default {
   name: "App",
   components: {
-    Home,
+    // Home,
+    MvPage,
   },
 };
 </script>
