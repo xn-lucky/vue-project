@@ -1,19 +1,22 @@
 <template>
   <div class="hotSongs">
     <div class="hotSongs-right">
-      <HotList :hotList="hotList" />
+      <HotList :hotList="hotList" :changeSongs="changeSongs" />
     </div>
     <div class="hotSongs-left">
       <div class="hotSongs-left-box">
         <header class="hotSongs-left-box-headerbox">
           <div class="hotSongs-left-box-header-title">
-            <span class="hotSongs-left-box-header-title-name">酷狗TOP500</span>
+            <span class="hotSongs-left-box-header-title-name">{{
+              hotListcontentName
+            }}</span>
             <span class="hotSongs-left-box-header-title-data"
-              >2021-01-03 更新</span
+              >{{ updatahotListcontentTime }} 更新</span
             >
             <button class="hotSongs-left-box-header-button">
               <div class="hotSongs-left-box-header-button-item">
-                <i>▶</i><span>播放全部</span>
+                <i class="hotSongs-left-box-header-button-item-i"></i
+                ><span>播放全部</span>
               </div>
             </button>
           </div>
@@ -22,185 +25,38 @@
           <div class="hotSongs-left-box-main-quanxuan">
             <label><input type="checkbox" />全选</label>
           </div>
-          <ul class="hotSongs-left-box-main-ul">
+          <ul
+            class="hotSongs-left-box-main-ul"
+            v-for="item in hotListcontent"
+            :key="item.id"
+          >
             <li class="hotSongs-left-box-main-li">
               <a class="hotSongs-left-box-main-li-a">
                 <label class="hotSongs-left-box-main-li-a-label"
                   ><input type="checkbox"
                 /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
+                <span class="hotSongs-left-box-main-li-a-span1"
+                  >{{ item.id }}
+                  <i
+                    v-if="item.hotIcon"
+                    class="hotSongs-left-box-main-li-a-span1-i"
+                  ></i
+                ></span>
                 <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
+                  >{{ item.singer }} - {{ item.songsName }}</span
                 >
                 <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
+                  ><i class="hotSongs-left-box-main-li-a-span3-i1"></i>
+                  <i class="hotSongs-left-box-main-li-a-span3-i2"></i>
+                  <i class="hotSongs-left-box-main-li-a-span3-i3"></i
+                ></span>
+                <span class="hotSongs-left-box-main-li-a-span4"
+                  >0{{ Math.floor(item.songsTime / 60) }}:{{
+                    Math.floor(item.songsTime % 60) >= 10
+                      ? Math.floor(item.songsTime % 60)
+                      : "0" + Math.floor(item.songsTime % 60)
+                  }}</span
                 >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a href="#" class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
-              </a>
-            </li>
-            <li class="hotSongs-left-box-main-li">
-              <a class="hotSongs-left-box-main-li-a">
-                <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
-                /></label>
-                <span class="hotSongs-left-box-main-li-a-span1">1</span>
-                <span class="hotSongs-left-box-main-li-a-span2"
-                  >程响 - 四季予你</span
-                >
-                <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i>▶</i><i>下载🧡</i><i>分享💜</i></span
-                >
-                <span class="hotSongs-left-box-main-li-a-span4">4:08</span>
               </a>
             </li>
           </ul>
@@ -213,16 +69,32 @@
 <script>
 import request from "../../utils/request";
 import HotList from "../../component/hotList";
+// import dayjs from "dayjs";
 export default {
   name: "hotSongs",
   data() {
     return {
       hotList: [],
+      hotListcontent: [],
+      hotListcontentName: "",
+      updatahotListcontentTime: "2021-01-03",
     };
   },
   async mounted() {
     let hotList = await request("/getHotList");
     this.hotList = hotList;
+    let hotsongs = this.changeSongs(472427);
+    this.hotListcontentName = hotsongs.name;
+    this.hotListcontent = hotsongs.content;
+    // this.$emit("changeSongs");
+  },
+  methods: {
+    async changeSongs(HotListId) {
+      // console.log(HotListId);
+      let hotsongs = await request(`/getHotListSongs?HotListId=${HotListId}`);
+      this.hotListcontentName = hotsongs.name;
+      this.hotListcontent = hotsongs.content;
+    },
   },
   components: {
     HotList,
@@ -282,6 +154,23 @@ export default {
           border: 1px solid transparent; //自定义边框
           outline: none; //消除默认点击蓝色边框效果
           color: white;
+          .hotSongs-left-box-header-button-item {
+            display: flex;
+            justify-content: space-evenly;
+            cursor: pointer;
+            span {
+              font-size: 14px;
+            }
+            .hotSongs-left-box-header-button-item-i {
+              position: relative;
+              left: 7px;
+              top: 2px;
+              background: url(https://www.kugou.com/yy/static/images/play_icon.png)
+                no-repeat;
+              display: inline-block;
+              width: 14px;
+            }
+          }
         }
       }
       .hotSongs-left-box-main {
@@ -317,17 +206,48 @@ export default {
                 color: #333333;
               }
               .hotSongs-left-box-main-li-a-span1 {
-                position: relative;
+                float: left;
                 left: -100px;
+                .hotSongs-left-box-main-li-a-span1-i {
+                  display: inline-block;
+                  width: 17px;
+                  height: 10px;
+                  background-image: url("https://staticssl.kugou.com/common/images/pc_temp_v2/icon_splice.png?20150814");
+                  background-position: -240px -240px;
+                }
               }
-
               .hotSongs-left-box-main-li-a-span2 {
-                position: relative;
-                left: -200px;
+                width: 400px;
+                float: right;
               }
               .hotSongs-left-box-main-li-a-span3 {
-                position: relative;
-                left: 100px;
+                opacity: 0;
+                width: 150px;
+                float: left;
+                text-align: right;
+                .hotSongs-left-box-main-li-a-span3-i1 {
+                  display: inline-block;
+                  width: 14px;
+                  height: 15px;
+                  margin-top: 5px;
+                  background-image: url("https://staticssl.kugou.com/common/images/pc_temp_v2/icon_splice.png?20150814");
+                  background-position: 0 0;
+                }
+                .hotSongs-left-box-main-li-a-span3-i2 {
+                  display: inline-block;
+                  padding-left: 16px;
+                  margin-left: 10px;
+                  height: 13px;
+                  background-image: url("https://staticssl.kugou.com/common/images/pc_temp_v2/icon_splice.png?20150814");
+                  background-position: -90px 0;
+                }
+                .hotSongs-left-box-main-li-a-span3-i3 {
+                  padding-left: 16px;
+                  margin-left: 10px;
+                  height: 14px;
+                  background-image: url("https://staticssl.kugou.com/common/images/pc_temp_v2/icon_splice.png?20150814");
+                  background-position: -298px 0;
+                }
               }
               .hotSongs-left-box-main-li-a-span4 {
                 color: #999999;
@@ -339,6 +259,12 @@ export default {
             background-color: rgb(245, 248, 251);
             span {
               color: rgb(21, 143, 225);
+            }
+            .hotSongs-left-box-main-li-a-span3 {
+              opacity: 1;
+            }
+            .hotSongs-left-box-main-li-a-span3 i {
+              cursor: pointer;
             }
           }
         }

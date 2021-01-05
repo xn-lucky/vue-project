@@ -10,6 +10,7 @@ const instance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use(
     (config) => {
+        // debugger
         // 开始设置进度条
         NProgress.start();
         return config;
@@ -18,6 +19,7 @@ instance.interceptors.request.use(
 // 响应拦截器
 instance.interceptors.response.use(
     (res) => {
+        // debugger
         // 不管是不是成功还是失败，都结束进度条
         NProgress.done();
         if (res.data.code === 200) {
