@@ -62,6 +62,10 @@
           </ul>
         </div>
       </div>
+      <div class="hotSongs-left-footer">
+        <p class="hotSongs-left-footer-p">查看更多内容,请下载客户端</p>
+        <button class="hotSongs-left-footer-button">立即下载</button>
+      </div>
     </div>
   </div>
 </template>
@@ -218,7 +222,7 @@ export default {
               }
               .hotSongs-left-box-main-li-a-span2 {
                 width: 400px;
-                float: right;
+                text-align: left;
               }
               .hotSongs-left-box-main-li-a-span3 {
                 opacity: 0;
@@ -268,6 +272,33 @@ export default {
             }
           }
         }
+      }
+    }
+    .hotSongs-left-footer {
+      width: 100%;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      .hotSongs-left-footer-p {
+        height: 120px;
+        line-height: 120px;
+        text-align: center;
+        font-size: 16px;
+        color: #666;
+      }
+      .hotSongs-left-footer-button {
+        width: 108px;
+        height: 36px;
+        border: 0;
+        margin: 39px;
+        outline: none;
+        line-height: 36px;
+        margin-left: 20px;
+        border-radius: 3px;
+        vertical-align: middle;
+        background-color: #169af3;
+        color: #fff;
+        font-size: 16px;
       }
     }
   }

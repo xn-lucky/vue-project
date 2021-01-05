@@ -3,9 +3,9 @@ import VueRouter from 'vue-router'
 
 const Home = () => import(/* webpackChunkName: "Home" */'@views/Home');
 const hotSongs =() => import(/* webpackChunkName: "hotSongs" */'@views/hotSongs');
+const playerSong =() => import(/* webpackChunkName: "hotSongs" */'@views/playerSongs');
+
 Vue.use(VueRouter)
-
-
 const router = new VueRouter({
     // 模式
     // mode: 'hash', // 默认模式
@@ -18,6 +18,10 @@ const router = new VueRouter({
         {   
             path:'/hotsongs',
             component:hotSongs
+        },
+        {   
+            path:'/playersong',
+            component:playerSong
         }
     ],
     // 每次切换路由页面滚动条位置
