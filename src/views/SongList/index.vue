@@ -20,12 +20,12 @@
       <ul class="ulAlbums">
         <li>
           <div class="pic">
-            <a href="#">
+            <router-link to="/songshowlist">
               <img
                 src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
                 alt=""
               />
-            </a>
+            </router-link>
           </div>
           <div class="detail">
             <div class="top">
@@ -56,12 +56,12 @@
         </li>
         <li>
           <div class="pic">
-            <a href="#">
+            <router-link to="/songshowlist">
               <img
                 src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
                 alt=""
               />
-            </a>
+            </router-link>
           </div>
           <div class="detail">
             <div class="top">
@@ -92,12 +92,12 @@
         </li>
         <li>
           <div class="pic">
-            <a href="#">
+            <router-link to="/songshowlist">
               <img
                 src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
                 alt=""
               />
-            </a>
+            </router-link>
           </div>
           <div class="detail">
             <div class="top">
@@ -128,12 +128,12 @@
         </li>
         <li>
           <div class="pic">
-            <a href="#">
+            <router-link to="/songshowlist">
               <img
                 src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
                 alt=""
               />
-            </a>
+            </router-link>
           </div>
           <div class="detail">
             <div class="top">
@@ -164,48 +164,12 @@
         </li>
         <li>
           <div class="pic">
-            <a href="#">
+            <router-link to="/songshowlist">
               <img
                 src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
                 alt=""
               />
-            </a>
-          </div>
-          <div class="detail">
-            <div class="top">
-              <strong
-                ><a
-                  title="一键收藏！100首抖音热歌合集"
-                  href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
-                >
-                <!--<span>()</span>-->
-              </strong>
-              <em>制作人：下雨啦</em>
-            </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
-            <div class="btn">
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
-                </span></a
-              >
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
-                </span></a
-              >
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="pic">
-            <a href="#">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
-            </a>
+            </router-link>
           </div>
           <div class="detail">
             <div class="top">
@@ -240,10 +204,23 @@
 </template>
 
 <script>
+import { getSongList } from "@api/songList";
+
 export default {
   name: "SongList",
+  data() {
+    return {
+      currentIndex: 1,
+    };
+  },
+  async mounted() {
+    let result = await getSongList();
+    console.log(JSON.parse(result));
+  },
 };
 </script>
+
+
 
 <style lang="less" scoped>
 .songContainer {
