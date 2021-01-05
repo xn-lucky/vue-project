@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-
 import store from './store'
 import router from './router'
+
 import './styles/reset.css';
+import "swiper/swiper-bundle.min.css";
+import './styles/iconfont.css'
+import './plugins/element.js'
 
 Vue.config.productionTip = false
 

@@ -13,8 +13,13 @@ instance.interceptors.request.use(
         // debugger
         // 开始设置进度条
         NProgress.start();
+        if (config.url.indexOf('artist') !== -1) {
+            config.baseURL = ''
+        }
+
         return config;
     }
+
 );
 // 响应拦截器
 instance.interceptors.response.use(
@@ -22,11 +27,11 @@ instance.interceptors.response.use(
         // debugger
         // 不管是不是成功还是失败，都结束进度条
         NProgress.done();
-        if (res.data.code === 200) {
-            return res.data.data;
+        let { data } = res
+        if (data.code === 200) {
+            return data.data;
         }
-
-        return Promise.reject(res.data.message);
+        return Promise.reject(data.message);
     },
     (error) => {
         NProgress.done();

@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    app
-    <Home />
+    <Header />
     <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Home from "@views/Home";
-
+import Header from "@comps/Header";
+import Footer from "@comps/Footer";
 export default {
   name: "App",
   components: {
-    Home,
+    Header,
+    Footer,
+    // SongShowList,
   },
 };
 </script>
-
-<style>
+<style lang="less">
 </style>
