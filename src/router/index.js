@@ -6,6 +6,8 @@ const MvPage = () => import(/* webpackChunkName: "Home" */'@views/MvPage')
 const hotSongs = () => import(/* webpackChunkName: "hotSongs" */'@views/hotSongs');
 const playerSong = () => import(/* webpackChunkName: "hotSongs" */'@views/playerSongs');
 const Singer = () => import('@views/Singer')
+const SongShowList = () => import( /* webpackChunkName: "Home" */ "@views/SongShowList");
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -29,6 +31,10 @@ const router = new VueRouter({
     {
       path: '/playersong',
       component: playerSong
+    },
+    {
+      path: '/songshowlist',
+      component: SongShowList,
     },
     {
       name: "Singer",
