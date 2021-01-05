@@ -1,20 +1,17 @@
 <template>
-  <div>
-    home
-    <router-view></router-view>
-  </div>
+  <div></div>
 </template>
 
 <script>
-import { getHomeData } from "@api/home";
+// import Header from "@comps/Header";
 export default {
   name: "Home",
-  async mounted() {
-    let banners = await getHomeData();
-    console.log(banners);
-  },
+  // components: {
+  //   Header,
+  // },
 };
 </script>
 
 <style lang="less" scoped>
 </style>
+
