@@ -191,8 +191,8 @@
               <ul>
                 <li>
                   <a href="#">
-                    <span>杨小壮 - 烟雨成思</span>
-                    <span class="songtips"></span>
+                    <span class="songName">杨小壮 - 烟雨成思</span>
+                    <span class="songTips"></span>
                     <span class="songTime">03:10</span>
                     <span class="iconfont" style="display: none"></span>
                     <span class="iconfont"></span>
@@ -201,7 +201,9 @@
               </ul>
             </div>
           </div>
-          <div class="pages"></div>
+          <div class="page">
+            <span class="currentPage">1</span>/<span class="allPage">3</span>
+          </div>
         </div>
         <div class="albumList">
           <div class="itemTitle">
@@ -213,6 +215,11 @@
           </div>
           <div class="itemContent"></div>
         </div>
+      </div>
+      <div class="hardWare">
+        <a href="#" class="bannerLink">
+          <img class="bannerImg" src="@assets/images/ia_100000011.jpg" alt="" />
+        </a>
       </div>
     </div>
   </div>
@@ -571,11 +578,21 @@ export default {
               display: block;
               z-index: 999;
               padding: 0 10px;
+              text-decoration: none;
               color: #333;
+              font-size: 13px;
+              .songTime {
+                position: absolute;
+                top: 0;
+                right: 10px;
+              }
             }
           }
         }
       }
+    }
+    .page {
+      text-align: center;
     }
   }
   .albumList {
