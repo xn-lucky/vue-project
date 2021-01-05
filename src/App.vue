@@ -3,6 +3,8 @@
     <Home />
     <router-view></router-view>
     <SongList />
+    <Singer />
+    <MvPage />
     <Footer />
   </div>
 </template>
@@ -11,7 +13,8 @@
 import Home from "@views/Home";
 import SongList from "@views/SongList";
 import Footer from "@comps/Footer";
-// import SongShowList from "@views/SongShowList";
+import Singer from "@views/Singer";
+import MvPage from "@views/MvPage";
 
 export default {
   name: "App",
@@ -19,10 +22,11 @@ export default {
     Home,
     SongList,
     Footer,
-    // SongShowList,
+    Singer,
+    MvPage,
   },
 };
 </script>
 
-<style>
+<style lang="less">
 </style>
