@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-const Home = () => import(/* webpackChunkName: "Home" */'@views/Home')
+const Home = () =>
+    import ( /* webpackChunkName: "Home" */ '@views/Home')
+const SongShowList = () =>
+    import ( /* webpackChunkName: "Home" */ "@views/SongShowList");
 
 Vue.use(VueRouter)
 
@@ -9,11 +12,14 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     // 模式
     // mode: 'hash', // 默认模式
-    // mode: 'history',
-    routes: [
-        {
+    mode: 'history',
+    routes: [{
             path: '/',
             component: Home,
+        },
+        {
+            path: '/songshowlist',
+            component: SongShowList,
         }
     ],
     // 每次切换路由页面滚动条位置
