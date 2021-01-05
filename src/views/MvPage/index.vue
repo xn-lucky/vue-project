@@ -8,10 +8,10 @@
           <div class="swiper-wrapper">
             <div
               class="swiper-slide"
-              v-for="banner in bannersList"
+              v-for="banner in mvBanners"
               :key="banner.id"
             >
-              <img :src="banner.imgUrl" alt="" />
+              <img :src="banner.imgUrl.replace(' ', '')" alt="" />
             </div>
           </div>
         </div>
@@ -23,160 +23,43 @@
           <span class="more">更多</span>
         </h3>
         <ul class="hotlist">
-          <li><span>1</span>AAAAAAAAA</li>
-          <li><span>2</span>AAAAAAAAA</li>
-          <li><span>3</span>AAAAAAAAA</li>
-          <li><span>4</span>AAAAAAAAA</li>
-          <li><span>5</span>AAAAAAAAA</li>
-          <li><span>6</span>AAAAAAAAA</li>
-          <li><span>7</span>AAAAAAAAA</li>
-          <li><span>8</span>AAAAAAAAA</li>
-          <li><span>9</span>AAAAAAAAA</li>
-          <li><span>10</span>AAAAAAAAA</li>
+          <li v-for="(rank, index) in allRank" :key="rank.id">
+            <span class="num">{{ index + 1 }}</span
+            ><span class="name">{{ rank.name }}</span>
+            <i class="icon"></i>
+          </li>
         </ul>
       </div>
     </div>
     <div class="mvpage-content">
       <div class="left">
-        <div class="title">MV分类</div>
-        <ul class="list">
-          <li class="active">新歌推荐</li>
-          <li>华语精选</li>
-          <li>日韩精选</li>
-          <li>欧美精选</li>
+        <div class="title">{{ mvType && mvType.title }}</div>
+        <ul class="list" v-if="mvType">
+          <li
+            v-for="(type, index) in mvType.list"
+            :key="index"
+            :class="currentId === index ? 'active' : ''"
+            @click="handleClick(index)"
+          >
+            {{ type.name }}
+          </li>
         </ul>
       </div>
-      <div class="right">
-        <div class="title">新歌推荐(12345)</div>
+      <div class="right" v-if="typeContent && typeContent.name">
+        <div class="title">{{ typeContent.name }}</div>
         <div class="video-container">
           <ul class="video-list">
-            <li class="item">
+            <li
+              class="item"
+              v-for="content in typeContent.itemList"
+              :key="content.id"
+            >
               <a class="link">
-                <img src="./images/1.png" alt="" />
+                <img :src="content.imgUrl.replace(' ', '')" alt="" />
                 <em></em>
                 <i></i>
               </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
-            </li>
-            <li class="item">
-              <a class="link">
-                <img src="./images/1.png" alt="" />
-                <em></em>
-                <i></i>
-              </a>
-              <span>景象12345674324234865432谁依</span>
+              <span>{{ content.name }}</span>
             </li>
           </ul>
         </div>
@@ -187,20 +70,45 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import Swiper from "swiper";
-import { getMvBanners } from "@api/mv";
 
 export default {
   name: "MvPage",
   data() {
     return {
-      bannersList: [],
+      currentId: 0,
+      typeContent: {},
     };
   },
+  computed: {
+    ...mapGetters(["allRank", "mvBanners", "mvType"]),
+  },
+  watch: {
+    mvType: {
+      handler() {
+        // console.log(newValue);
+        //获取对应下标的数据
+        this.typeContent = this.mvType && this.mvType.list[0];
+      },
+      immediate: true,
+    },
+  },
+  methods: {
+    ...mapActions(["getMvData"]),
+    async handleClick(index) {
+      //点击mv分类,根据下标获取对应的数据
+      this.currentId = index;
+      //获取对应下标的数据
+      this.typeContent = this.mvType.list[index];
+    },
+  },
   async mounted() {
-    //请求数据
-    let bannersList = await getMvBanners();
-    this.bannersList = bannersList.banners;
+    //请求数据,触发action
+    await this.getMvData();
+    //设置当前默认id
+    // this.currentId = this.mvType.list[0].id;
+    // console.log(this.mvType);
     const mySwiper = new Swiper(".swiper-container", {
       autoplay: true, //等同于以下设置
       /*autoplay: {
@@ -269,10 +177,22 @@ export default {
       display: flex;
       &:hover {
         background-color: #959595;
+        .icon {
+          display: inline-block;
+          height: 18px;
+          width: 18px;
+          position: relative;
+          top: 6px;
+          background: url(./images/play1.png) no-repeat;
+        }
       }
-      span {
+      .num {
         width: 37px;
         text-align: center;
+      }
+      .name {
+        width: 220px;
+        overflow: hidden;
       }
     }
   }
@@ -339,10 +259,27 @@ export default {
           .link {
             width: 140px;
             height: 78px;
+            position: relative;
             img {
               width: 100%;
               height: 100%;
               border-radius: 10px;
+            }
+            em {
+              position: absolute;
+              width: 22px;
+              height: 22px;
+              background: url("./images/play.png") no-repeat;
+              bottom: 11px;
+              right: 11px;
+            }
+            i {
+              position: absolute;
+              width: 140px;
+              height: 44px;
+              background: url("./images/btn_bg.png") no-repeat;
+              bottom: 0;
+              left: 0;
             }
           }
           span {

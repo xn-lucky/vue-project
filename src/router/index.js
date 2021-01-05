@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 const Home = () => import(/* webpackChunkName: "Home" */'@views/Home')
+const MvPage = () => import(/* webpackChunkName: "Home" */'@views/MvPage')
 
 Vue.use(VueRouter)
 
@@ -14,7 +15,11 @@ const router = new VueRouter({
         {
             path: '/',
             component: Home,
-        }
+        },
+        {
+            path: '/mvweb',
+            component: MvPage,
+        },
     ],
     // 每次切换路由页面滚动条位置
     scrollBehavior() {
