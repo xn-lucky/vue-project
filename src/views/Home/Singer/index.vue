@@ -41,7 +41,7 @@
             <div class="imgList">
               <div v-for="(list, index) in farst" :key="list.id">
                 <div>
-                  <a class="pic" hidefocus="true">
+                  <a class="pic" hidefocus="true" @click="jumpNext(list.id)">
                     <img :src="list.picUrl" id="image" />
                     <i>{{ lst + index }}<em>st</em></i>
                   </a>
@@ -177,6 +177,9 @@ export default {
       } else {
         this.prevList()
       }
+    },
+    jumpNext(id) {
+      this.$router.push({ path: '/Details', query: { id } })
     },
   },
   async mounted() {

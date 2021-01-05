@@ -2,18 +2,16 @@
   <div id="app">
     app
     <Home />
-    <Singer />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Singer from '@views/Home/Singer'
 import Home from '@views/Home'
 export default {
   name: 'App',
   components: {
     Home,
-    Singer,
   },
 }
 </script>

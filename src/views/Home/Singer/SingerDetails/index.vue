@@ -1,37 +1,38 @@
 <template>
   <div class="content">
     <div class="heard">
-      <div>
-        <span>我的位置</span>
+      <div class="weizhi">
+        <span class="one">我的位置</span>
         <span>></span>
         <span>我的位置</span>
         <span>></span>
         <span>伯贤</span>
       </div>
       <div class="imagetext">
-        <div>
-          <img src="" alt="" />
+        <div class="left">
+          <img
+            src="https://imgessl.kugou.com/uploadpic/softhead/240/20201218/20201218183331445.jpg"
+            alt=""
+          />
           <div>
-            <text>伯贤</text>
-            <text>内容</text>
-            <text>更多内容</text>
+            <div>伯贤</div>
+            <div>内容</div>
+            <div>更多内容</div>
+          </div>
         </div>
-      </div>
 
-      <div>
         <div>
-          <span>相似歌手</span>
-          <div class="img">
-            <img src="" alt="">
-            <img src="" alt="">
+          <div>
+            <span>相似歌手</span>
+            <div class="img">
+              <img src="" alt="" />
+              <img src="" alt="" />
+            </div>
           </div>
         </div>
       </div>
-      </div>
     </div>
-    <div class="nav">
-
-    </div>
+    <div class="nav"></div>
   </div>
 </template>
 
@@ -39,5 +40,28 @@
 export default {}
 </script>
 
-<style>
+<style lang="less" scoped>
+.content {
+  width: 1000px;
+  margin: 0 auto;
+}
+.weizhi {
+  margin-top: 10px;
+  display: flex;
+  .one {
+    color: darkgrey;
+  }
+  span {
+    margin-right: 2px;
+  }
+}
+.imagetext {
+  width: 100%;
+  height: 142px;
+  border: 1px solid;
+  .left {
+    width: 780px;
+    height: 142px;
+  }
+}
 </style>
