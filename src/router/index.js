@@ -7,7 +7,7 @@ const hotSongs = () => import(/* webpackChunkName: "hotSongs" */'@views/hotSongs
 const playerSong = () => import(/* webpackChunkName: "hotSongs" */'@views/playerSongs');
 const Singer = () => import('@views/Singer')
 const SongShowList = () => import( /* webpackChunkName: "Home" */ "@views/SongShowList");
-const SingerDetails = () => import('@views/Home/Singer/SingerDetails')
+const SingerDetails = () => import('@views/Singer/SingerDetails')
 Vue.use(VueRouter)
 
 const router = new VueRouter({
