@@ -13,8 +13,13 @@ instance.interceptors.request.use(
         // debugger
         // 开始设置进度条
         NProgress.start();
+        if (config.url.indexOf('artist') !== -1) {
+            config.baseURL = ''
+        }
+
         return config;
     }
+
 );
 // 响应拦截器
 instance.interceptors.response.use(
