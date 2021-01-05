@@ -4,9 +4,9 @@ import VueRouter from 'vue-router'
 const Home = () => import(/* webpackChunkName: "Home" */'@views/Home')
 const MvPage = () => import(/* webpackChunkName: "Home" */'@views/MvPage')
 const hotSongs = () => import(/* webpackChunkName: "hotSongs" */'@views/hotSongs');
+const playerSong = () => import(/* webpackChunkName: "hotSongs" */'@views/playerSongs');
 const Singer = () => import('@views/Singer')
 Vue.use(VueRouter)
-
 
 const router = new VueRouter({
 
@@ -27,12 +27,14 @@ const router = new VueRouter({
       component: hotSongs
     },
     {
+      path: '/playersong',
+      component: playerSong
+    },
+    {
       name: "Singer",
       path: '/singer',
       component: Singer
-    }
-  ],
-
+    }],
   // 每次切换路由页面滚动条位置
   scrollBehavior() {
     return { x: 0, y: 0 };
