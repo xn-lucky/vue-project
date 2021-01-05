@@ -7,8 +7,8 @@
 </template>
 
 <script>
+import Singer from '@views/Home/Singer'
 import Home from '@views/Home'
-import Singer from '@views/Singer'
 export default {
   name: 'App',
   components: {
