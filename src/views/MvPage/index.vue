@@ -49,20 +49,20 @@
           <li
             v-for="(type, index) in mvType.list"
             :key="index"
-            :class="currentId === index ? 'active' : ''"
+            :class="currentIndex === index ? 'active' : ''"
             @click="handleClick(index)"
           >
             {{ type.name }}
           </li>
         </ul>
       </div>
-      <div class="right" v-if="typeContent && typeContent.name">
-        <div class="title">{{ typeContent.name }}</div>
+      <div class="right" v-if="singerListData && singerListData.name">
+        <div class="title">{{ singerListData.name }}</div>
         <div class="video-container">
           <ul class="video-list">
             <li
               class="item"
-              v-for="content in typeContent.itemList"
+              v-for="content in singerListData.itemList"
               :key="content.id"
             >
               <a class="link">
@@ -74,7 +74,14 @@
             </li>
           </ul>
           <!-- 分页器 -->
-          
+          <el-pagination
+            layout="prev, pager, next,total"
+            :total="total"
+            :current-page.sync="currentPage"
+            @current-change="handleCurrentChange"
+            :page-size="size"
+          >
+          </el-pagination>
         </div>
       </div>
     </div>
@@ -83,7 +90,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import Swiper, { Pagination, Autoplay } from "swiper";
 Swiper.use([Pagination, Autoplay]);
 
@@ -91,20 +98,36 @@ export default {
   name: "MvPage",
   data() {
     return {
-      currentId: 0,
-      typeContent: {},
+      currentIndex: 0, //当前的mv分类的下标
       currentBannersIndex: 0,
+
+      // 分页器的参数
+      currentPage: 1, //当前页
+      size: 10, // 默认当前页展示数据条数
+      total: 0, //数据总数
     };
   },
   computed: {
-    ...mapGetters(["allRank", "mvBanners", "mvType"]),
+    ...mapState({
+      mvType: (state) => state.mv.mvType,
+      singerListData: (state) => state.mv.singerListData,
+    }),
+    ...mapGetters(["allRank", "mvBanners"]),
   },
   watch: {
     mvType: {
       handler() {
-        // console.log(newValue);
-        //获取对应下标的数据
-        this.typeContent = this.mvType && this.mvType.list[0];
+        let {
+          mvType: { list },
+          currentIndex,
+          currentPage,
+        } = this;
+        if (list) {
+          // 开始默认配置的数据，currentIndex为0,当前页为1,每页条数为size->10
+          this.publicFunc(currentPage);
+          // // 获取总数
+          this.total = list[currentIndex].itemList.length;
+        }
       },
       immediate: true,
     },
@@ -130,18 +153,33 @@ export default {
   },
   methods: {
     ...mapActions(["getMvData"]),
+    //当前页改变的时候触发的事件
+    handleCurrentChange(currentPage) {
+      this.publicFunc(currentPage);
+    },
+    //获取当前类别下的对应当前页数据
+    publicFunc(currentPage = this.currentPage) {
+      this.$store.commit("GETCURRENTPAGEDATA", {
+        currentIndex: this.currentIndex, //直接在this中获取
+        currentPage,
+        size: this.size,
+      });
+    },
+    // 点击切换分类
     async handleClick(index) {
       //点击mv分类,根据下标获取对应的数据
-      this.currentId = index;
+      this.currentIndex = index;
+      // 切换分类后,将当前页改为1
+      this.currentPage = 1;
       //获取对应下标的数据
-      this.typeContent = this.mvType.list[index];
+      this.publicFunc();
+      // 获取总数
+      this.total = this.mvType.list[index].itemList.length;
     },
   },
   async mounted() {
     //请求数据,触发action
     await this.getMvData();
-    //设置当前默认id
-    // this.currentId = this.mvType.list[0].id;
   },
 };
 </script>
@@ -245,13 +283,14 @@ export default {
   }
   .hotlist {
     width: 100%;
+    height: 293px;
     background: #363636;
     color: #fff;
     margin-top: 2px;
     font-size: 13px;
     li {
-      height: 30px;
-      line-height: 30px;
+      height: 29px;
+      line-height: 29px;
       display: flex;
       &:hover {
         background-color: #959595;
@@ -279,6 +318,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-top: 18px;
+  height: 557px;
   .left {
     width: 210px;
     height: 300px;
