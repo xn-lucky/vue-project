@@ -23,17 +23,26 @@
         </header>
         <div class="hotSongs-left-box-main">
           <div class="hotSongs-left-box-main-quanxuan">
-            <label><input type="checkbox" />全选</label>
+            <label
+              ><input
+                type="checkbox"
+                :checked="check"
+                @click="checkedAll($event)"
+              />全选</label
+            >
           </div>
           <ul
             class="hotSongs-left-box-main-ul"
-            v-for="item in hotListcontent"
+            v-for="(item, index) in hotListcontent"
             :key="item.id"
           >
             <li class="hotSongs-left-box-main-li">
               <a class="hotSongs-left-box-main-li-a">
                 <label class="hotSongs-left-box-main-li-a-label"
-                  ><input type="checkbox"
+                  ><input
+                    type="checkbox"
+                    @click="checkSingle(item.check, index, $event)"
+                    :checked="item.check"
                 /></label>
                 <span class="hotSongs-left-box-main-li-a-span1"
                   >{{ item.id }}
@@ -46,8 +55,41 @@
                   >{{ item.singer }} - {{ item.songsName }}</span
                 >
                 <span class="hotSongs-left-box-main-li-a-span3"
-                  ><i class="hotSongs-left-box-main-li-a-span3-i1"></i>
-                  <i class="hotSongs-left-box-main-li-a-span3-i2"></i>
+                  ><i
+                    class="hotSongs-left-box-main-li-a-span3-i1"
+                    @click="PlayerSongs"
+                  ></i>
+                  <i
+                    class="hotSongs-left-box-main-li-a-span3-i2"
+                    @click="downLoad"
+                  ></i>
+                  <el-dialog
+                    title="下载歌曲"
+                    :visible.sync="dialogVisible"
+                    width="30%"
+                    :before-close="handleClose"
+                    append-to-body
+                  >
+                    <div class="el-dialog-box" style="text-align: center">
+                      <i class="el-dialog-box-i" style="color: orange"></i>
+                      <span class="el-dialog-box-span"
+                        >下载歌曲需要在酷狗音乐客户端操作</span
+                      >
+                    </div>
+                    <div class="el-dialog-box1">
+                      <span class="el-dialog-box1-span1">打开客户端</span>
+                      <span class="el-dialog-box1-span2">下载新版客户端</span>
+                    </div>
+                    <!-- <span slot="footer" class="dialog-footer">
+                      <el-button @click="dialogVisible = false"
+                        >取 消</el-button
+                      >
+                      <el-button type="primary" @click="dialogVisible = false"
+                        >确 定</el-button
+                      >
+                    </span> -->
+                  </el-dialog>
+
                   <i class="hotSongs-left-box-main-li-a-span3-i3"></i
                 ></span>
                 <span class="hotSongs-left-box-main-li-a-span4"
@@ -82,9 +124,13 @@ export default {
       hotListcontent: [],
       hotListcontentName: "",
       updatahotListcontentTime: "2021-01-03",
+      // isAllChecked: true,
+      dialogVisible: false,
     };
   },
   async mounted() {
+    document.body.style.height = "";
+    document.body.style["overflow-y"] = "";
     let hotList = await request("/getHotList");
     this.hotList = hotList;
     let hotsongs = this.changeSongs(472427);
@@ -98,6 +144,68 @@ export default {
       let hotsongs = await request(`/getHotListSongs?HotListId=${HotListId}`);
       this.hotListcontentName = hotsongs.name;
       this.hotListcontent = hotsongs.content;
+    },
+    handleClose() {
+      this.dialogVisible = false;
+    },
+    // 点击全选按钮键
+    checkedAll(e) {
+      // console.log(e.target.checked);
+
+      /* for (var i = 0; i <= this.hotListcontent.length; i++) {
+          console.log(this.hotListcontent);
+          this.hotListcontent[i].check = e.target.checked;
+        } */
+      this.hotListcontent.forEach((item) => {
+        item.check = e.target.checked;
+        // console.log(item.check);
+      });
+    },
+    // 点击播放按钮添加歌曲到播放页面
+    PlayerSongs() {
+      // console.log("111");
+      this.$message.success("已成功添加歌曲到播放列表");
+    },
+    // 点击单选按钮键
+    checkSingle(check, index, e) {
+      this.hotListcontent[index].check = e.target.checked;
+    },
+    downLoad() {
+      // if (window.confirm("你确认下载此首歌曲吗？")) {
+      //   window.open("#/playerSong");
+      // }
+      this.dialogVisible = true;
+    },
+  },
+  watch: {},
+  computed: {
+    check: function () {
+      let isAllChecked;
+      /* if (this.hotListcontent) {
+        this.hotListcontent.forEach((item) => {
+          if (item.check === true) {
+            console.log(item.check);
+            isAllChecked = true;
+          }
+          if (item.check === false) {
+            console.log(item.check);
+            isAllChecked = false;
+          }
+        });
+      } */
+      if (this.hotListcontent) {
+        for (var i = 0; i <= this.hotListcontent.length - 1; i++) {
+          // console.log(this.hotListcontent[i].check);
+          if (this.hotListcontent[i].check === false) {
+            isAllChecked = false;
+            return;
+          }
+          if (this.hotListcontent[i].check === true) {
+            isAllChecked = true;
+          }
+        }
+      }
+      return isAllChecked;
     },
   },
   components: {
@@ -224,6 +332,7 @@ export default {
                 width: 400px;
                 text-align: left;
               }
+
               .hotSongs-left-box-main-li-a-span3 {
                 opacity: 0;
                 width: 150px;
@@ -245,6 +354,7 @@ export default {
                   background-image: url("https://staticssl.kugou.com/common/images/pc_temp_v2/icon_splice.png?20150814");
                   background-position: -90px 0;
                 }
+
                 .hotSongs-left-box-main-li-a-span3-i3 {
                   padding-left: 16px;
                   margin-left: 10px;
@@ -301,6 +411,40 @@ export default {
         font-size: 16px;
       }
     }
+  }
+}
+.el-dialog-box {
+  display: flex;
+  justify-content: space-evenly;
+
+  .el-dialog-box-i {
+    position: relative;
+    top: -6px;
+    display: block;
+    width: 31px;
+    height: 31px;
+
+    background: url(https://staticssl.kugou.com/public/root/images/warn.png)
+      no-repeat left top;
+  }
+}
+.el-dialog-box1 {
+  display: flex;
+  justify-content: space-around;
+  .el-dialog-box1-span1 {
+    height: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    line-height: 10px;
+    border: 1px solid #ccc;
+  }
+  .el-dialog-box1-span2 {
+    height: 10px;
+    padding: 10px;
+    line-height: 10px;
+    border-radius: 20px;
+
+    border: 1px solid #ccc;
   }
 }
 </style>

@@ -19,4 +19,7 @@ export default {
 };
 </script>
 <style lang="less">
+body {
+  padding-right: 0 !important;
+}
 </style>
