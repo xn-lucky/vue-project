@@ -131,6 +131,10 @@
                     <dd>2 . 阮言Ruany - 难生恨</dd>
                   </dl>
                 </div>
+                <div class="cover">
+                  <div class="iconfont"></div>
+                </div>
+                <span class="iconfont"></span>
               </a>
             </div>
             <div class="listItem">
@@ -378,9 +382,9 @@
               <span>歌单</span>
             </h3>
             <div class="tabT">
-              <span class="active" data="0">华语</span>
-              <span data="1" class="">欧美</span>
-              <span data="2" class="">日韩</span>
+              <span class="active listItem" data="0">华语</span>
+              <span data="1" class="listItem">欧美</span>
+              <span data="2" class="listItem">日韩</span>
               <span data="3"><a class="more" href="#">更多</a></span>
             </div>
           </div>
@@ -795,6 +799,9 @@ export default {
             margin-right: 20px;
             cursor: pointer;
             font-size: 14px;
+            &:hover {
+              color: #009af3;
+            }
           }
         }
       }
@@ -1118,6 +1125,9 @@ export default {
           margin-right: 20px;
           cursor: pointer;
           font-size: 14px;
+          &:hover {
+            color: #009af3;
+          }
         }
       }
     }
