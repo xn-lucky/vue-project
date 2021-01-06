@@ -42,14 +42,17 @@
           <li><a href="#">首页</a></li>
           <li><a href="#">榜单</a></li>
           <li><a href="#">下载客户端</a></li>
-          <li><a href="#">更多</a></li>
+          <li class="more">
+            <a href="#">更多</a>
+            <ul class="secondMenu">
+              <li><a href="#">电台</a></li>
+              <li><a href="#">MV</a></li>
+              <li><a href="#">歌单</a></li>
+              <li><a href="#">歌手</a></li>
+            </ul>
+          </li>
         </ul>
-        <!-- <ul class="secondMenu">
-          <li><a href="#">电台</a></li>
-          <li><a href="#">MV</a></li>
-          <li><a href="#">歌单</a></li>
-          <li><a href="#">歌手</a></li>
-        </ul> -->
+
         <ul class="subNav">
           <li>
             <a href="#"><i class="iconfont icon-shoucang"></i>直播</a>
@@ -89,70 +92,72 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.header .search .input {
-  position: relative;
-  width: 298px;
-  height: 34px;
-  border: 1px solid #ccc;
-  line-height: 34px;
-}
-.header .search .input input {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 249px;
-  height: 24px;
-  line-height: 24px;
-  border: none;
-  margin-left: 14px;
-  padding: 5px 0;
-  color: #666;
-  outline: none;
-}
-.header .search .input .btn {
-  // display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 34px;
-  height: 34px;
-  text-align: center;
-  margin: 0 auto;
-  line-height: 34px;
-}
-.header .topNav {
-  display: flex;
-  align-items: center;
-}
-.header .topNav .bsUl {
-  width: 312px;
-  height: 19.2px;
-}
-.header .topNav .bsUl li {
-  padding: 0 10px;
-  font-size: 13px;
+  .search .input {
+    position: relative;
+    width: 298px;
+    height: 34px;
+    border: 1px solid #ccc;
+    line-height: 34px;
+    input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 249px;
+      height: 24px;
+      line-height: 24px;
+      border: none;
+      margin-left: 14px;
+      padding: 5px 0;
+      color: #666;
+      outline: none;
+    }
+    .btn {
+      // display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      text-align: center;
+      margin: 0 auto;
+      line-height: 34px;
+    }
+  }
 }
 
-.header .topNav .bsUl {
-  display: flex;
-}
-.topNav .login_area .clearfix {
-  width: 110px;
-  height: 30px;
-}
-.topNav .login_area #login_in a {
-  float: left;
-  display: block;
-  width: 48px;
-  height: 28px;
-  line-height: 28px;
-  border: 1px solid #169af3;
-  border-radius: 2px;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-  background-color: #169af3;
+.header {
+  .topNav {
+    display: flex;
+    align-items: center;
+    .bsUl {
+      width: 312px;
+      height: 19.2px;
+      display: flex;
+      li {
+        padding: 0 10px;
+        font-size: 13px;
+      }
+    }
+    .login_area {
+      .clearfix {
+        width: 110px;
+        height: 30px;
+      }
+      #login_in a {
+        float: left;
+        display: block;
+        width: 48px;
+        height: 28px;
+        line-height: 28px;
+        border: 1px solid #169af3;
+        border-radius: 2px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        background-color: #169af3;
+      }
+    }
+  }
 }
 .navWrap {
   position: relative;
@@ -160,50 +165,81 @@ export default {
   width: 100%;
   height: 55px;
   background-color: #2c323b;
-}
-.navWrap .nav {
-  width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-}
-.navWrap .nav .homeNav {
-  display: flex;
-}
-.navWrap .nav .homeNav li {
-  line-height: 55px;
-  font-size: 16px;
-  padding: 0 30px;
-}
-.navWrap .nav .homeNav li a {
-  color: #ddd;
-}
-.navWrap .nav .homeNav li:hover {
-  background-color: #0c8ed9;
-  color: #fff;
-}
-.navWrap .nav .homeNav li:hover a {
-  color: #fff !important;
-}
-.navWrap .nav .homeNav li a:hover {
-  text-decoration: none;
-}
-.navWrap .nav .subNav {
-  display: flex;
-  align-items: center;
-}
-.navWrap .nav .subNav li {
-  padding-left: 20px;
-  font-size: 13px;
-}
-.navWrap .nav .subNav li a {
-  color: #bbb;
-}
-.navWrap .nav .subNav li a:hover {
-  color: #14a9ff;
-  text-decoration: none;
-}
-.navWrap .nav .subNav li a i {
-  color: #fff;
+  .nav {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    .homeNav {
+      display: flex;
+      li {
+        line-height: 55px;
+        font-size: 16px;
+        padding: 0 30px;
+        a {
+          color: #ddd;
+        }
+        a:hover {
+          text-decoration: none;
+        }
+      }
+      li:hover {
+        background-color: #0c8ed9;
+        color: #fff;
+        a {
+          color: #fff !important;
+        }
+      }
+      .more {
+        position: relative;
+        .secondMenu {
+          position: absolute;
+          left: 0px;
+          top: 54.4px;
+          display: none;
+          width: 92px;
+          height: 166px;
+          background-color: #252a32;
+          z-index: 99;
+
+          \deep\li {
+            display: block;
+            width: 92px;
+            padding: 0;
+            height: 36px !important;
+            line-height: 36px;
+            &:hover a {
+              display: block;
+              padding: 0;
+              width: 92px;
+              height: 36px;
+              line-height: 36px;
+            }
+          }
+        }
+      }
+      .more:hover .secondMenu {
+        display: block;
+      }
+    }
+    .subNav {
+      display: flex;
+      align-items: center;
+      li {
+        padding-left: 20px;
+        font-size: 13px;
+        a {
+          color: #bbb;
+          i {
+            color: #fff;
+          }
+        }
+        a:hover {
+          color: #14a9ff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
 </style>
