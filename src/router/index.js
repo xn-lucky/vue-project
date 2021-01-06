@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 const Home = () => import(/* webpackChunkName: "Home" */'@views/Home')
 const MvPage = () => import(/* webpackChunkName: "Home" */'@views/MvPage')
+const Video = () => import(/* webpackChunkName: "Home" */'@views/Video')
 const hotSongs = () => import(/* webpackChunkName: "hotSongs" */'@views/hotSongs');
 const playerSong = () => import(/* webpackChunkName: "hotSongs" */'@views/playerSongs');
 const Singer = () => import('@views/Singer')
@@ -23,6 +24,10 @@ const router = new VueRouter({
     {
       path: '/mvweb',
       component: MvPage,
+    },
+    {
+      path: '/video',
+      component: Video,
     },
     {
       path: '/hotsongs',
