@@ -3,7 +3,12 @@
   <div>
     <div class="swiper-container" ref="swi">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="banner in banners" :key="banner.id">
+        <div
+          class="swiper-slide"
+          v-for="(banner, index) in banners"
+          :key="banner.id"
+          @click="toVideo(index)"
+        >
           <img :src="banner.imgUrl.replace(' ', '')" alt="" />
           <!-- 蒙版 -->
           <i class="mark">
@@ -46,6 +51,20 @@ export default {
             disableOnInteraction: false, // 当用户点击下一页之后，轮播继续
           },
         });
+      });
+    },
+  },
+  methods: {
+    toVideo(index) {
+      //点击跳转到video页面播放视频
+      let { videoLink, imgName } = this.banners[index];
+      // console.log("singerData", singerData);
+      this.$router.push({
+        path: "/video",
+        query: {
+          videoLink,
+          imgName,
+        },
       });
     },
   },

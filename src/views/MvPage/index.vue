@@ -1,6 +1,7 @@
 <template>
   <!-- 头部组件 -->
   <div class="mvpageContainer">
+    <!-- <button @click="toVideo">点击</button> -->
     <div class="mvpage-header">
       <!-- 轮播图 -->
       <div class="banners">
@@ -13,7 +14,11 @@
           <span class="more">更多</span>
         </h3>
         <ul class="hotlist">
-          <li v-for="(rank, index) in allRank" :key="rank.id">
+          <li
+            v-for="(rank, index) in allRank"
+            :key="rank.id"
+            @click="toVideo(index, 'allRank')"
+          >
             <span class="num">{{ index + 1 }}</span
             ><span class="name">{{ rank.name }}</span>
             <i class="icon"></i>
@@ -41,8 +46,9 @@
           <ul class="video-list">
             <li
               class="item"
-              v-for="content in singerListData.itemList"
+              v-for="(content, index) in singerListData.itemList"
               :key="content.id"
+              @click="toVideo(index)"
             >
               <a class="link">
                 <img :src="content.imgUrl.replace(' ', '')" alt="" />
@@ -135,6 +141,21 @@ export default {
   },
   methods: {
     ...mapActions(["getMvData"]),
+    //测试点击跳转video页面
+    toVideo(index, type) {
+      // console.log("singerData", singerData);
+      this.$router.push({
+        path: "/video",
+        query: {
+          videoLink: type
+            ? this[type][index].videoLink
+            : this.singerListData.itemList[index].videoLink,
+          imgName: type
+            ? this[type][index].name
+            : this.singerListData.itemList[index].name,
+        },
+      });
+    },
     //当前页改变的时候触发的事件
     handleCurrentChange(currentPage) {
       this.publicFunc(currentPage);
