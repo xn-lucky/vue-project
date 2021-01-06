@@ -1,32 +1,22 @@
 <template>
   <div id="app">
-    <Home />
+    <Header />
     <router-view></router-view>
-    <SongList />
-    <Singer />
-    <MvPage />
     <Footer />
   </div>
 </template>
 
 <script>
-import Home from "@views/Home";
-import SongList from "@views/SongList";
+import Header from "@comps/Header";
 import Footer from "@comps/Footer";
-import Singer from "@views/Singer";
-import MvPage from "@views/MvPage";
-
 export default {
   name: "App",
   components: {
-    Home,
-    SongList,
+    Header,
     Footer,
-    Singer,
-    MvPage,
+    // SongShowList,
   },
 };
 </script>
-
 <style lang="less">
 </style>

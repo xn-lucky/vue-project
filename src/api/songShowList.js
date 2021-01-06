@@ -1,9 +1,9 @@
 import request from '@utils/request'
 
 
-export const getSongList = () => {
+export const getSongShowList = (id) => {
     return request({
         method: 'GET',
-        url: '/getSongList'
+        url: '/getSongShowList?id=' + id,
     });
 };

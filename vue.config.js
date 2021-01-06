@@ -4,18 +4,19 @@ module.exports = {
     devServer: {
         proxy: {
             "/api": {
-                target: "http://42.192.85.86:3001",
+                // target: "http://42.192.85.86:3001",
+                target: "http://localhost:3000",
                 // changeOrigin: true, // 允许跨域
                 pathRewrite: { // 重写路径: 去掉路径中开头的'/dev-api'
                     '^/api': ''
                 }
             },
-            "/kugou": {
-                target: "http://m.kugou.com",
+            "/artist": {
+                target: "http://localhost:3000",
                 // changeOrigin: true, // 允许跨域
-                pathRewrite: { // 重写路径: 去掉路径中开头的'/dev-api'
-                    '^/kugou': ''
-                }
+                /* pathRewrite: { // 重写路径: 去掉路径中开头的'/dev-api'
+                  '^/artist': ''
+                } */
             },
         },
     },
@@ -31,5 +32,5 @@ module.exports = {
                 "@api": path.resolve(__dirname, 'src/api'),
             }
         }
-    },
+    }
 }

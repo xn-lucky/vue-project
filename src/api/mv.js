@@ -1,8 +1,8 @@
 import instance from '@utils/request'
 
-export const getMvBanners = () => {
+export const getMymv = () => {
     return instance({
         method: 'GET',
-        url: '/getbanners'
+        url: '/getMymv'
     })
 }
