@@ -13,7 +13,11 @@
       <div class="pic">
         <img
           alt="乡村之旅：安静惬意·与自然同在"
-          :src="result.image"
+          :src="
+            result.image
+              ? result.image
+              : 'http://c1.kgimg.com/custom/150/20201207/20201207134716994336.jpg'
+          "
           _src="http://c1.kgimg.com/custom/150/20201207/20201207134716994336.jpg"
           _def="https://www.kugou.com/yy/static/images/default2.jpg"
           height="148"
@@ -39,9 +43,7 @@
       </div>
       <p class="more" onclick="show(this,event)">更多 &gt;&gt;</p>
       <p class="more_intro">
-        清晨的泥土芳香扑鼻而来，深呼大自然的气息，安静的欣赏花草树木换装后新装，尽情享受这美妙的春光。
-        #年终限定奖#
-
+        {{ result.paper }}
         <span></span>
       </p>
     </div>
@@ -97,6 +99,7 @@ export default {
   },
   async mounted() {
     const id = this.$route.params.id;
+    if (!id) return;
     let result = await getSongShowList(id);
     this.result = result;
   },
@@ -123,7 +126,6 @@ export default {
     position: relative;
     z-index: 1000;
     .pic {
-      background: url("../../assets/images/1.jpg") no-repeat;
       width: 170px;
       height: 169px;
       margin-left: -5px;
