@@ -40,19 +40,28 @@
       <div class="nav">
         <ul class="homeNav">
           <li><a href="#">首页</a></li>
-          <li><a href="#">榜单</a></li>
+          <li><a @click="tohotSongs">榜单</a></li>
           <li><a href="#">下载客户端</a></li>
-          <li class="more">
+          <li
+            @mouseenter="show = true"
+            @mouseleave="show = false"
+            class="more"
+            :class="show ? 'hover' : ''"
+          >
             <a href="#">更多</a>
-            <ul class="secondMenu">
-              <li><a href="#">电台</a></li>
-              <li><a href="#">MV</a></li>
-              <li><a href="#">歌单</a></li>
-              <li><a href="#">歌手</a></li>
-            </ul>
           </li>
         </ul>
-
+        <ul
+          class="secondMenu"
+          :class="show ? 'block' : ''"
+          @mouseenter="show = true"
+          @mouseleave="show = false"
+        >
+          <!-- <li><a href="#">电台</a></li> -->
+          <li><router-link to="/mvweb">MV</router-link></li>
+          <li><router-link to="">歌单</router-link></li>
+          <li><router-link to="">歌手</router-link></li>
+        </ul>
         <ul class="subNav">
           <li>
             <a href="#"><i class="iconfont icon-shoucang"></i>直播</a>
@@ -81,6 +90,16 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      show: false,
+    };
+  },
+  methods: {
+    tohotSongs() {
+      this.$router.push("/hotsongs");
+    },
+  },
 };
 </script>
 
@@ -165,81 +184,87 @@ export default {
   width: 100%;
   height: 55px;
   background-color: #2c323b;
-  .nav {
-    width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    .homeNav {
-      display: flex;
-      li {
-        line-height: 55px;
-        font-size: 16px;
-        padding: 0 30px;
-        a {
-          color: #ddd;
-        }
-        a:hover {
-          text-decoration: none;
-        }
-      }
-      li:hover {
-        background-color: #0c8ed9;
-        color: #fff;
-        a {
-          color: #fff !important;
-        }
-      }
-      .more {
-        position: relative;
-        .secondMenu {
-          position: absolute;
-          left: 0px;
-          top: 54.4px;
-          display: none;
-          width: 92px;
-          height: 166px;
-          background-color: #252a32;
-          z-index: 99;
+}
+.navWrap .nav {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.nav .homeNav {
+  display: flex;
+}
+.nav .homeNav li {
+  line-height: 55px;
+  font-size: 16px;
+  padding: 0 30px;
+}
 
-          \deep\li {
-            display: block;
-            width: 92px;
-            padding: 0;
-            height: 36px !important;
-            line-height: 36px;
-            &:hover a {
-              display: block;
-              padding: 0;
-              width: 92px;
-              height: 36px;
-              line-height: 36px;
-            }
-          }
-        }
-      }
-      .more:hover .secondMenu {
-        display: block;
-      }
+.nav .homeNav li a {
+  color: #ddd;
+}
+.nav .homeNav li.more:hover,
+.nav .homeNav li.more.hover {
+  background-color: #0c8ed9;
+  color: #fff;
+}
+
+.nav .homeNav li:hover a {
+  color: #fff !important;
+}
+.nav .homeNav li a:hover {
+  text-decoration: none;
+}
+.nav .secondMenu {
+  position: absolute;
+  left: 324px;
+  top: 54.4px;
+  display: none;
+  width: 92px;
+  height: 110px;
+  background-color: #252a32;
+  li {
+    display: block;
+    width: 92px;
+    padding: 0;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    &:hover {
+      color: #fff;
+      line-height: 34px;
+      border-top: 1px solid #383d44;
+      border-bottom: 1px solid #383d44;
+      background-color: #2d343d;
     }
-    .subNav {
-      display: flex;
-      align-items: center;
-      li {
-        padding-left: 20px;
-        font-size: 13px;
-        a {
-          color: #bbb;
-          i {
-            color: #fff;
-          }
-        }
-        a:hover {
-          color: #14a9ff;
-          text-decoration: none;
-        }
-      }
+    a {
+      font-size: 15px;
+      color: #bbb;
+      background: 0 0;
+      background-color: #252b34;
     }
   }
+}
+.nav .secondMenu.block {
+  display: block;
+}
+.nav .subNav {
+  display: flex;
+  align-items: center;
+}
+.nav .subNav li {
+  padding-left: 20px;
+  font-size: 13px;
+}
+.nav .subNav li a {
+  color: #bbb;
+}
+.nav .subNav li a:hover {
+  color: #14a9ff;
+  text-decoration: none;
+}
+.nav .subNav li a i {
+  color: #fff;
 }
 </style>

@@ -1,20 +1,337 @@
 <template>
   <div class="playerSongs">
-    <div>playerSongs</div>
+    <div class="playerSongsItem">
+      <div class="playerSongsItem-box">
+        <div class="playerSongsItem-box-left">
+          <div class="playerSongsItem-box-left-img">
+            <!-- src="https://www.kugou.com/yy/static/images/play/default.jpg" -->
+            <img
+              src="https://imgessl.kugou.com/stdmusic/20201231/20201231141702225046.jpg"
+              alt=""
+            />
+          </div>
+          <div class="playerSongsItem-box-left-botton">
+            <span>下载这首歌曲</span>
+          </div>
+          <div class="playerSongsItem-box-left-text">
+            <u>外部播放此歌曲></u>
+          </div>
+        </div>
+        <div class="layerSongsItem-box-right">
+          <div class="layerSongsItem-box-right-title"><p>烟雨成思</p></div>
+          <div class="layerSongsItem-box-right-singer">
+            <p><span>专辑:</span> 烟雨成思</p>
+            <p><span>歌手:</span> 杨小壮</p>
+          </div>
+          <div class="layerSongsItem-box-right-lyric">
+            <section class="layerSongsItem-box-right-lyric-box">
+              <p>词:小壮</p>
+              <p>曲:杨林聪</p>
+              <p>混音:和平</p>
+              <p>编曲:张川</p>
+              <p>录制:杨小壮音乐工作室</p>
+              <p>OP:嗨库文化</p>
+              <p>(未经著作权人许可,不得翻唱、翻录或使用)</p>
+              <p>寒风起 听窗外细声雨</p>
+              <p>拿起笔 想画出一个你</p>
+              <p>脑里模糊的记忆</p>
+              <p>伴着黑白又清晰</p>
+              <p>彩色照片还在我手里</p>
+              <section class="huakuai-box">
+                <p class="huakuai"></p>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="playerSongsFooter">
+      <section class="playerSongsFooter-playerBox">
+        <div class="playerSongsFooter-playerBox1"></div>
+        <div class="playerSongsFooter-playerBox2"></div>
+        <div class="playerSongsFooter-playerBox3"></div>
+      </section>
+      <section class="playerSongsFooter-playerMain">
+        <img
+          src="https://imgessl.kugou.com/stdmusic/20201231/20201231141702225046.jpg"
+          alt=""
+        />
+        <div class="playerSongsFooter-playerMain-box">
+          <p class="playerSongsFooter-playerMain-box1">
+            <span>烟雨成思</span><span>/03:10</span>
+          </p>
+          <p class="playerSongsFooter-playerMain-box2">
+            <span class="playerSongsFooter-playerMain-box2-span1"></span
+            ><span class="playerSongsFooter-playerMain-box2-span2"></span>
+          </p>
+        </div>
+      </section>
+      <section class="playerSongsFooter-playerMain-right">
+        <div class="playerSongsFooter-playerMain-right-box">
+          <span class="playerSongsFooter-playerMain-right-box1"></span>
+          <span class="playerSongsFooter-playerMain-right-box2"></span>
+          <span class="playerSongsFooter-playerMain-right-box3"></span>
+          <span class="playerSongsFooter-playerMain-right-box4"></span>
+          <span class="playerSongsFooter-playerMain-right-box5"></span>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "playerSongs",
+  mounted() {
+    document.body.style.height = "100vh";
+    document.body.style["overflow-y"] = "hidden";
+  },
 };
 </script>
 
 <style lang="less" scoped>
 .playerSongs {
-  height: 590px;
+  height: 535px;
   background-image: url(http://img1.juimg.com/160625/330890-16062515300184.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  .playerSongsItem {
+    margin: auto;
+    min-width: 1000px;
+    width: 1000px;
+    .playerSongsItem-box {
+      display: flex;
+      justify-content: space-around;
+    }
+    .playerSongsItem-box-left {
+      .playerSongsItem-box-left-img {
+        img {
+          width: 260px;
+          height: 260px;
+          margin-top: 25px;
+        }
+      }
+      .playerSongsItem-box-left-botton {
+        display: block;
+        width: 230px;
+        height: 50px;
+        outline: none;
+        color: rgb(186, 299, 245);
+        border-radius: 30px;
+        cursor: pointer;
+        text-align: center;
+        border: 1px solid rgb(143, 200, 228);
+        background-color: rgba(0, 0, 0, 0.2);
+        margin: 0 15px;
+        span {
+          font-size: 20px;
+          font-weight: 20;
+          line-height: 50px;
+        }
+      }
+      .playerSongsItem-box-left-text {
+        text-align: center;
+        padding: 10px 0;
+      }
+    }
+    .layerSongsItem-box-right {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      .layerSongsItem-box-right-title {
+        font-size: 24px;
+        font-style: normal;
+        color: #fff;
+        width: 460px;
+      }
+      .layerSongsItem-box-right-singer {
+        display: flex;
+        margin: 10px 0;
+        p {
+          font-size: 15px;
+          margin-right: 10px;
+          width: 200px;
+          line-height: 24px;
+          overflow: hidden;
+          color: #fff;
+          span {
+            opacity: 0.6;
+            margin-right: 10px;
+          }
+        }
+      }
+      .layerSongsItem-box-right-lyric {
+        font-size: 15px;
+        opacity: 0.5;
+        color: #fff;
+        overflow: hidden;
+        .layerSongsItem-box-right-lyric-box {
+          position: relative;
+          top: -16px;
+          height: 385px;
+        }
+        p {
+          margin-top: 10px;
+        }
+        p.huakuai {
+          position: absolute;
+          opacity: 0.8;
+          right: 0;
+          top: 0;
+          width: 8px;
+          height: 35px;
+          background-color: #fff;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .playerSongsFooter {
+    min-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -52px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 80px;
+    .playerSongsFooter-playerBox {
+      width: 170px;
+      display: flex;
+      align-items: center;
+
+      justify-content: space-around;
+      .playerSongsFooter-playerBox1 {
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+
+        background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+        background-position: 0 -143px;
+        border-radius: 50%;
+      }
+      .playerSongsFooter-playerBox2 {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+        border-radius: 50%;
+      }
+      .playerSongsFooter-playerBox3 {
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        background-position: -144px -143px;
+        background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+        border-radius: 50%;
+      }
+    }
+    .playerSongsFooter-playerMain {
+      width: 400px;
+      height: 80px;
+      align-items: center;
+      display: flex;
+      img {
+        width: 60px;
+        height: 60px;
+      }
+      .playerSongsFooter-playerMain-box {
+        display: flex;
+        flex-direction: column;
+        .playerSongsFooter-playerMain-box1 {
+          display: flex;
+          padding-top: 18px;
+          height: 24px;
+          width: 370px;
+          justify-content: space-around;
+        }
+        .playerSongsFooter-playerMain-box2 {
+          height: 24px;
+          width: 370px;
+          // background-color: #fff;
+          margin-left: 20px;
+          position: relative;
+          .playerSongsFooter-playerMain-box2-span1 {
+            display: block;
+            width: 300px;
+            height: 5px;
+            margin: 10px 0;
+            border-radius: 10px;
+            background-color: rgba(171, 223, 220);
+          }
+          .playerSongsFooter-playerMain-box2-span2 {
+            position: absolute;
+            top: 9px;
+            display: block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: rgb(102, 159, 212);
+          }
+        }
+      }
+    }
+    .playerSongsFooter-playerMain-right {
+      width: 300px;
+      display: flex;
+      align-items: center;
+      .playerSongsFooter-playerMain-right-box {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+        span {
+          margin-left: 20px;
+        }
+        .playerSongsFooter-playerMain-right-box1 {
+          width: 16px;
+          height: 16px;
+          background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+          background-repeat: no-repeat;
+          background-position: -64px -195px;
+          cursor: pointer;
+        }
+        .playerSongsFooter-playerMain-right-box2 {
+          width: 16px;
+          height: 16px;
+          cursor: pointer;
+          background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+          background-repeat: no-repeat;
+          background-position: -64px -179px;
+        }
+        .playerSongsFooter-playerMain-right-box3 {
+          width: 15px;
+          height: 15px;
+
+          background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+          background-repeat: no-repeat;
+          background-position: -240px -32px;
+          cursor: pointer;
+        }
+        .playerSongsFooter-playerMain-right-box4 {
+          width: 15px;
+          height: 15px;
+          background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+          background-repeat: no-repeat;
+          background-position: -240px 0;
+          cursor: pointer;
+        }
+        .playerSongsFooter-playerMain-right-box5 {
+          width: 15px;
+          height: 15px;
+          background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+          background-repeat: no-repeat;
+          background-position: 0 -120px;
+          cursor: pointer;
+          position: absolute;
+          right: 66px;
+          top: -3px;
+          width: 60px;
+          height: 23px;
+          background-position: 0 -120px;
+        }
+      }
+    }
+  }
 }
 </style>
