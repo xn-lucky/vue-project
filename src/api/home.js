@@ -1,7 +1,7 @@
 import instance from '@utils/request'
 
 
-export const getHomeData = () => {
+export const getHomeBannersData = () => {
     return instance({
         method: 'GET',
         url: '/getbanners'

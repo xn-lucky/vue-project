@@ -1,6 +1,20 @@
 <template>
   <div class="mainPage">
-    <Header />
+    <!-- 轮播图 -->
+    <div class="banners">
+      <div class="swiper-container" ref="homeSwi">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="banner in banners" :key="banner.id">
+            <!-- 新加的 -->
+            <a :style="'background-image:url(' + banner.imgUrl + ')'"></a>
+          </div>
+        </div>
+        <!-- 小点点 -->
+        <ul class="pagin swiper-pagination" v-if="banners">
+          <li v-for="(item, index) in banners.length" :key="index"></li>
+        </ul>
+      </div>
+    </div>
     <div class="content">
       <div class="subContent">
         <div class="selectSongList">
@@ -219,16 +233,85 @@
 </template>
 
 <script>
-// import Header from "@comps/Header";
+import { getHomeBannersData } from "@api/home";
+import Swiper, { Pagination, Autoplay, EffectFade } from "swiper";
+Swiper.use([Pagination, Autoplay, EffectFade]);
 export default {
   name: "Home",
-  // components: {
-  //   Header,
-  // },
+  data() {
+    return {
+      banners: [],
+    };
+  },
+  watch: {
+    banners() {
+      this.$nextTick(() => {
+        new Swiper(this.$refs.homeSwi, {
+          loop: true,
+          // If we need pagination
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          effect: "fade",
+          // 自动轮播
+          autoplay: {
+            delay: 2000, // 间隔时间
+            disableOnInteraction: false, // 当用户点击下一页之后，轮播继续
+          },
+        });
+      });
+    },
+  },
+  async mounted() {
+    //获取轮播图数据
+    let bannerData = await getHomeBannersData();
+    this.banners = bannerData.banners;
+  },
 };
 </script>
 
 <style lang="less" scoped>
+.banners {
+  .swiper-container {
+    height: 445px;
+    a {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      padding: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-origin: top;
+      background-size: contain;
+      transform: scale(1.5);
+    }
+    .swiper-pagination-bullet {
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+    }
+  }
+  .pagin {
+    width: 320px;
+    height: 30px;
+    position: absolute;
+    display: flex;
+    bottom: 4px;
+    left: 40%;
+    z-index: 6;
+    align-items: center;
+    justify-content: space-evenly;
+    /deep/.swiper-pagination-bullet,
+    li {
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: 0 10px;
+    }
+  }
+}
 .content {
   width: 1000px;
   // height: 500px;
