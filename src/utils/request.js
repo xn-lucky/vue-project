@@ -10,25 +10,31 @@ const instance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use(
   (config) => {
+    // debugger
+    // 开始设置进度条
+    NProgress.start();
     if (config.url.indexOf('artist') !== -1) {
       config.baseURL = ''
     }
-    // 开始设置进度条
-    NProgress.start();
+
     return config;
   }
+
 );
 // 响应拦截器
 instance.interceptors.response.use(
   (res) => {
+    // debugger
     // 不管是不是成功还是失败，都结束进度条
     NProgress.done();
-    // if (res.data.code === 200) {
-    //     return res.data.data;
-    // }
-    return res.data
-
-    // return Promise.reject(res.data.message);
+    let { data, config } = res
+    if (config.url.indexOf('artist') !== -1) {
+      return data
+    }
+    if (data.code === 200) {
+      return data.data;
+    }
+    return Promise.reject(data.message);
   },
   (error) => {
     NProgress.done();

@@ -1,4 +1,6 @@
 import Vue from 'vue'
-import {Pagination} from 'element-ui'
+import { Button, Pagination, Dialog } from 'element-ui'
 
+Vue.use(Button)
 Vue.use(Pagination)
+Vue.use(Dialog)
