@@ -36,7 +36,10 @@ const router = new VueRouter({
     },
     {
       path: '/playersong',
-      component: playerSong
+      component: playerSong,
+      meta: {
+				isFooterHide: true,
+			},
     },
     {
       path: '/songshowlist',

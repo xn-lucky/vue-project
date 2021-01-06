@@ -1,6 +1,7 @@
 import Vue from 'vue'
-import { Button, Pagination, Dialog } from 'element-ui'
+import { Button, Pagination, Message, Dialog } from 'element-ui'
 
+Vue.prototype.$message = Message;
 Vue.use(Button)
 Vue.use(Pagination)
-Vue.use(Dialog)
+Vue.use(Dialog);
