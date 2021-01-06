@@ -13,7 +13,7 @@
       <div class="pic">
         <img
           alt="乡村之旅：安静惬意·与自然同在"
-          src="https://www.kugou.com/yy/static/images/blank.gif"
+          :src="result.image"
           _src="http://c1.kgimg.com/custom/150/20201207/20201207134716994336.jpg"
           _def="https://www.kugou.com/yy/static/images/default2.jpg"
           height="148"
@@ -29,17 +29,13 @@
         ><span><i class="t2"></i>分享</span></a
       >
       <p class="detail">
-        <span>名称：</span>乡村之旅：安静惬意·与自然同在<br />
-        <span>创建人：</span>蔓若<br />
+        <span>名称：</span>{{ result.title }}<br />
+        <span>创建人：</span>{{ result.producer }}<br />
         <span>心情：</span><br />
-        <span>更新时间：</span>2020-12-07<br />
+        <span>更新时间：</span>{{ result.time }}<br />
       </p>
       <div class="intro">
-        <p>
-          <span>简介：</span
-          >清晨的泥土芳香扑鼻而来，深呼大自然的气息，安静的欣赏花草树木换装后新装，尽情享受这美妙的春光。
-          #年终限定奖#
-        </p>
+        <p><span>简介：</span>{{ result.paper }}</p>
       </div>
       <p class="more" onclick="show(this,event)">更多 &gt;&gt;</p>
       <p class="more_intro">
@@ -64,7 +60,7 @@
           <input type="checkbox" id="selAll" checked="checked" />全选
         </h4>
         <ul>
-          <li>
+          <li v-for="item in result.content" :key="item.id">
             <a
               title="Josh Turner - For the Love of God"
               hidefocus="true"
@@ -77,9 +73,9 @@
                 id="chk_33CF606474990BF9EE93CAA41157C912"
               /><span class="share iconfont icon-fenxiang" title="分享"></span
               ><span class="listen iconfont icon-erji" title="播放"></span
-              ><span class="num1">01</span
+              ><span class="num1">{{ item.id }}</span
               ><span class="text"
-                ><i>Josh Turner - For the Love of God</i></span
+                ><i>{{ item.singer }} - {{ item.songName }}</i></span
               ></a
             >
           </li>
@@ -91,8 +87,19 @@
 </template>
 
 <script>
+import { getSongShowList } from "@api/songShowList";
 export default {
   name: "SongShowList",
+  data() {
+    return {
+      result: {},
+    };
+  },
+  async mounted() {
+    const id = this.$route.params.id;
+    let result = await getSongShowList(id);
+    this.result = result;
+  },
 };
 </script>
 
