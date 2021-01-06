@@ -40,7 +40,7 @@
       <div class="nav">
         <ul class="homeNav">
           <li><a href="#">首页</a></li>
-          <li><a href="#">榜单</a></li>
+          <li><a @click="tohotSongs">榜单</a></li>
           <li><a href="#">下载客户端</a></li>
           <li><a href="#">更多</a></li>
         </ul>
@@ -78,6 +78,11 @@
 <script>
 export default {
   name: "Header",
+  methods: {
+    tohotSongs() {
+      this.$router.push("/hotsongs");
+    },
+  },
 };
 </script>
 

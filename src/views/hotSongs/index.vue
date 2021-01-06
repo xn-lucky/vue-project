@@ -72,7 +72,7 @@
 
 <script>
 import request from "../../utils/request";
-import HotList from "../../component/hotList";
+import HotList from "../../components/hotList";
 // import dayjs from "dayjs";
 export default {
   name: "hotSongs",
