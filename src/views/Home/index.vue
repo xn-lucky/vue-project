@@ -26,12 +26,16 @@
             <a href="#">更多</a>
           </div>
           <div class="itemContent">
-            <div class="cptBig">
+            <div
+              class="cptBig"
+              v-for="(item, index) in hotSongsDataOne"
+              :key="index"
+            >
               <p class="cptT">
                 <i class="iconfont icon-erji"></i>
                 <span class="num">36.2万</span>
               </p>
-              <img src="@assets/images/ia_100000003.jpg" alt="" />
+              <img :src="item.imgUrl" alt="" />
               <div class="cover">
                 <a target="_blank" href="#"> </a>
                 <div
@@ -41,17 +45,21 @@
                 ></div>
               </div>
               <div class="cptB">
-                <p class="songListName">乡村之旅：安静惬意·与自然同在</p>
-                <p class="songListSinger">蔓若</p>
+                <p class="songListName">{{ item.songsName }}</p>
+                <p class="songListSinger">{{ item.singer }}</p>
               </div>
             </div>
             <div class="smallDiv">
-              <div class="cptMid">
+              <div
+                class="cptMid"
+                v-for="(item, index) in hotSongsDataTwo"
+                :key="index"
+              >
                 <p class="cptT">
                   <span class="iconfont icon-erji"></span>
                   <span class="num">2.1万</span>
                 </p>
-                <img src="@assets/images/ia_100000004.jpg" />
+                <img :src="item.imgUrl" />
                 <div class="cover">
                   <a target="_blank" href="#"> </a>
                   <div
@@ -61,65 +69,8 @@
                   ></div>
                 </div>
                 <div class="cptB">
-                  <p class="songListName">通勤必备！独享耳机里欢快的小轻松</p>
-                  <p class="songListSinger">高珊珊</p>
-                </div>
-              </div>
-              <div class="cptMid">
-                <p class="cptT">
-                  <span class="iconfont icon-erji"></span>
-                  <span class="num">2.1万</span>
-                </p>
-                <img src="@assets/images/ia_100000004.jpg" />
-                <div class="cover">
-                  <a target="_blank" href="#"> </a>
-                  <div
-                    class="playBtn iconfont icon-jiantou"
-                    data-index="0"
-                    data-id="3339907"
-                  ></div>
-                </div>
-                <div class="cptB">
-                  <p class="songListName">通勤必备！独享耳机里欢快的小轻松</p>
-                  <p class="songListSinger">高珊珊</p>
-                </div>
-              </div>
-              <div class="cptMid">
-                <p class="cptT">
-                  <span class="iconfont icon-erji"></span>
-                  <span class="num">2.1万</span>
-                </p>
-                <img src="@assets/images/ia_100000004.jpg" />
-                <div class="cover">
-                  <a target="_blank" href="#"> </a>
-                  <div
-                    class="playBtn iconfont icon-jiantou"
-                    data-index="0"
-                    data-id="3339907"
-                  ></div>
-                </div>
-                <div class="cptB">
-                  <p class="songListName">通勤必备！独享耳机里欢快的小轻松</p>
-                  <p class="songListSinger">高珊珊</p>
-                </div>
-              </div>
-              <div class="cptMid">
-                <p class="cptT">
-                  <span class="iconfont icon-erji"></span>
-                  <span class="num">2.1万</span>
-                </p>
-                <img src="@assets/images/ia_100000004.jpg" />
-                <div class="cover">
-                  <a target="_blank" href="#"> </a>
-                  <div
-                    class="playBtn iconfont icon-jiantou"
-                    data-index="0"
-                    data-id="3339907"
-                  ></div>
-                </div>
-                <div class="cptB">
-                  <p class="songListName">通勤必备！独享耳机里欢快的小轻松</p>
-                  <p class="songListSinger">高珊珊</p>
+                  <p class="songListName">{{ item.songsName }}</p>
+                  <p class="songListSinger">{{ item.singer }}</p>
                 </div>
               </div>
             </div>
@@ -134,45 +85,22 @@
             <a href="#">更多</a>
           </div>
           <div class="itemContent">
-            <div class="listItem">
+            <div
+              class="listItem"
+              v-for="(item, index) in hotSongList"
+              :key="index"
+            >
               <a href="#">
                 <span></span>
-                <img src="@assets/images/ia_100000008.jpg" alt="" />
+                <img :src="item.imgUrl" alt="" />
                 <div>
                   <dl class="list">
-                    <dt>酷狗飙升榜</dt>
-                    <dd>1 . 黄凯芹 - 焚情</dd>
-                    <dd>2 . 阮言Ruany - 难生恨</dd>
-                  </dl>
-                </div>
-                <div class="cover">
-                  <div class="iconfont"></div>
-                </div>
-                <span class="iconfont"></span>
-              </a>
-            </div>
-            <div class="listItem">
-              <a href="#">
-                <span></span>
-                <img src="@assets/images/ia_100000008.jpg" alt="" />
-                <div>
-                  <dl class="list">
-                    <dt>酷狗飙升榜</dt>
-                    <dd>1 . 黄凯芹 - 焚情</dd>
-                    <dd>2 . 阮言Ruany - 难生恨</dd>
-                  </dl>
-                </div>
-              </a>
-            </div>
-            <div class="listItem">
-              <a href="#">
-                <span></span>
-                <img src="@assets/images/ia_100000008.jpg" alt="" />
-                <div>
-                  <dl class="list">
-                    <dt>酷狗飙升榜</dt>
-                    <dd>1 . 黄凯芹 - 焚情</dd>
-                    <dd>2 . 阮言Ruany - 难生恨</dd>
+                    <dt>{{ item.Name }}</dt>
+                    <dd v-for="(song, index) in item.songs" :key="index">
+                      <!-- 1 . 黄凯芹 - 焚情 -->
+                      {{ song.id }}. {{ song.singer }}-{{ song.songName }}
+                    </dd>
+                    <!-- <dd>2 . 阮言Ruany - 难生恨</dd> -->
                   </dl>
                 </div>
               </a>
@@ -207,7 +135,7 @@
           <div class="itemContent">
             <div class="tabC">
               <ul>
-                <li>
+                <li v-for="(item, index) in 16" :key="index">
                   <a href="#">
                     <span class="songName">杨小壮 - 烟雨成思</span>
                     <span class="songTips"></span>
@@ -232,39 +160,27 @@
             <a href="#">更多</a>
           </div>
           <div class="itemContent">
-            <div class="cptBigL">
+            <div class="cptBigL" v-for="item in mvLarge" :key="item.id">
               <a href="#">
-                <img src="@assets/images/ia_100000012.jpg" alt="" />
+                <img :src="item.picUrl" alt="" />
                 <div class="cover">
                   <div class="playBtn iconfont icon-jiantou"></div>
                 </div>
                 <div class="cptB">
-                  <p class="songListName">无别</p>
-                  <p class="songListSinger">张信哲</p>
+                  <p class="songListName">{{ item.name }}</p>
+                  <p class="songListSinger">{{ item.artists[0].name }}</p>
                 </div>
               </a>
             </div>
-            <div class="cptMidL">
+            <div class="cptMidL" v-for="item in mvSmall" :key="item.id">
               <a href="#">
-                <img src="@assets/images/ia_100000012.jpg" alt="" />
+                <img :src="item.picUrl" alt="" />
                 <div class="cover">
                   <div class="playBtn iconfont icon-jiantou"></div>
                 </div>
                 <div class="cptB">
-                  <p class="songListName">无别</p>
-                  <p class="songListSinger">张信哲</p>
-                </div>
-              </a>
-            </div>
-            <div class="cptMidL">
-              <a href="#">
-                <img src="@assets/images/ia_100000012.jpg" alt="" />
-                <div class="cover">
-                  <div class="playBtn iconfont icon-jiantou"></div>
-                </div>
-                <div class="cptB">
-                  <p class="songListName">无别</p>
-                  <p class="songListSinger">张信哲</p>
+                  <p class="songListName">{{ item.name }}</p>
+                  <p class="songListSinger">{{ item.artists[0].name }}</p>
                 </div>
               </a>
             </div>
@@ -287,103 +203,15 @@
           </div>
           <div class="itemContent">
             <ul>
-              <li>
+              <li v-for="(item, index) in djProgram" :key="index">
                 <a href="#" class="">
                   <div class="cover">
                     <div class="playBtn iconfont icon-kongxinjiantou33"></div>
                   </div>
                   <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
+                    <img :src="item.picUrl" alt="" />
                   </div>
-                  <div class="radiokind">KTV必点歌曲</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="">
-                  <div class="cover">
-                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
-                  </div>
-                  <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
-                  </div>
-                  <div class="radiokind">KTV必点歌曲</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="">
-                  <div class="cover">
-                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
-                  </div>
-                  <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
-                  </div>
-                  <div class="radiokind">KTV必点歌曲</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="">
-                  <div class="cover">
-                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
-                  </div>
-                  <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
-                  </div>
-                  <div class="radiokind">KTV必点歌曲</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="">
-                  <div class="cover">
-                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
-                  </div>
-                  <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
-                  </div>
-                  <div class="radiokind">KTV必点歌曲</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="">
-                  <div class="cover">
-                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
-                  </div>
-                  <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
-                  </div>
-                  <div class="radiokind">KTV必点歌曲</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="">
-                  <div class="cover">
-                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
-                  </div>
-                  <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
-                  </div>
-                  <div class="radiokind">KTV必点歌曲</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="">
-                  <div class="cover">
-                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
-                  </div>
-                  <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
-                  </div>
-                  <div class="radiokind">KTV必点歌曲</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="">
-                  <div class="cover">
-                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
-                  </div>
-                  <div class="radioLogo">
-                    <img src="@assets/images/ia_100000023.jpg" alt="" />
-                  </div>
-                  <div class="radiokind">KTV必点歌曲</div>
+                  <div class="radiokind">{{ item.rcmdtext }}</div>
                 </a>
               </li>
             </ul>
@@ -396,55 +224,32 @@
               <span>歌单</span>
             </h3>
             <div class="tabT">
-              <span class="active listItem" data="0">华语</span>
-              <span data="1" class="listItem">欧美</span>
-              <span data="2" class="listItem">日韩</span>
+              <span class="active" data="0">华语</span>
+              <span data="1" class="">欧美</span>
+              <span data="2" class="">日韩</span>
               <span data="3"><a class="more" href="#">更多</a></span>
             </div>
           </div>
           <div class="itemContent">
-            <div class="cptMid">
+            <div
+              class="cptMid"
+              v-for="(item, index) in hotSingerMid"
+              :key="index"
+            >
               <a href="#">
-                <img src="@assets/images/ia_100000026.jpg" alt="" />
+                <img :src="item.picUrl" alt="" />
                 <div class="cover"></div>
                 <div class="cptB">
-                  <p class="songListSinger">周杰伦</p>
+                  <p class="songListSinger">{{ item.name }}</p>
                 </div>
               </a>
             </div>
-            <div class="cptMid">
+            <div class="cptSmall" v-for="item in hotSingerSmall" :key="item.id">
               <a href="#">
-                <img src="@assets/images/ia_100000026.jpg" alt="" />
+                <img :src="item.picUrl" alt="" />
                 <div class="cover"></div>
                 <div class="cptB">
-                  <p class="songListSinger">周杰伦</p>
-                </div>
-              </a>
-            </div>
-            <div class="cptSmall">
-              <a href="#">
-                <img src="@assets/images/ia_100000026.jpg" alt="" />
-                <div class="cover"></div>
-                <div class="cptB">
-                  <p class="songListSinger">周杰伦</p>
-                </div>
-              </a>
-            </div>
-            <div class="cptSmall">
-              <a href="#">
-                <img src="@assets/images/ia_100000026.jpg" alt="" />
-                <div class="cover"></div>
-                <div class="cptB">
-                  <p class="songListSinger">周杰伦</p>
-                </div>
-              </a>
-            </div>
-            <div class="cptSmall">
-              <a href="#">
-                <img src="@assets/images/ia_100000026.jpg" alt="" />
-                <div class="cover"></div>
-                <div class="cptB">
-                  <p class="songListSinger">周杰伦</p>
+                  <p class="songListSinger">{{ item.name }}</p>
                 </div>
               </a>
             </div>
@@ -465,23 +270,7 @@
           <a href="#">更多</a>
         </div>
         <div class="itemContent">
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
-          <a href="#" target="_blank">爱美网</a>
+          <a v-for="(item, index) in 16" :key="index">爱美网</a>
         </div>
       </div>
     </div>
@@ -489,7 +278,16 @@
 </template>
 
 <script>
-import { getHomeBannersData } from "@api/home";
+import {
+  getHomeBannersData,
+  getSelectedHotSongs,
+  gethotSongsList,
+  djProgram,
+  getHotSinger,
+  getCommendMv,
+} from "@api/home";
+//import { mapActions } from "vuex";
+
 import Swiper, { Pagination, Autoplay, EffectFade } from "swiper";
 Swiper.use([Pagination, Autoplay, EffectFade]);
 export default {
@@ -497,7 +295,19 @@ export default {
   data() {
     return {
       banners: [],
+      hotSongsDataOne: [],
+      hotSongsDataTwo: [],
+      hotSongList: [],
+      djProgram: [],
+      hotSinger: [],
+      hotSingerMid: [],
+      hotSingerSmall: [],
+      mvLarge: [],
+      mvSmall: [],
     };
+  },
+  methods: {
+    //...mapActions(["hotSongs"]),
   },
   watch: {
     banners() {
@@ -523,6 +333,24 @@ export default {
     //获取轮播图数据
     let bannerData = await getHomeBannersData();
     this.banners = bannerData.banners;
+    //获取精选歌单数据
+    let hotSongsData = await getSelectedHotSongs();
+    this.hotSongsDataOne = hotSongsData.selectedHotSongs.slice(0, 1);
+    this.hotSongsDataTwo = hotSongsData.selectedHotSongs.slice(1, 5);
+    //获取热门榜单数据
+    let hotSongListData = await gethotSongsList();
+    this.hotSongList = hotSongListData.selectedHotSongs;
+    //获取电台数据
+    let djProgramData = await djProgram();
+    this.djProgram = djProgramData.djRadios.slice(0, 10);
+    //热门歌手数据
+    let hotSingerData = await getHotSinger();
+    this.hotSingerMid = hotSingerData.artists.slice(0, 2);
+    this.hotSingerSmall = hotSingerData.artists.slice(2, 5);
+    //推荐MV数据
+    let commendMv = await getCommendMv();
+    this.mvLarge = commendMv.result.slice(0, 1);
+    this.mvSmall = commendMv.result.slice(1, 3);
   },
 };
 </script>
@@ -570,10 +398,9 @@ export default {
 }
 .content {
   width: 1000px;
-  // height: 3000px;
   margin: 0 auto;
-  // border: 1px pink solid;
   box-sizing: border-box;
+  margin-top: 40px;
   .subContent {
     width: 100%;
     display: flex;
@@ -689,7 +516,6 @@ export default {
     }
   }
 }
-
 .selectSongList .itemContent .smallDiv {
   width: 330px;
   height: 330px;
@@ -882,13 +708,9 @@ export default {
             margin-right: 20px;
             cursor: pointer;
             font-size: 14px;
-            &:hover {
-              color: #009af3;
-            }
           }
         }
       }
-
       .playAll {
         border: 1px solid #dbdbdb;
         border-radius: 2px;
@@ -1096,7 +918,6 @@ export default {
     }
   }
 }
-
 .subContentF {
   display: flex;
   justify-content: space-between;
@@ -1164,6 +985,7 @@ export default {
               img {
                 width: 100px;
                 height: 100px;
+                border-radius: 50%;
               }
             }
             .radioKind {
@@ -1208,9 +1030,6 @@ export default {
           margin-right: 20px;
           cursor: pointer;
           font-size: 14px;
-          &:hover {
-            color: #009af3;
-          }
         }
       }
     }
@@ -1366,4 +1185,3 @@ export default {
   }
 }
 </style>
-
