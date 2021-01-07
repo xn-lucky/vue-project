@@ -5,10 +5,7 @@
         <div class="playerSongsItem-box-left">
           <div class="playerSongsItem-box-left-img">
             <!-- src="https://www.kugou.com/yy/static/images/play/default.jpg" -->
-            <img
-              src="https://imgessl.kugou.com/stdmusic/20201231/20201231141702225046.jpg"
-              alt=""
-            />
+            <img :src="this.checkedSongs1[0].songimg" alt="" />
           </div>
           <div class="playerSongsItem-box-left-botton">
             <span>下载这首歌曲</span>
@@ -18,10 +15,12 @@
           </div>
         </div>
         <div class="layerSongsItem-box-right">
-          <div class="layerSongsItem-box-right-title"><p>烟雨成思</p></div>
+          <div class="layerSongsItem-box-right-title">
+            <p>{{ this.checkedSongs1[0].songsName }}</p>
+          </div>
           <div class="layerSongsItem-box-right-singer">
-            <p><span>专辑:</span> 烟雨成思</p>
-            <p><span>歌手:</span> 杨小壮</p>
+            <p><span>专辑:</span> {{ this.checkedSongs1[0].zhuanji }}</p>
+            <p><span>歌手:</span> {{ this.checkedSongs1[0].singer }}</p>
           </div>
           <div class="layerSongsItem-box-right-lyric">
             <section class="layerSongsItem-box-right-lyric-box">
@@ -52,13 +51,17 @@
         <div class="playerSongsFooter-playerBox3"></div>
       </section>
       <section class="playerSongsFooter-playerMain">
-        <img
-          src="https://imgessl.kugou.com/stdmusic/20201231/20201231141702225046.jpg"
-          alt=""
-        />
+        <img :src="this.checkedSongs1[0].songimg" alt="" />
         <div class="playerSongsFooter-playerMain-box">
           <p class="playerSongsFooter-playerMain-box1">
-            <span>烟雨成思</span><span>/03:10</span>
+            <span>{{ this.checkedSongs1[0].songsName }}</span
+            ><span class="playerSongsFooter-playerMain-box1-span2"
+              >0{{ Math.floor(this.checkedSongs1[0].songsTime / 60) }}:{{
+                Math.floor(this.checkedSongs1[0].songsTime % 60) >= 10
+                  ? Math.floor(this.checkedSongs1[0].songsTime % 60)
+                  : "0" + Math.floor(this.checkedSongs1[0].songsTime % 60)
+              }}</span
+            >
           </p>
           <p class="playerSongsFooter-playerMain-box2">
             <span class="playerSongsFooter-playerMain-box2-span1"></span
@@ -72,19 +75,59 @@
           <span class="playerSongsFooter-playerMain-right-box2"></span>
           <span class="playerSongsFooter-playerMain-right-box3"></span>
           <span class="playerSongsFooter-playerMain-right-box4"></span>
-          <span class="playerSongsFooter-playerMain-right-box5"></span>
+          <div
+            class="playerSongsFooter-playerMain-right-box5-box"
+            v-show="isShow"
+          >
+            <p class="playerSongsFooter-playerMain-right-box5-box-p1">
+              <span>播放队列/{{ this.checkedSongs1.length }}</span>
+              <span
+                class="playerSongsFooter-playerMain-right-box5-box-p1-span2"
+              ></span>
+              |<span
+                class="playerSongsFooter-playerMain-right-box5-box-p1-span3"
+              ></span>
+            </p>
+          </div>
+          <span class="playerSongsFooter-playerMain-right-box5" @click="touch">
+            <span class="playerSongsFooter-playerMain-right-box5-span">{{
+              this.checkedSongs1.length
+            }}</span>
+          </span>
         </div>
       </section>
     </div>
+    <audio
+      :src="this.checkedSongs1[0].songurl"
+      controls="controls"
+      autoplay
+    ></audio>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "playerSongs",
+  data() {
+    return {
+      isShow: false,
+    };
+  },
   mounted() {
     document.body.style.height = "100vh";
     document.body.style["overflow-y"] = "hidden";
+    console.log(this.checkedSongs1);
+  },
+  computed: {
+    ...mapState({
+      checkedSongs1: (state) => state.hotList.checkedSongs1,
+    }),
+  },
+  methods: {
+    touch() {
+      this.isShow = !this.isShow;
+    },
   },
 };
 </script>
@@ -210,12 +253,18 @@ export default {
         background-position: 0 -143px;
         border-radius: 50%;
       }
+      .playerSongsFooter-playerBox1:hover {
+        background-position: -36px -143px;
+      }
       .playerSongsFooter-playerBox2 {
         width: 60px;
         height: 60px;
         cursor: pointer;
         background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
         border-radius: 50%;
+      }
+      .playerSongsFooter-playerBox2:hover {
+        background-position: -60px 0;
       }
       .playerSongsFooter-playerBox3 {
         width: 36px;
@@ -224,6 +273,9 @@ export default {
         background-position: -144px -143px;
         background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
         border-radius: 50%;
+      }
+      .playerSongsFooter-playerBox3:hover {
+        background-position: -180px -143px;
       }
     }
     .playerSongsFooter-playerMain {
@@ -243,7 +295,13 @@ export default {
           padding-top: 18px;
           height: 24px;
           width: 370px;
+          color: #fff;
           justify-content: space-around;
+          margin: -6px -50px;
+          .playerSongsFooter-playerMain-box1-span2 {
+            position: relative;
+            left: 62px;
+          }
         }
         .playerSongsFooter-playerMain-box2 {
           height: 24px;
@@ -291,6 +349,9 @@ export default {
           background-position: -64px -195px;
           cursor: pointer;
         }
+        .playerSongsFooter-playerMain-right-box1:hover {
+          background-position: -80px -195px;
+        }
         .playerSongsFooter-playerMain-right-box2 {
           width: 16px;
           height: 16px;
@@ -298,6 +359,9 @@ export default {
           background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
           background-repeat: no-repeat;
           background-position: -64px -179px;
+        }
+        .playerSongsFooter-playerMain-right-box2:hover {
+          background-position: -80px -179px;
         }
         .playerSongsFooter-playerMain-right-box3 {
           width: 15px;
@@ -308,6 +372,9 @@ export default {
           background-position: -240px -32px;
           cursor: pointer;
         }
+        .playerSongsFooter-playerMain-right-box3:hover {
+          background-position: -256px -32px;
+        }
         .playerSongsFooter-playerMain-right-box4 {
           width: 15px;
           height: 15px;
@@ -315,6 +382,42 @@ export default {
           background-repeat: no-repeat;
           background-position: -240px 0;
           cursor: pointer;
+        }
+        .playerSongsFooter-playerMain-right-box4:hover {
+          background-position: -256px 0;
+        }
+        .playerSongsFooter-playerMain-right-box5-box {
+          position: absolute;
+          top: -332px;
+          left: -165px;
+          width: 400px;
+          height: 300px;
+          background-color: rgba(42, 46, 53, 0.9);
+
+          .playerSongsFooter-playerMain-right-box5-box-p1 {
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            .playerSongsFooter-playerMain-right-box5-box-p1-span2 {
+              background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+              background-repeat: no-repeat;
+              float: left;
+              display: block;
+              width: 16px;
+              height: 16px;
+              background-position: -240px -64px;
+            }
+            .playerSongsFooter-playerMain-right-box5-box-p1-span3 {
+              background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+              background-repeat: no-repeat;
+              float: left;
+              display: block;
+              width: 16px;
+              height: 16px;
+              background-position: -240px -96px;
+            }
+          }
         }
         .playerSongsFooter-playerMain-right-box5 {
           width: 15px;
@@ -329,6 +432,18 @@ export default {
           width: 60px;
           height: 23px;
           background-position: 0 -120px;
+          .playerSongsFooter-playerMain-right-box5-span {
+            position: absolute;
+            left: 10px;
+            top: 3px;
+            color: #fff;
+          }
+        }
+        .playerSongsFooter-playerMain-right-box5:hover {
+          background-position: -61px -120px;
+          .playerSongsFooter-playerMain-right-box5-span {
+            color: rgb(31, 163, 220);
+          }
         }
       }
     }

@@ -48,7 +48,7 @@
                 <span class="hotSongs-left-box-main-li-a-span3"
                   ><i
                     class="hotSongs-left-box-main-li-a-span3-i1"
-                    @click="PlayerSongs"
+                    @click="PlayerSongs(item)"
                   ></i>
                   <i
                     class="hotSongs-left-box-main-li-a-span3-i2"
@@ -146,9 +146,9 @@
 import request from "../../utils/request";
 import HotList from "../../components/hotList";
 // import dayjs from "dayjs";
-
 export default {
   name: "hotSongs",
+
   data() {
     return {
       checkedSongs: [],
@@ -169,7 +169,8 @@ export default {
     let hotsongs = this.changeSongs(472427);
     this.hotListcontentName = hotsongs.name;
     this.hotListcontent = hotsongs.content;
-    // this.$emit("changeSongs");
+    // this.$emit("changeSongs")
+    this.$store.commit("checkedSongs1");
   },
   methods: {
     async changeSongs(HotListId) {
@@ -190,10 +191,10 @@ export default {
     checkedAll() {
       // this.selectSongs = this.hotListcontent.filter(item => item.)
       // console.log(e.target.checked);
-      /* for (var i = 0; i <= this.hotListcontent.length; i++) {
-          console.log(this.hotListcontent);
-          this.hotListcontent[i].check = e.target.checked;
-        } */
+      //  for (var i = 0; i <= this.hotListcontent.length; i++) {
+      //     console.log(this.hotListcontent);
+      //     this.hotListcontent[i].check = e.target.checked;
+      //   }
       // this.hotListcontent.forEach((item) => {
       //   item.check = e.target.checked;
       //   if (item.check === true) {
@@ -206,14 +207,27 @@ export default {
       // console.log(this.songList);
     },
     // 点击播放按钮添加歌曲到播放页面
-    PlayerSongs() {
+    PlayerSongs(item) {
       // console.log("111");
-      this.$message.success("已成功添加歌曲到播放列表");
+      let bb;
+      if (this.checkedSongs) {
+        bb = this.checkedSongs.find((aa) => {
+          return aa.songsId === item.songsId;
+        });
+      }
+      if (bb) {
+        this.$message.warning("你已经选择过此歌曲了");
+        return;
+      } else {
+        this.$message.success("已成功添加歌曲到播放列表");
+        item.check = true;
+        this.$store.commit("checkedSongs1", this.checkedSongs.push(item));
+      }
     },
     // 点击单选按钮键
-    checkSingle(check, index, e) {
+    /* checkSingle(check, index, e) {
       this.hotListcontent[index].check = e.target.checked;
-    },
+    }, */
     // 点击下载按钮
     downLoad() {
       // if (window.confirm("你确认下载此首歌曲吗？")) {
@@ -227,7 +241,12 @@ export default {
     },
     // 点击进入播放页面功能
     toPlayer() {
-      this.$router.push("/playerSong");
+      if (this.checkedSongs.length) {
+        this.$router.push("/playerSong");
+        this.$store.commit("checkedSongs1", this.checkedSongs);
+      } else {
+        this.$message.warning("请先添加歌曲");
+      }
     },
   },
   watch: {},
