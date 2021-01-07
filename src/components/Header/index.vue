@@ -59,7 +59,7 @@
         >
           <!-- <li><a href="#">电台</a></li> -->
           <li><router-link to="/mvweb">MV</router-link></li>
-          <li><router-link to="">歌单</router-link></li>
+          <li><router-link to="/songlist">歌单</router-link></li>
           <li><router-link to="">歌手</router-link></li>
         </ul>
         <ul class="subNav">

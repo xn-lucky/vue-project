@@ -37,8 +37,8 @@
       </dl>
     </div>
     <div class="right">
-      <ul class="ulAlbums" v-for="item in songList" :key="item.id">
-        <li>
+      <ul class="ulAlbums" ref="wrapper">
+        <li v-for="item in songList" :key="item.id">
           <div class="pic">
             <router-link :to="`/songshowlist/${item.id}`">
               <img :src="item.image" alt="" />
@@ -88,6 +88,10 @@ export default {
       result: {},
     };
   },
+  created() {
+    // this.loadData();
+  },
+
   methods: {
     changeSong(index) {
       if (index === 1) {
@@ -107,13 +111,46 @@ export default {
         this.currentIndex = 4;
       }
     },
+
+    /* loadData() {
+      getSongList().then((res) => {
+        this.result = res;
+        // console.log(res);
+        // console.log(!this.songList);
+
+        // console.log(res);
+        // this.songList = this.result.songList1;
+        // console.log(this.songList );
+        // console.log(res.songList2, "2222");
+        this.songList = this.songList.concat(res.songList2);
+        // console.log(this.songList);
+        // console.log(this.songList);
+      });
+    }, */
   },
   async mounted() {
     let result = await getSongList();
     this.result = result;
-    console.log(result);
+    // console.log(result);
     this.songList = result.songList1;
+
+    window.onscroll = () => {
+      if (
+        //html滚动高度大于html本身高度大于视口高度时候触发这个事件，用concat连接即可
+        document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - window.innerHeight
+      ) {
+        // this.loadData();
+        this.songList = this.songList.concat(this.result.songList4);
+      }
+    };
   },
+  // watch: {
+  //   songList(value) {
+  //     if (!value.length) return;
+  //     this.$nextTick(() => {});
+  //   },
+  // },
 };
 </script>
 
@@ -163,6 +200,7 @@ export default {
   }
   .right {
     width: 790px;
+
     color: #8e8e8e;
     margin-top: 20px;
     position: relative;
