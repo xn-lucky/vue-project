@@ -63,11 +63,12 @@
         </h4>
         <ul>
           <li v-for="item in result.content" :key="item.id">
-            <a
+            <router-link
               title="Josh Turner - For the Love of God"
               hidefocus="true"
               href="javascript:;"
               data="33CF606474990BF9EE93CAA41157C912|247000"
+              to="/playersong"
               ><input
                 type="checkbox"
                 class="cb checkItem"
@@ -78,7 +79,7 @@
               ><span class="num1">{{ item.id }}</span
               ><span class="text"
                 ><i>{{ item.singer }} - {{ item.songName }}</i></span
-              ></a
+              ></router-link
             >
           </li>
         </ul>
@@ -99,6 +100,7 @@ export default {
   },
   async mounted() {
     const id = this.$route.params.id;
+    // console.log(id);
     if (!id) return;
     let result = await getSongShowList(id);
     this.result = result;
