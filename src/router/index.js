@@ -38,11 +38,11 @@ const router = new VueRouter({
       path: '/playersong',
       component: playerSong,
       meta: {
-				isFooterHide: true,
-			},
+        isFooterHide: true,
+      },
     },
     {
-      path: '/songshowlist',
+      path: '/songshowlist/:id?',
       component: SongShowList,
     },
     {
