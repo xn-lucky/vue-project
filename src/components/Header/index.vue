@@ -204,14 +204,17 @@ export default {
 .nav .homeNav li a {
   color: #ddd;
 }
-.nav .homeNav li.more:hover,
-.nav .homeNav li.more.hover {
+.nav .homeNav li.more:hover {
   background-color: #0c8ed9;
   color: #fff;
 }
-
+.nav .homeNav li:hover {
+  color: #fff !important;
+  background-color: #0c8ed9;
+}
 .nav .homeNav li:hover a {
   color: #fff !important;
+  background-color: #0c8ed9;
 }
 .nav .homeNav li a:hover {
   text-decoration: none;
