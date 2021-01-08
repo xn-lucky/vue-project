@@ -12,19 +12,19 @@ module.exports = {
         }
       },
       "/artist": {
-        target: "http://localhost:3000",
+        target: "http://42.192.85.86:3000",
       },
       "/mv": {
-        target: "http://localhost:3000",
+        target: "http://42.192.85.86:3000",
       },
       "/captcha": {
-        target: "http://localhost:3000",
+        target: "http://42.192.85.86:3000",
       },
       "/song": {
-        target: "http://localhost:3000",
+        target: "http://42.192.85.86:3000",
       },
       "/search": {
-        target: "http://localhost:3000",
+        target: "http://42.192.85.86:3000",
       },
       "/dj": {
         target: "http://localhost:3000",

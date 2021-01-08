@@ -15,11 +15,11 @@
           </h4>
         </div>
         <ul class="songlist">
-          <li>
+          <li v-for="sou in songList.result.albums" :key="sou.id">
             <div class="one">
               <input type="checkbox" />
-              <span><em>0</em></span>
-              <span class="textList">5555</span>
+              <span><em>{{sou.artist.name}}</em></span>
+              <span class="textList">《{{sou.name}}》</span>
             </div>
             <div class="two">
               <span title="播放" class="iconfont icon-bofang1"></span>
