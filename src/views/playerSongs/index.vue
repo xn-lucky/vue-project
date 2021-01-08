@@ -1,5 +1,5 @@
 <template>
-  <div class="playerSongs">
+  <div class="playerSongs" v-if="checkedSongs1">
     <div class="playerSongsItem">
       <div class="playerSongsItem-box">
         <div class="playerSongsItem-box-left">
