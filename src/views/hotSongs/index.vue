@@ -540,6 +540,8 @@ export default {
 .el-dialog-box-two {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
+  height: 300px;
   .el-dialog-box-two-span1 {
     width: 62px;
     height: 62px;
