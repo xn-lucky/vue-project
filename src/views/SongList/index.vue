@@ -58,20 +58,28 @@
             </div>
             <div class="text">{{ item.paper }}</div>
             <div class="btn">
-              <a href="javascript:void(0)"
+              <router-link to="/playersong"
                 ><span
-                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
-                </span></a
+                  ><i class="iconfont icon-kongxinjiantou33"></i
+                  ><i>播放全部 </i>
+                </span></router-link
               >
               <a href="javascript:void(0)"
                 ><span
-                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
+                  ><i class="iconfont icon-fenxiang1"></i
+                  ><i @click="share">分享</i>
                 </span></a
               >
             </div>
           </div>
         </li>
       </ul>
+    </div>
+    <div class="share">
+      <div class="header"><i>分享歌曲</i><i>×</i></div>
+      <div class="content">
+        <dl></dl>
+      </div>
     </div>
   </div>
 </template>
@@ -270,6 +278,7 @@ export default {
           }
           .btn {
             margin-top: 8px;
+
             a {
               text-decoration: none;
             }
@@ -279,6 +288,9 @@ export default {
               margin-right: 30px;
               text-align: center;
               color: white;
+              &:hover {
+                background: #0b66a3;
+              }
               i {
                 width: 16px;
                 height: 16px;
