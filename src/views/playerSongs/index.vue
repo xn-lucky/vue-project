@@ -1,11 +1,11 @@
 <template>
-  <div class="playerSongs">
+  <div class="playerSongs" v-if="checkedSongs1">
     <div class="playerSongsItem">
       <div class="playerSongsItem-box">
         <div class="playerSongsItem-box-left">
           <div class="playerSongsItem-box-left-img">
             <!-- src="https://www.kugou.com/yy/static/images/play/default.jpg" -->
-            <img :src="this.checkedSongs1[0].songimg" alt="" />
+            <img :src="checkedSongs1[0].songimg" alt="" />
           </div>
           <div class="playerSongsItem-box-left-botton">
             <span>下载这首歌曲</span>
@@ -16,11 +16,11 @@
         </div>
         <div class="layerSongsItem-box-right">
           <div class="layerSongsItem-box-right-title">
-            <p>{{ this.checkedSongs1[0].songsName }}</p>
+            <p>{{ checkedSongs1[0].songsName }}</p>
           </div>
           <div class="layerSongsItem-box-right-singer">
-            <p><span>专辑:</span> {{ this.checkedSongs1[0].zhuanji }}</p>
-            <p><span>歌手:</span> {{ this.checkedSongs1[0].singer }}</p>
+            <p><span>专辑:</span> {{ checkedSongs1[0].zhuanji }}</p>
+            <p><span>歌手:</span> {{ checkedSongs1[0].singer }}</p>
           </div>
           <div class="layerSongsItem-box-right-lyric">
             <GcShow :currentTime="currentTime" :duration="duration" />
@@ -52,17 +52,17 @@
         <div class="playerSongsFooter-playerBox3"></div>
       </section>
       <section class="playerSongsFooter-playerMain">
-        <img :src="this.checkedSongs1[0].songimg" alt="" />
+        <img :src="checkedSongs1[0].songimg" alt="" />
         <div class="playerSongsFooter-playerMain-box">
           <p class="playerSongsFooter-playerMain-box1">
             <span>烟雨成思</span
             ><span>{{ filterCurrentTime }}/{{ filterDuration }}</span>
-            <span>{{ this.checkedSongs1[0].songsName }}</span
+            <span>{{ checkedSongs1[0].songsName }}</span
             ><span class="playerSongsFooter-playerMain-box1-span2"
-              >0{{ Math.floor(this.checkedSongs1[0].songsTime / 60) }}:{{
-                Math.floor(this.checkedSongs1[0].songsTime % 60) >= 10
-                  ? Math.floor(this.checkedSongs1[0].songsTime % 60)
-                  : "0" + Math.floor(this.checkedSongs1[0].songsTime % 60)
+              >0{{ Math.floor(checkedSongs1[0].songsTime / 60) }}:{{
+                Math.floor(checkedSongs1[0].songsTime % 60) >= 10
+                  ? Math.floor(checkedSongs1[0].songsTime % 60)
+                  : "0" + Math.floor(checkedSongs1[0].songsTime % 60)
               }}</span
             >
           </p>
@@ -88,7 +88,7 @@
             v-show="isShow"
           >
             <p class="playerSongsFooter-playerMain-right-box5-box-p1">
-              <span>播放队列/{{ this.checkedSongs1.length }}</span>
+              <span>播放队列/{{ checkedSongs1.length }}</span>
               <span
                 class="playerSongsFooter-playerMain-right-box5-box-p1-span2"
               ></span>
@@ -99,7 +99,7 @@
           </div>
           <span class="playerSongsFooter-playerMain-right-box5" @click="touch">
             <span class="playerSongsFooter-playerMain-right-box5-span">{{
-              this.checkedSongs1.length
+              checkedSongs1.length
             }}</span>
           </span>
         </div>
@@ -109,14 +109,11 @@
         style="display: none"
         ref="player"
         controls
-        src="https://webfs.cloud.kugou.com/202101070922/c4bbc4d044dd3a97ff1bd7f7a516fc51/G239/M00/0D/04/j4cBAF-87BmAQpz0ACkRT30fEHU644.mp3"
+        autoplay
+        :src="checkedSongs1[0].songurl"
       ></audio>
     </div>
-    <audio
-      :src="this.checkedSongs1[0].songurl"
-      controls="controls"
-      autoplay
-    ></audio>
+    <!-- <audio :src="checkedSongs1[0].songurl" controls="controls" autoplay></audio> -->
   </div>
 </template>
 
