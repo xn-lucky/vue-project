@@ -101,7 +101,7 @@
           <li v-for="mv in mvs.mvs" :key="mv.id">
             <div class="mvimg">
               <div class="lowb"></div>
-              <img :src="mv.imgurl" />
+              <img :src="mv.imgurl" @click="gomv(mv.id, mv.name)" />
               <span class="iconfont icon-bofang1"></span>
             </div>
             <a class="mvname" :title="mv.name" target="_blank">{{ mv.name }}</a>
@@ -109,8 +109,7 @@
         </ul>
       </div>
     </div>
-    <div>
-    </div>
+    <div></div>
   </div>
 </template>
 
@@ -145,10 +144,14 @@ export default {
       }
       if (num === 3) {
         this.mvs = await getMvs(this.detailsId)
+        console.log(this.mvs)
       }
     },
     goback() {
       this.$router.push({ path: '/singer' })
+    },
+    gomv(id, name) {
+      this.$router.push({ path: '/video', query: { id, name } })
     },
   },
   async mounted() {
@@ -430,11 +433,15 @@ export default {
     height: 150px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
     li {
       margin-right: 20px;
       img {
         width: 122px;
         height: 92px;
+      }
+      img:hover {
+        box-shadow: 0 0 15px #f00;
       }
       .mvname {
         width: 122px;
@@ -458,6 +465,9 @@ export default {
     z-index: 3;
     bottom: 5px;
     right: 10px;
+  }
+  .iconfont:hover {
+    color: rgba(221, 80, 68);
   }
 }
 </style>

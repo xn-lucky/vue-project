@@ -16,6 +16,12 @@ instance.interceptors.request.use(
     if (config.url.indexOf('artist') !== -1) {
       config.baseURL = ''
     }
+    if (config.url.indexOf('mv') !== -1) {
+      config.baseURL = ''
+    }
+    if (config.url.indexOf('captcha') !== -1) {
+      config.baseURL = ''
+    }
 
     return config;
   }
@@ -29,6 +35,12 @@ instance.interceptors.response.use(
     NProgress.done();
     let { data, config } = res
     if (config.url.indexOf('artist') !== -1) {
+      return data
+    }
+    if (config.url.indexOf('mv') !== -1) {
+      return data
+    }
+    if (config.url.indexOf('mcaptchav') !== -1) {
       return data
     }
     if (data.code === 200) {

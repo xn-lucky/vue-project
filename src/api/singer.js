@@ -6,6 +6,12 @@ export const getzhuanji = (id) => {
     url: `/artist/album?id=${id}&limit=14`
   })
 }
+export const getMvVideo = (id) => {
+  return instance({
+    method: "GET",
+    url: `/mv/detail?mvid=${id}`
+  })
+}
 export const getMvs = (id) => {
   return instance({
     method: "GET",

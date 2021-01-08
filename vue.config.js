@@ -18,6 +18,20 @@ module.exports = {
                   '^/artist': ''
                 } */
             },
+            "/mv": {
+                target: "http://localhost:3000",
+                // changeOrigin: true, // 允许跨域
+                /* pathRewrite: { // 重写路径: 去掉路径中开头的'/dev-api'
+                  '^/artist': ''
+                } */
+            },
+            "/captcha": {
+                target: "http://localhost:3000",
+                // changeOrigin: true, // 允许跨域
+                /* pathRewrite: { // 重写路径: 去掉路径中开头的'/dev-api'
+                  '^/artist': ''
+                } */
+            },
         },
     },
     // 配置路径别名,可以简写路径
