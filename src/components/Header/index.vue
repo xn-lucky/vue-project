@@ -39,7 +39,7 @@
     <div class="navWrap">
       <div class="nav">
         <ul class="homeNav">
-          <li><a href="#">首页</a></li>
+          <li><a @click="toHome">首页</a></li>
           <li><a @click="tohotSongs">榜单</a></li>
           <li><a href="#">下载客户端</a></li>
           <li
@@ -60,7 +60,7 @@
           <!-- <li><a href="#">电台</a></li> -->
           <li><router-link to="/mvweb">MV</router-link></li>
           <li><router-link to="/songlist">歌单</router-link></li>
-          <li><router-link to="">歌手</router-link></li>
+          <li><router-link to="/singer">歌手</router-link></li>
         </ul>
         <ul class="subNav">
           <li>
@@ -98,6 +98,9 @@ export default {
   methods: {
     tohotSongs() {
       this.$router.push("/hotsongs");
+    },
+    toHome() {
+      this.$router.push("/");
     },
   },
 };
