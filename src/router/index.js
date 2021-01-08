@@ -19,6 +19,9 @@ const SingerDetails = () =>
   import('@views/Singer/SingerDetails')
 const SongList = () =>
   import( /* webpackChunkName: "Home" */ "@views/SongList");
+const Search = () =>
+  import("@views/search");
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -65,12 +68,17 @@ const router = new VueRouter({
       component: SingerDetails
     },
     {
+      name: 'search',
+      path: '/search',
+      component: Search
+    },
+    {
       name: SongList,
       path: '/songlist',
       component: SongList
     }],
   // 每次切换路由页面滚动条位置
-  scrollBehavior() {
+  scrollBehavior () {
     return { x: 0, y: 0 };
   }
 });

@@ -6,6 +6,18 @@ export const getzhuanji = (id) => {
     url: `/artist/album?id=${id}&limit=14`
   })
 }
+export const searchSong = (text) => {
+  return instance({
+    method: "GET",
+    url: `/search/suggest?keywords=${text}`
+  })
+}
+export const getSongsUrl = (id) => {
+  return instance({
+    method: "GET",
+    url: `/song/url?id=${id}`
+  })
+}
 export const getMvVideo = (id) => {
   return instance({
     method: "GET",

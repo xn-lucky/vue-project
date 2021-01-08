@@ -4,8 +4,8 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        // target: "http://42.192.85.86:3001",
-        target: "http://localhost:3000",
+        target: "http://42.192.85.86:3001",
+        // target: "http://localhost:3000",
         // changeOrigin: true, // 允许跨域
         pathRewrite: { // 重写路径: 去掉路径中开头的'/dev-api'
           '^/api': ''
@@ -18,6 +18,12 @@ module.exports = {
         target: "http://localhost:3000",
       },
       "/captcha": {
+        target: "http://localhost:3000",
+      },
+      "/song": {
+        target: "http://localhost:3000",
+      },
+      "/search": {
         target: "http://localhost:3000",
       },
     },

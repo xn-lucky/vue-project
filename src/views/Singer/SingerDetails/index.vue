@@ -82,7 +82,11 @@
               <span class="textList">{{ so.name }}</span>
             </div>
             <div class="two">
-              <span title="播放" class="iconfont icon-bofang1"></span>
+              <span
+                title="播放"
+                class="iconfont icon-bofang1"
+                @click="bofangba(so.id)"
+              ></span>
               <span title="收藏" class="iconfont icon-fenxiang"></span>
             </div>
           </li>
@@ -114,6 +118,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { SingerDescription, getSong, getzhuanji, getMvs } from '@api/singer'
 export default {
   name: 'singerDetails',
@@ -131,6 +136,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getSong']),
     showActive() {
       this.show = !this.show
     },
@@ -152,6 +158,11 @@ export default {
     },
     gomv(id, name) {
       this.$router.push({ path: '/video', query: { id, name } })
+    },
+    bofangba(id) {
+      this.$router.push({ path: '/playersong' })
+      console.log(id)
+      this.getSong(id)
     },
   },
   async mounted() {

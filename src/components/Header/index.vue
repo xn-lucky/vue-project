@@ -9,9 +9,13 @@
         </h1>
         <div class="search">
           <div class="input">
-            <input type="text" placeholder="想写点什么呀" />
+            <input
+              type="text"
+              placeholder="想写点什么呀"
+              v-model="searchText"
+            />
             <div class="btn">
-              <i class="iconfont icon-search"></i>
+              <i class="iconfont icon-search" @click="search(searchText)"></i>
               <!-- <span>搜索</span> -->
             </div>
           </div>
@@ -162,12 +166,17 @@ export default {
       num: 5,
       time: null,
       xuelin: false,
+      searchText: '',
     }
   },
   watch: {
     phone() {},
   },
   methods: {
+    search(searchText) {
+      const text = searchText
+      this.$router.push({ path: '/search', query: { text } })
+    },
     tohotSongs() {
       this.$router.push('/hotsongs')
     },
@@ -206,6 +215,9 @@ export default {
       if (this.xuelin) {
         this.dengdenglu()
       }
+    },
+    toHome() {
+      this.$router.push('/')
     },
   },
 }
