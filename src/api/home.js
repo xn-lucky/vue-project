@@ -36,3 +36,9 @@ export const getCommendMv = () => {
     url: "http://localhost:3000/personalized/mv",
   });
 };
+export const getNewSong = (type=0) => {
+  return instance({
+    method: "GET",
+    url: `http://localhost:3000/top/song?type=${type}`,
+  });
+};

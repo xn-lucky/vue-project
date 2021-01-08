@@ -7,6 +7,7 @@ import './styles/reset.css';
 import "swiper/swiper-bundle.min.css";
 import './styles/iconfont.css'
 import './plugins/element.js'
+import './plugins/lazyload.js'
 
 Vue.config.productionTip = false
 

@@ -35,7 +35,7 @@
                 <i class="iconfont icon-erji"></i>
                 <span class="num">36.2万</span>
               </p>
-              <img :src="item.imgUrl" alt="" />
+              <img v-lazy="item.imgUrl" alt="" />
               <div class="cover">
                 <a target="_blank" href="#"> </a>
                 <div
@@ -59,7 +59,7 @@
                   <span class="iconfont icon-erji"></span>
                   <span class="num">2.1万</span>
                 </p>
-                <img :src="item.imgUrl" />
+                <img v-lazy="item.imgUrl" />
                 <div class="cover">
                   <a target="_blank" href="#"> </a>
                   <div
@@ -92,7 +92,7 @@
             >
               <a href="#">
                 <span></span>
-                <img :src="item.imgUrl" alt="" />
+                <img v-lazy="item.imgUrl" alt="" />
                 <div>
                   <dl class="list">
                     <dt>{{ item.Name }}</dt>
@@ -122,10 +122,31 @@
                 <span>歌单</span>
               </h3>
               <div class="tabT">
-                <span class="MenuItem" data="0">华语</span>
-                <span class="MenuItem" data="1">欧美</span>
-                <span class="MenuItem" data="2">韩国</span>
-                <span class="MenuItem active" data="3">日本</span>
+                <span
+                  class="MenuItem"
+                  :data-type="7"
+                  @mouseenter="handleEnter($event)"
+                  >华语</span
+                >
+                <span
+                  class="MenuItem"
+                  :data-type="96"
+                  @mouseenter="handleEnter($event)"
+                  >欧美</span
+                >
+                <span
+                  class="MenuItem"
+                  :data-type="16"
+                  @mouseenter="handleEnter($event)"
+                  >韩国</span
+                >
+                <span
+                  class="MenuItem"
+                  :data-type="8"
+                  ref="data"
+                  @mouseenter="handleEnter($event)"
+                  >日本</span
+                >
               </div>
             </div>
             <button class="playAll">
@@ -135,11 +156,23 @@
           <div class="itemContent">
             <div class="tabC">
               <ul>
-                <li v-for="(item, index) in 16" :key="index">
+                <li v-for="(item, index) in newSongItem" :key="index">
                   <a href="#">
-                    <span class="songName">杨小壮 - 烟雨成思</span>
+                    <span class="songName"
+                      >{{ item.artists[0].name }} - {{ item.name }}</span
+                    >
                     <span class="songTips"></span>
-                    <span class="songTime">03:10</span>
+                    <span class="songTime"
+                      >{{
+                        Math.floor(item.duration / 1000 / 60) > 10
+                          ? Math.floor(item.duration / 1000 / 60)
+                          : "0" + Math.floor(item.duration / 1000 / 60)
+                      }}:{{
+                        Math.floor((item.duration / 1000) % 60) > 10
+                          ? Math.floor((item.duration / 1000) % 60)
+                          : "0" + Math.floor((item.duration / 1000) % 60)
+                      }}</span
+                    >
                     <span class="iconfont" style="display: none"></span>
                     <span class="iconfont"></span>
                   </a>
@@ -148,7 +181,14 @@
             </div>
           </div>
           <div class="page">
-            <span class="currentPage">1</span>/<span class="allPage">3</span>
+            <span @click="changePage($event)" data-changePage="reduce">
+              &lt;
+            </span>
+            <span class="currentPage">{{ currentPage }}</span
+            >/<span class="allPage">{{ totalPage }}</span>
+            <span @click="changePage($event)" data-changePage="plus">
+              &gt;
+            </span>
           </div>
         </div>
         <div class="albumList">
@@ -162,7 +202,7 @@
           <div class="itemContent">
             <div class="cptBigL" v-for="item in mvLarge" :key="item.id">
               <a href="#">
-                <img :src="item.picUrl" alt="" />
+                <img v-lazy="item.picUrl" alt="" />
                 <div class="cover">
                   <div class="playBtn iconfont icon-jiantou"></div>
                 </div>
@@ -174,7 +214,7 @@
             </div>
             <div class="cptMidL" v-for="item in mvSmall" :key="item.id">
               <a href="#">
-                <img :src="item.picUrl" alt="" />
+                <img v-lazy="item.picUrl" alt="" />
                 <div class="cover">
                   <div class="playBtn iconfont icon-jiantou"></div>
                 </div>
@@ -209,7 +249,7 @@
                     <div class="playBtn iconfont icon-kongxinjiantou33"></div>
                   </div>
                   <div class="radioLogo">
-                    <img :src="item.picUrl" alt="" />
+                    <img v-lazy="item.picUrl" alt="" />
                   </div>
                   <div class="radiokind">{{ item.rcmdtext }}</div>
                 </a>
@@ -237,7 +277,7 @@
               :key="index"
             >
               <a href="#">
-                <img :src="item.picUrl" alt="" />
+                <img v-lazy="item.picUrl" alt="" />
                 <div class="cover"></div>
                 <div class="cptB">
                   <p class="songListSinger">{{ item.name }}</p>
@@ -246,7 +286,7 @@
             </div>
             <div class="cptSmall" v-for="item in hotSingerSmall" :key="item.id">
               <a href="#">
-                <img :src="item.picUrl" alt="" />
+                <img v-lazy="item.picUrl" alt="" />
                 <div class="cover"></div>
                 <div class="cptB">
                   <p class="songListSinger">{{ item.name }}</p>
@@ -285,8 +325,8 @@ import {
   djProgram,
   getHotSinger,
   getCommendMv,
+  getNewSong,
 } from "@api/home";
-//import { mapActions } from "vuex";
 
 import Swiper, { Pagination, Autoplay, EffectFade } from "swiper";
 Swiper.use([Pagination, Autoplay, EffectFade]);
@@ -304,10 +344,39 @@ export default {
       hotSingerSmall: [],
       mvLarge: [],
       mvSmall: [],
+      newSong: [],
+      newSongItem: [],
+      currentPage: 1,
+      totalPage: 3,
     };
   },
   methods: {
-    //...mapActions(["hotSongs"]),
+    async handleEnter(e) {
+      this.currentPage = 1;
+      let type = e.target.dataset.type;
+      let result = await getNewSong(type);
+      this.newSong = result.slice(0, 30);
+      this.newSongSlice();
+    },
+    newSongSlice() {
+      this.newSongItem = this.newSong.slice(
+        (this.currentPage - 1) * 8,
+        this.currentPage * 8
+      );
+    },
+    changePage(e) {
+      if (e.target.dataset.changepage === "plus") {
+        if (this.currentPage < 3) {
+          this.currentPage++;
+        }
+      }
+      if (e.target.dataset.changepage === "reduce") {
+        if (this.currentPage > 1) {
+          this.currentPage--;
+        }
+      }
+      this.newSongSlice();
+    },
   },
   watch: {
     banners() {
@@ -351,6 +420,10 @@ export default {
     let commendMv = await getCommendMv();
     this.mvLarge = commendMv.result.slice(0, 1);
     this.mvSmall = commendMv.result.slice(1, 3);
+    //新歌首发数据
+    let result = await getNewSong();
+    this.newSong = result.slice(0, 30);
+    this.newSongSlice();
   },
 };
 </script>
