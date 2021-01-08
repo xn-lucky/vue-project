@@ -27,7 +27,7 @@ module.exports = {
         target: "http://42.192.85.86:3000",
       },
       "/dj": {
-        target: "http://localhost:3000",
+        target: "http://42.192.85.86:3000",
       },
     },
   },
