@@ -102,40 +102,6 @@
                   ></a>
                 </div>
               </el-dialog>
-              <!-- <el-dialog
-                title="分享歌曲"
-                :visible.sync="shareShow"
-                width="30%"
-                :before-close="handleClose2"
-                append-to-body
-              > -->
-              <!-- <div class="el-dialog-box-two">
-                  <span class="el-dialog-box-two-span1"></span>
-                  <a
-                    target="_blank"
-                    href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Ft1.kugou.com%2Fsong.html%3Fid%3D1nmRJ64xTV2&desc=&title=%E9%B9%BF%E6%99%97%20-%20%E6%80%9C%E5%9F%8E%E8%BE%9E&summary=%E6%88%91%E5%9C%A8%E9%85%B7%E7%8B%97%E5%B8%B8%E5%90%AC%E7%9A%84%E3%80%8A%E9%B9%BF%E6%99%97%20-%20%E6%80%9C%E5%9F%8E%E8%BE%9E%E3%80%8B%EF%BC%8C%E4%BD%A0%E4%B9%9F%E6%9D%A5%E5%90%AC%E5%90%AC%E5%90%A7%EF%BC%81%EF%BC%88%E6%9D%A5%E8%87%AA%20web%20%E9%85%B7%E7%8B%97%E9%9F%B3%E4%B9%90%EF%BC%89&pics=http://www.kugou.com/yy/static/images/share-cover.png&flash=&site=www.kugou.com"
-                    ><span class="el-dialog-box-two-span2"></span
-                  ></a>
-                  <a
-                    target="_blank"
-                    href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Ft1.kugou.com%2Fsong.html%3Fid%3D1ntlWd5xTV2&title=%E6%9D%A8%E5%B0%8F%E5%A3%AE%20-%20%E7%83%9F%E9%9B%A8%E6%88%90%E6%80%9D&pics=http://www.kugou.com/yy/static/images/share-cover.png&summary=%E6%88%91%E5%9C%A8%E9%85%B7%E7%8B%97%E5%B8%B8%E5%90%AC%E7%9A%84%E3%80%8A%E6%9D%A8%E5%B0%8F%E5%A3%AE%20-%20%E7%83%9F%E9%9B%A8%E6%88%90%E6%80%9D%E3%80%8B%EF%BC%8C%E4%BD%A0%E4%B9%9F%E6%9D%A5%E5%90%AC%E5%90%AC%E5%90%A7%EF%BC%81%EF%BC%88%E6%9D%A5%E8%87%AA%20web%20%E9%85%B7%E7%8B%97%E9%9F%B3%E4%B9%90%EF%BC%89"
-                    ><span class="el-dialog-box-two-span3"></span
-                  ></a>
-                  <a
-                    target="_blank"
-                    href="https://service.weibo.com/share/share.php?appkey=340086183&pic=http://www.kugou.com/yy/static/images/share-cover.png&url=https%3A%2F%2Ft3.kugou.com%2Fsong.html%3Fid%3D1nuGf7bxTV2&title=%E6%88%91%E5%9C%A8%E9%85%B7%E7%8B%97%E5%B8%B8%E5%90%AC%E7%9A%84%E3%80%8A%E6%9D%A8%E5%B0%8F%E5%A3%AE%20-%20%E7%83%9F%E9%9B%A8%E6%88%90%E6%80%9D%E3%80%8B%EF%BC%8C%E4%BD%A0%E4%B9%9F%E6%9D%A5%E5%90%AC%E5%90%AC%E5%90%A7%EF%BC%81%EF%BC%88%E6%9D%A5%E8%87%AA%20web%20%E9%85%B7%E7%8B%97%E9%9F%B3%E4%B9%90%EF%BC%89#_loginLayer_1609935763639"
-                    ><span class="el-dialog-box-two-span4"></span
-                  ></a>
-                </div> -->
-              <!-- <span slot="footer" class="dialog-footer">
-                      <el-button @click="dialogVisible = false"
-                        >取 消</el-button
-                      >
-                      <el-button type="primary" @click="dialogVisible = false"
-                        >确 定</el-button
-                      >
-                    </span> -->
-              <!-- </el-dialog> -->
             </div>
           </div>
         </li>
@@ -213,11 +179,12 @@ export default {
 
     window.onscroll = () => {
       if (
-        //html滚动高度大于html本身高度大于视口高度时候触发这个事件，用concat连接即可
+        //html滚动高度大于html本身高度减去视口高度时候触发这个事件，用concat连接即可
         document.documentElement.scrollTop >=
         document.documentElement.offsetHeight - window.innerHeight
       ) {
         // this.loadData();
+        if (this.songList.length >= 27) return;
         this.songList = this.songList.concat(this.result.songList4);
       }
     };
