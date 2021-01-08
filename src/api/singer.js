@@ -21,37 +21,37 @@ export const getSongsUrl = (id) => {
 export const getMvVideo = (id) => {
   return instance({
     method: "GET",
-    url: `/mv/detail?mvid=${id}`
+    url: `http://42.192.85.86:3000/mv/detail?mvid=${id}`
   })
 }
 export const getMvs = (id) => {
   return instance({
     method: "GET",
-    url: `/artist/mv?id=${id}`
+    url: `http://42.192.85.86:3000/artist/mv?id=${id}`
   })
 }
 export const getSong = (id) => {
   return instance({
     method: "GET",
-    url: `/artist/top/song?id=${id}`
+    url: `http://42.192.85.86:3000/artist/top/song?id=${id}`
   })
 }
 export const getSinger = () => {
   return instance({
     method: "GET",
-    url: '/artist/list/?limit=100'
+    url: 'http://42.192.85.86:3000/artist/list/?limit=100'
   })
 }
 export const SingerDescription = (id) => {
   return instance({
     method: "GET",
-    url: `/artist/desc?id=${id}`
+    url: `http://42.192.85.86:3000/artist/desc?id=${id}`
   })
 }
 export const getSingerList = (id, allId, num) => {
   return instance({
     method: "GET",
-    url: `/artist/list?limit=100&type=${id}&area=${allId}&initial=${num}`
+    url: `http://42.192.85.86:3000/artist/list?limit=100&type=${id}&area=${allId}&initial=${num}`
   })
 }
 /*  */

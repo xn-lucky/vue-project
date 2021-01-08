@@ -3,8 +3,12 @@ import NProgress from "nprogress";
 
 import "nprogress/nprogress.css";
 
+// const prefix_url =
+//       process.env.NODE_ENV === "development" ? "/" : "http://42.192.85.86:3001";
+
+
 const instance = axios.create({
-  baseURL: "/api",
+  baseURL: ``,
 });
 
 // 请求拦截器

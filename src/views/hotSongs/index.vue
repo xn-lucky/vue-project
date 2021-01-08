@@ -164,7 +164,7 @@ export default {
   async mounted() {
     document.body.style.height = "";
     document.body.style["overflow-y"] = "";
-    let hotList = await request("/getHotList");
+    let hotList = await request("http://42.192.85.86:3001/getHotList");
     this.hotList = hotList;
     let hotsongs = this.changeSongs(472427);
     this.hotListcontentName = hotsongs.name;
@@ -175,7 +175,9 @@ export default {
   methods: {
     async changeSongs(HotListId) {
       // console.log(HotListId);
-      let hotsongs = await request(`/getHotListSongs?HotListId=${HotListId}`);
+      let hotsongs = await request(
+        `http://42.192.85.86:3001/getHotListSongs?HotListId=${HotListId}`
+      );
       this.hotListcontentName = hotsongs.name;
       this.hotListcontent = hotsongs.content;
     },
