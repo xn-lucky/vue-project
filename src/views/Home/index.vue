@@ -441,7 +441,7 @@ export default {
       background-position: center;
       background-origin: top;
       background-size: contain;
-      transform: scale(1.5);
+      transform: scale(1.35);
     }
     .swiper-pagination-bullet {
       width: 20px;

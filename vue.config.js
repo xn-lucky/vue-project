@@ -26,6 +26,9 @@ module.exports = {
       "/search": {
         target: "http://localhost:3000",
       },
+      "/dj": {
+        target: "http://localhost:3000",
+      },
     },
   },
   // 配置路径别名,可以简写路径

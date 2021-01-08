@@ -396,8 +396,8 @@ export default {
     min-width: 1000px;
     display: flex;
     justify-content: space-around;
-    position: relative;
-    top: 13px;
+    position: fixed;
+    bottom: 0px;
 
     width: 100%;
 
