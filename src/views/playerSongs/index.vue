@@ -86,13 +86,17 @@
             v-show="isShow"
           >
             <p class="playerSongsFooter-playerMain-right-box5-box-p1">
-              <span>播放队列/{{ this.checkedSongs1.length }}</span>
-              <span
-                class="playerSongsFooter-playerMain-right-box5-box-p1-span2"
-              ></span>
-              |<span
-                class="playerSongsFooter-playerMain-right-box5-box-p1-span3"
-              ></span>
+              <span class="playerSongsFooter-playerMain-right-box5-box-p1"
+                >播放队列/{{ this.checkedSongs1.length }}</span
+              >
+              <span class="playerSongsFooter-playerMain-right-box5-box-p1-box">
+                <span
+                  class="playerSongsFooter-playerMain-right-box5-box-p1-span2"
+                ></span>
+                |<span
+                  class="playerSongsFooter-playerMain-right-box5-box-p1-span3"
+                ></span>
+              </span>
             </p>
           </div>
           <span class="playerSongsFooter-playerMain-right-box5" @click="touch">
@@ -141,7 +145,7 @@ export default {
     },
     isPlay() {
       var audio = document.querySelector("#audio");
-      console.dir(audio);
+      // console.dir(audio);
       if (this.isPlaying) {
         audio.pause();
         this.isPlaying = false;
@@ -309,7 +313,10 @@ export default {
         background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
         border-radius: 50%;
       }
-      .playerSongsFooter-playerBox2:hover {
+      .playerSongsFooterPlayerBoxBone:hover {
+        background-position: -60px -60px;
+      }
+      .playerSongsFooterPlayerBox2:hover {
         background-position: -60px 0;
       }
       .playerSongsFooter-playerBox3 {
@@ -445,23 +452,31 @@ export default {
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
-            .playerSongsFooter-playerMain-right-box5-box-p1-span2 {
-              background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
-              background-repeat: no-repeat;
-              float: left;
-              display: block;
-              width: 16px;
-              height: 16px;
-              background-position: -240px -64px;
-            }
-            .playerSongsFooter-playerMain-right-box5-box-p1-span3 {
-              background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
-              background-repeat: no-repeat;
-              float: left;
-              display: block;
-              width: 16px;
-              height: 16px;
-              background-position: -240px -96px;
+            .playerSongsFooter-playerMain-right-box5-box-p1-box {
+              display: flex;
+              width: 117px;
+
+              align-items: center;
+              .playerSongsFooter-playerMain-right-box5-box-p1-span2 {
+                background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+                background-repeat: no-repeat;
+                float: left;
+                display: block;
+                width: 16px;
+                height: 16px;
+                margin-right: 20px;
+                background-position: -240px -64px;
+              }
+              .playerSongsFooter-playerMain-right-box5-box-p1-span3 {
+                background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+                background-repeat: no-repeat;
+                float: right;
+                display: block;
+                width: 16px;
+                height: 16px;
+                margin-right: 20px;
+                background-position: -240px -96px;
+              }
             }
           }
         }
