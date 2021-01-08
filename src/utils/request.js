@@ -1,10 +1,10 @@
-import axios from 'axios';
-import NProgress from 'nprogress';
+import axios from "axios";
+import NProgress from "nprogress";
 
-import 'nprogress/nprogress.css';
+import "nprogress/nprogress.css";
 
 const instance = axios.create({
-  baseURL: '/api'
+  baseURL: "/api",
 });
 
 // 请求拦截器
@@ -25,7 +25,6 @@ instance.interceptors.request.use(
 
     return config;
   }
-
 );
 // 响应拦截器
 instance.interceptors.response.use(
@@ -33,9 +32,15 @@ instance.interceptors.response.use(
     // debugger
     // 不管是不是成功还是失败，都结束进度条
     NProgress.done();
-    let { data, config } = res
-    if (config.url.indexOf('artist') !== -1) {
-      return data
+    let { data, config } = res;
+    if (config.url.indexOf("artist") !== -1) {
+      return data;
+    }
+    if (config.url.indexOf("personalized") !== -1) {
+      return data;
+    }
+    if (config.url.indexOf("dj") !== -1) {
+      return data;
     }
     if (config.url.indexOf('mv') !== -1) {
       return data
@@ -51,7 +56,7 @@ instance.interceptors.response.use(
   (error) => {
     NProgress.done();
     // 处理错误信息
-    const message = error.message || '网络错误';
+    const message = error.message || "网络错误";
     return Promise.reject(message);
   }
 );

@@ -13,7 +13,7 @@
             <span class="hotSongs-left-box-header-title-data"
               >{{ updatahotListcontentTime }} 更新</span
             >
-            <button class="hotSongs-left-box-header-button">
+            <button class="hotSongs-left-box-header-button" @click="toPlayer">
               <div class="hotSongs-left-box-header-button-item">
                 <i class="hotSongs-left-box-header-button-item-i"></i
                 ><span>播放全部</span>
@@ -23,26 +23,17 @@
         </header>
         <div class="hotSongs-left-box-main">
           <div class="hotSongs-left-box-main-quanxuan">
-            <label
-              ><input
-                type="checkbox"
-                :checked="check"
-                @click="checkedAll($event)"
-              />全选</label
-            >
+            <label><input type="checkbox" v-model="allCheck" />全选</label>
           </div>
           <ul
             class="hotSongs-left-box-main-ul"
-            v-for="(item, index) in hotListcontent"
+            v-for="item in hotListcontent"
             :key="item.id"
           >
             <li class="hotSongs-left-box-main-li">
               <a class="hotSongs-left-box-main-li-a">
                 <label class="hotSongs-left-box-main-li-a-label"
-                  ><input
-                    type="checkbox"
-                    @click="checkSingle(item.check, index, $event)"
-                    :checked="item.check"
+                  ><input type="checkbox" v-model="item.check"
                 /></label>
                 <span class="hotSongs-left-box-main-li-a-span1"
                   >{{ item.id }}
@@ -57,7 +48,7 @@
                 <span class="hotSongs-left-box-main-li-a-span3"
                   ><i
                     class="hotSongs-left-box-main-li-a-span3-i1"
-                    @click="PlayerSongs"
+                    @click="PlayerSongs(item)"
                   ></i>
                   <i
                     class="hotSongs-left-box-main-li-a-span3-i2"
@@ -90,8 +81,45 @@
                     </span> -->
                   </el-dialog>
 
-                  <i class="hotSongs-left-box-main-li-a-span3-i3"></i
-                ></span>
+                  <i
+                    class="hotSongs-left-box-main-li-a-span3-i3"
+                    @click="share"
+                  ></i>
+                  <el-dialog
+                    title="分享歌曲"
+                    :visible.sync="shareShow"
+                    width="30%"
+                    :before-close="handleClose2"
+                    append-to-body
+                  >
+                    <div class="el-dialog-box-two">
+                      <span class="el-dialog-box-two-span1"></span>
+                      <a
+                        target="_blank"
+                        href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Ft1.kugou.com%2Fsong.html%3Fid%3D1nmRJ64xTV2&desc=&title=%E9%B9%BF%E6%99%97%20-%20%E6%80%9C%E5%9F%8E%E8%BE%9E&summary=%E6%88%91%E5%9C%A8%E9%85%B7%E7%8B%97%E5%B8%B8%E5%90%AC%E7%9A%84%E3%80%8A%E9%B9%BF%E6%99%97%20-%20%E6%80%9C%E5%9F%8E%E8%BE%9E%E3%80%8B%EF%BC%8C%E4%BD%A0%E4%B9%9F%E6%9D%A5%E5%90%AC%E5%90%AC%E5%90%A7%EF%BC%81%EF%BC%88%E6%9D%A5%E8%87%AA%20web%20%E9%85%B7%E7%8B%97%E9%9F%B3%E4%B9%90%EF%BC%89&pics=http://www.kugou.com/yy/static/images/share-cover.png&flash=&site=www.kugou.com"
+                        ><span class="el-dialog-box-two-span2"></span
+                      ></a>
+                      <a
+                        target="_blank"
+                        href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https%3A%2F%2Ft1.kugou.com%2Fsong.html%3Fid%3D1ntlWd5xTV2&title=%E6%9D%A8%E5%B0%8F%E5%A3%AE%20-%20%E7%83%9F%E9%9B%A8%E6%88%90%E6%80%9D&pics=http://www.kugou.com/yy/static/images/share-cover.png&summary=%E6%88%91%E5%9C%A8%E9%85%B7%E7%8B%97%E5%B8%B8%E5%90%AC%E7%9A%84%E3%80%8A%E6%9D%A8%E5%B0%8F%E5%A3%AE%20-%20%E7%83%9F%E9%9B%A8%E6%88%90%E6%80%9D%E3%80%8B%EF%BC%8C%E4%BD%A0%E4%B9%9F%E6%9D%A5%E5%90%AC%E5%90%AC%E5%90%A7%EF%BC%81%EF%BC%88%E6%9D%A5%E8%87%AA%20web%20%E9%85%B7%E7%8B%97%E9%9F%B3%E4%B9%90%EF%BC%89"
+                        ><span class="el-dialog-box-two-span3"></span
+                      ></a>
+                      <a
+                        target="_blank"
+                        href="https://service.weibo.com/share/share.php?appkey=340086183&pic=http://www.kugou.com/yy/static/images/share-cover.png&url=https%3A%2F%2Ft3.kugou.com%2Fsong.html%3Fid%3D1nuGf7bxTV2&title=%E6%88%91%E5%9C%A8%E9%85%B7%E7%8B%97%E5%B8%B8%E5%90%AC%E7%9A%84%E3%80%8A%E6%9D%A8%E5%B0%8F%E5%A3%AE%20-%20%E7%83%9F%E9%9B%A8%E6%88%90%E6%80%9D%E3%80%8B%EF%BC%8C%E4%BD%A0%E4%B9%9F%E6%9D%A5%E5%90%AC%E5%90%AC%E5%90%A7%EF%BC%81%EF%BC%88%E6%9D%A5%E8%87%AA%20web%20%E9%85%B7%E7%8B%97%E9%9F%B3%E4%B9%90%EF%BC%89#_loginLayer_1609935763639"
+                        ><span class="el-dialog-box-two-span4"></span
+                      ></a>
+                    </div>
+                    <!-- <span slot="footer" class="dialog-footer">
+                      <el-button @click="dialogVisible = false"
+                        >取 消</el-button
+                      >
+                      <el-button type="primary" @click="dialogVisible = false"
+                        >确 定</el-button
+                      >
+                    </span> -->
+                  </el-dialog>
+                </span>
                 <span class="hotSongs-left-box-main-li-a-span4"
                   >0{{ Math.floor(item.songsTime / 60) }}:{{
                     Math.floor(item.songsTime % 60) >= 10
@@ -106,7 +134,9 @@
       </div>
       <div class="hotSongs-left-footer">
         <p class="hotSongs-left-footer-p">查看更多内容,请下载客户端</p>
-        <button class="hotSongs-left-footer-button">立即下载</button>
+        <a target="_blank" href="https://download.kugou.com/download/kugou_pc"
+          ><button class="hotSongs-left-footer-button">立即下载</button></a
+        >
       </div>
     </div>
   </div>
@@ -118,14 +148,17 @@ import HotList from "../../components/hotList";
 // import dayjs from "dayjs";
 export default {
   name: "hotSongs",
+
   data() {
     return {
+      checkedSongs: [],
       hotList: [],
       hotListcontent: [],
       hotListcontentName: "",
       updatahotListcontentTime: "2021-01-03",
       // isAllChecked: true,
       dialogVisible: false,
+      shareShow: false,
     };
   },
   async mounted() {
@@ -136,7 +169,8 @@ export default {
     let hotsongs = this.changeSongs(472427);
     this.hotListcontentName = hotsongs.name;
     this.hotListcontent = hotsongs.content;
-    // this.$emit("changeSongs");
+    // this.$emit("changeSongs")
+    this.$store.commit("checkedSongs1");
   },
   methods: {
     async changeSongs(HotListId) {
@@ -145,67 +179,121 @@ export default {
       this.hotListcontentName = hotsongs.name;
       this.hotListcontent = hotsongs.content;
     },
+    // 关闭下载对话框
     handleClose() {
       this.dialogVisible = false;
     },
+    // 关闭分享对话框
+    handleClose2() {
+      this.shareShow = false;
+    },
     // 点击全选按钮键
-    checkedAll(e) {
+    checkedAll() {
+      // this.selectSongs = this.hotListcontent.filter(item => item.)
       // console.log(e.target.checked);
-
-      /* for (var i = 0; i <= this.hotListcontent.length; i++) {
-          console.log(this.hotListcontent);
-          this.hotListcontent[i].check = e.target.checked;
-        } */
-      this.hotListcontent.forEach((item) => {
-        item.check = e.target.checked;
-        // console.log(item.check);
-      });
+      //  for (var i = 0; i <= this.hotListcontent.length; i++) {
+      //     console.log(this.hotListcontent);
+      //     this.hotListcontent[i].check = e.target.checked;
+      //   }
+      // this.hotListcontent.forEach((item) => {
+      //   item.check = e.target.checked;
+      //   if (item.check === true) {
+      //     this.songList.push(item);
+      //     const ss = new Set(this.songList);
+      //     this.songList = Array.from(ss);
+      //   }
+      //   // console.log(item.check);
+      // });
+      // console.log(this.songList);
     },
     // 点击播放按钮添加歌曲到播放页面
-    PlayerSongs() {
+    PlayerSongs(item) {
       // console.log("111");
-      this.$message.success("已成功添加歌曲到播放列表");
+      let bb;
+      if (this.checkedSongs) {
+        bb = this.checkedSongs.find((aa) => {
+          return aa.songsId === item.songsId;
+        });
+      }
+      if (bb) {
+        this.$message.warning("你已经选择过此歌曲了");
+        return;
+      } else {
+        this.$message.success("已成功添加歌曲到播放列表");
+        item.check = true;
+        this.$store.commit("checkedSongs1", this.checkedSongs.push(item));
+      }
     },
     // 点击单选按钮键
-    checkSingle(check, index, e) {
+    /* checkSingle(check, index, e) {
       this.hotListcontent[index].check = e.target.checked;
-    },
+    }, */
+    // 点击下载按钮
     downLoad() {
       // if (window.confirm("你确认下载此首歌曲吗？")) {
       //   window.open("#/playerSong");
       // }
       this.dialogVisible = true;
     },
+    // 点击分享按钮
+    share() {
+      this.shareShow = true;
+    },
+    // 点击进入播放页面功能
+    toPlayer() {
+      if (this.checkedSongs.length) {
+        this.$router.push("/playerSong");
+        this.$store.commit("checkedSongs1", this.checkedSongs);
+      } else {
+        this.$message.warning("请先添加歌曲");
+      }
+    },
   },
   watch: {},
   computed: {
-    check: function () {
-      let isAllChecked;
-      /* if (this.hotListcontent) {
-        this.hotListcontent.forEach((item) => {
-          if (item.check === true) {
-            console.log(item.check);
-            isAllChecked = true;
-          }
-          if (item.check === false) {
-            console.log(item.check);
-            isAllChecked = false;
-          }
+    // check: function () {
+    //   let isAllChecked;
+    //   /* if (this.hotListcontent) {
+    //     this.hotListcontent.forEach((item) => {
+    //       if (item.check === true) {
+    //         console.log(item.check);
+    //         isAllChecked = true;
+    //       }
+    //       if (item.check === false) {
+    //         console.log(item.check);
+    //         isAllChecked = false;
+    //       }
+    //     });
+    //   } */
+    //   if (this.hotListcontent) {
+    //     for (var i = 0; i <= this.hotListcontent.length - 1; i++) {
+    //       // console.log(this.hotListcontent[i].check);
+    //       if (this.hotListcontent[i].check === false) {
+    //         isAllChecked = false;
+    //         return;
+    //       }
+    //       if (this.hotListcontent[i].check === true) {
+    //         isAllChecked = true;
+    //       }
+    //     }
+    //   }
+    //   return isAllChecked;
+    // },
+    allCheck: {
+      get() {
+        this.checkedSongs = this.hotListcontent
+          ? this.hotListcontent.filter((item) => item.check)
+          : [];
+        return this.hotListcontent
+          ? this.hotListcontent.every((item) => item.check)
+          : false;
+      },
+      set(val) {
+        this.hotListcontent.map((item) => {
+          item.check = val;
+          return item;
         });
-      } */
-      if (this.hotListcontent) {
-        for (var i = 0; i <= this.hotListcontent.length - 1; i++) {
-          // console.log(this.hotListcontent[i].check);
-          if (this.hotListcontent[i].check === false) {
-            isAllChecked = false;
-            return;
-          }
-          if (this.hotListcontent[i].check === true) {
-            isAllChecked = true;
-          }
-        }
-      }
-      return isAllChecked;
+      },
     },
   },
   components: {
@@ -409,6 +497,7 @@ export default {
         background-color: #169af3;
         color: #fff;
         font-size: 16px;
+        cursor: pointer;
       }
     }
   }
@@ -436,6 +525,7 @@ export default {
     padding: 10px;
     border-radius: 20px;
     line-height: 10px;
+    cursor: pointer;
     border: 1px solid #ccc;
   }
   .el-dialog-box1-span2 {
@@ -443,8 +533,44 @@ export default {
     padding: 10px;
     line-height: 10px;
     border-radius: 20px;
-
+    cursor: pointer;
     border: 1px solid #ccc;
+  }
+}
+.el-dialog-box-two {
+  display: flex;
+  justify-content: space-evenly;
+  .el-dialog-box-two-span1 {
+    width: 62px;
+    height: 62px;
+    display: block;
+    cursor: pointer;
+    background: url(https://staticssl.kugou.com/public/root/images/share_weixin.png)
+      no-repeat left top;
+  }
+  .el-dialog-box-two-span2 {
+    width: 62px;
+    height: 62px;
+    display: block;
+    cursor: pointer;
+    background: url(https://staticssl.kugou.com/public/root/images/share_qq.png)
+      no-repeat left top;
+  }
+  .el-dialog-box-two-span3 {
+    width: 62px;
+    height: 62px;
+    display: block;
+    cursor: pointer;
+    background: url(https://staticssl.kugou.com/public/root/images/share_qqspace.png)
+      no-repeat left top;
+  }
+  .el-dialog-box-two-span4 {
+    width: 62px;
+    height: 62px;
+    display: block;
+    cursor: pointer;
+    background: url(https://staticssl.kugou.com/public/root/images/share_weibo.png)
+      no-repeat left top;
   }
 }
 </style>
