@@ -10,7 +10,7 @@ const instance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use(
   (config) => {
-    debugger
+
     // 开始设置进度条
     NProgress.start();
     let arr = ['/artist', '/search', '/personalized', '/dj', '/mv', '/captcha', '/song']
@@ -49,6 +49,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (res) => {
     // debugger
+    // debugger
     // 不管是不是成功还是失败，都结束进度条
     NProgress.done();
     let { data, config } = res;
@@ -76,9 +77,8 @@ instance.interceptors.response.use(
     if (config.url.indexOf('/mcaptchav') !== -1) {
       return data
     }
-    if (config.url.indexOf('/song') !== -1) {
-      return data
-    }
+
+
     if (data.code === 200) {
       return data.data;
     }
