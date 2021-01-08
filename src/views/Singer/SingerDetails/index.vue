@@ -82,7 +82,11 @@
               <span class="textList">{{ so.name }}</span>
             </div>
             <div class="two">
-              <span title="播放" class="iconfont icon-bofang1"></span>
+              <span
+                title="播放"
+                class="iconfont icon-bofang1"
+                @click="bofangba(so.id)"
+              ></span>
               <span title="收藏" class="iconfont icon-fenxiang"></span>
             </div>
           </li>
@@ -101,7 +105,7 @@
           <li v-for="mv in mvs.mvs" :key="mv.id">
             <div class="mvimg">
               <div class="lowb"></div>
-              <img :src="mv.imgurl" />
+              <img :src="mv.imgurl" @click="gomv(mv.id, mv.name)" />
               <span class="iconfont icon-bofang1"></span>
             </div>
             <a class="mvname" :title="mv.name" target="_blank">{{ mv.name }}</a>
@@ -109,12 +113,12 @@
         </ul>
       </div>
     </div>
-    <div>
-    </div>
+    <div></div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { SingerDescription, getSong, getzhuanji, getMvs } from '@api/singer'
 export default {
   name: 'singerDetails',
@@ -132,6 +136,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getSong']),
     showActive() {
       this.show = !this.show
     },
@@ -145,10 +150,19 @@ export default {
       }
       if (num === 3) {
         this.mvs = await getMvs(this.detailsId)
+        console.log(this.mvs)
       }
     },
     goback() {
       this.$router.push({ path: '/singer' })
+    },
+    gomv(id, name) {
+      this.$router.push({ path: '/video', query: { id, name } })
+    },
+    bofangba(id) {
+      this.$router.push({ path: '/playersong' })
+      console.log(id)
+      this.getSong(id)
     },
   },
   async mounted() {
@@ -430,11 +444,15 @@ export default {
     height: 150px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
     li {
       margin-right: 20px;
       img {
         width: 122px;
         height: 92px;
+      }
+      img:hover {
+        box-shadow: 0 0 15px #f00;
       }
       .mvname {
         width: 122px;
@@ -458,6 +476,9 @@ export default {
     z-index: 3;
     bottom: 5px;
     right: 10px;
+  }
+  .iconfont:hover {
+    color: rgba(221, 80, 68);
   }
 }
 </style>

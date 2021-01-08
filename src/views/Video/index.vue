@@ -22,20 +22,28 @@
 </template>
 
 <script>
+import { getMvVideo } from '@api/singer'
 export default {
-  name: "Video",
+  name: 'Video',
   data() {
     return {
-      videoLink: "",
-      imgName: "",
-    };
+      videoLink: '',
+      imgName: '',
+    }
   },
-  mounted() {
-    let { videoLink, imgName } = this.$route.query;
-    this.videoLink = videoLink;
-    this.imgName = imgName;
+  async mounted() {
+    if (this.$route.query.id) {
+      const { id, name } = this.$route.query
+      const videolist = await getMvVideo(id)
+      this.videoLink = videolist.data.brs[240]
+      this.imgName = name
+    } else {
+      let { videoLink, imgName } = this.$route.query
+      this.videoLink = videoLink
+      this.imgName = imgName
+    }
   },
-};
+}
 </script>
 
 <style lang="less" scoped>

@@ -139,7 +139,7 @@ export default {
       lsto: 19,
       currentId: -1,
       currentIdto: -1,
-      numId: 0,
+      numId: '',
       pag: 1,
     }
   },
