@@ -11,21 +11,21 @@ module.exports = {
           '^/api': ''
         }
       },
-      // "/artist": {
-      //   target: "http://42.192.85.86:3000",
-      // },
-      // "/mv": {
-      //   target: "http://42.192.85.86:3000",
-      // },
-      // "/captcha": {
-      //   target: "http://42.192.85.86:3000",
-      // },
-      // "/song": {
-      //   target: "http://42.192.85.86:3000",
-      // },
-      // "/search": {
-      //   target: "http://42.192.85.86:3000",
-      // },
+      "/artist": {
+        target: "http://42.192.85.86:3000",
+      },
+      "/mv": {
+        target: "http://42.192.85.86:3000",
+      },
+      "/captcha": {
+        target: "http://42.192.85.86:3000",
+      },
+      "/song": {
+        target: "http://42.192.85.86:3000",
+      },
+      "/search": {
+        target: "http://42.192.85.86:3000",
+      },
       "/dj": {
         target: "http://localhost:3000",
       },

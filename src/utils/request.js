@@ -10,7 +10,7 @@ const instance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use(
   (config) => {
-    // debugger
+    debugger
     // 开始设置进度条
     NProgress.start();
     let arr = ['/artist', '/search', '/personalized', '/dj', '/mv', '/captcha', '/song']
@@ -19,6 +19,7 @@ instance.interceptors.request.use(
         config.baseURL = ''
       }
     }
+    // }
     // if (arr.indexOf(config.url) !== -1) {
     //   config.baseURL = ''
     // }
