@@ -47,8 +47,14 @@
     <div class="playerSongsFooter">
       <section class="playerSongsFooter-playerBox">
         <div class="playerSongsFooter-playerBox1"></div>
-        <div class="playerSongsFooter-playerBox2"></div>
-        <div class="playerSongsFooter-playerBox3"></div>
+        <div
+          :class="{
+            playerSongsFooterPlayerBox2: !isPlaying,
+            playerSongsFooterPlayerBoxBone: isPlaying,
+          }"
+          @click="isPlay"
+        ></div>
+        <div class="playerSongsFooter-playerBox3" @click="nextSongs"></div>
       </section>
       <section class="playerSongsFooter-playerMain">
         <img :src="this.checkedSongs1[0].songimg" alt="" />
@@ -98,10 +104,13 @@
       </section>
     </div>
     <audio
+      id="audio"
+      ref="isplay"
       :src="this.checkedSongs1[0].songurl"
-      controls="controls"
       autoplay
+      muted
     ></audio>
+    <!-- controls="controls" -->
   </div>
 </template>
 
@@ -112,12 +121,14 @@ export default {
   data() {
     return {
       isShow: false,
+      isPlaying: true,
     };
   },
   mounted() {
     document.body.style.height = "100vh";
     document.body.style["overflow-y"] = "hidden";
-    console.log(this.checkedSongs1);
+    // console.log(this.checkedSongs1);
+    // console.log(this.$refs.isplay);
   },
   computed: {
     ...mapState({
@@ -128,13 +139,38 @@ export default {
     touch() {
       this.isShow = !this.isShow;
     },
+    isPlay() {
+      var audio = document.querySelector("#audio");
+      console.dir(audio);
+      if (this.isPlaying) {
+        audio.pause();
+        this.isPlaying = false;
+        return;
+      }
+      if (!this.isPlaying) {
+        audio.play();
+        this.isPlaying = true;
+        return;
+      }
+    },
+    nextSongs() {
+      // var audio = document.querySelector("#audio");
+      console.log(this.checkedSongs1);
+    },
+    /*  stop() {
+      var audio = document.querySelector("#audio");
+      if (!this.isPlaying) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }, */
   },
 };
 </script>
 
 <style lang="less" scoped>
 .playerSongs {
-  height: 535px;
+  height: 1000px;
   background-image: url(http://img1.juimg.com/160625/330890-16062515300184.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -234,8 +270,10 @@ export default {
     display: flex;
     justify-content: space-around;
     position: relative;
-    top: -52px;
+    top: 10px;
+
     width: 100%;
+
     background-color: rgba(0, 0, 0, 0.4);
     height: 80px;
     .playerSongsFooter-playerBox {
@@ -256,9 +294,17 @@ export default {
       .playerSongsFooter-playerBox1:hover {
         background-position: -36px -143px;
       }
-      .playerSongsFooter-playerBox2 {
+      .playerSongsFooterPlayerBox2 {
         width: 60px;
         height: 60px;
+        cursor: pointer;
+        background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
+        border-radius: 50%;
+      }
+      .playerSongsFooterPlayerBoxBone {
+        width: 60px;
+        height: 60px;
+        background-position: 0 -60px;
         cursor: pointer;
         background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
         border-radius: 50%;
