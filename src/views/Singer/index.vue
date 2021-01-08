@@ -85,52 +85,52 @@
 </template>
 
 <script>
-import { getSinger, getSingerList } from '@api/singer'
+import { getSinger, getSingerList } from "@api/singer";
 export default {
-  name: 'singer',
+  name: "singer",
   data() {
     return {
       singer: [
-        { name: '全部', allId: -1 },
-        { name: '华语', allId: 7 },
-        { name: '欧美', allId: 96 },
-        { name: '日本', allId: 8 },
-        { name: '韩国', allId: 16 },
-        { name: '其他', allId: 0 },
+        { name: "全部", allId: -1 },
+        { name: "华语", allId: 7 },
+        { name: "欧美", allId: 96 },
+        { name: "日本", allId: 8 },
+        { name: "韩国", allId: 16 },
+        { name: "其他", allId: 0 },
       ],
       singerAll: [
-        { name: '男歌手', allId: 1 },
-        { name: '女歌手', allId: 2 },
-        { name: '乐队', allId: 3 },
+        { name: "男歌手", allId: 1 },
+        { name: "女歌手", allId: 2 },
+        { name: "乐队", allId: 3 },
       ],
 
       letter: [
-        'A',
-        'B',
-        'C',
-        'D',
-        'E',
-        'F',
-        'G',
-        'H',
-        'I',
-        'J',
-        'K',
-        'L',
-        'M',
-        'N',
-        'O',
-        'P',
-        'Q',
-        'R',
-        'S',
-        'T',
-        'U',
-        'V',
-        'W',
-        'X',
-        'Y',
-        'Z',
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
       ],
       singerList: {},
       farst: [],
@@ -139,67 +139,69 @@ export default {
       lsto: 19,
       currentId: -1,
       currentIdto: -1,
-      numId: '',
+      numId: "",
       pag: 1,
-    }
+    };
   },
   methods: {
     async search(id) {
-      this.currentId = id
-      const typeList = await getSingerList(id, this.currentIdto)
-      this.singerList = typeList
-      this.farst = this.singerList.artists.slice(0, 18)
-      this.last = this.singerList.artists.slice(18, 50)
+      this.currentId = id;
+      const typeList = await getSingerList(id, this.currentIdto);
+
+      this.singerList = typeList;
+      this.farst = this.singerList.artists.slice(0, 18);
+      this.last = this.singerList.artists.slice(18, 50);
     },
     async searchTo(id) {
-      this.currentIdto = id
-      const typeList = await getSingerList(this.currentId, id)
-      this.singerList = typeList
-      this.farst = this.singerList.artists.slice(0, 18)
-      this.last = this.singerList.artists.slice(18, 50)
+      this.currentIdto = id;
+      const typeList = await getSingerList(this.currentId, id);
+      this.singerList = typeList;
+      this.farst = this.singerList.artists.slice(0, 18);
+      this.last = this.singerList.artists.slice(18, 50);
     },
     async numList(num, index) {
-      this.numId = index
+      this.numId = index;
       this.singerList = await getSingerList(
         this.currentId,
         this.currentIdto,
         num
-      )
-      this.farst = this.singerList.artists.slice(0, 18)
-      this.last = this.singerList.artists.slice(18, 50)
+      );
+      this.farst = this.singerList.artists.slice(0, 18);
+      this.last = this.singerList.artists.slice(18, 50);
     },
     nextList() {
-      const endList = this.singerList.artists.slice(50, 100)
-      this.farst = endList.slice(0, 18)
-      this.last = endList.slice(18, 50)
+      const endList = this.singerList.artists.slice(50, 100);
+      this.farst = endList.slice(0, 18);
+      this.last = endList.slice(18, 50);
     },
     prevList() {
-      this.farst = this.singerList.artists.slice(0, 18)
-      this.last = this.singerList.artists.slice(18, 50)
+      this.farst = this.singerList.artists.slice(0, 18);
+      this.last = this.singerList.artists.slice(18, 50);
     },
     handleCurrentChange(pag) {
       if (pag === 1) {
-        this.nextList()
+        this.nextList();
       } else {
-        this.prevList()
+        this.prevList();
       }
     },
     jumpNext(id, img) {
-      this.$router.push({ path: '/singerDetails', query: { id } })
-      localStorage.setItem('image', img)
+      this.$router.push({ path: "/singerDetails", query: { id } });
+      localStorage.setItem("image", img);
     },
   },
   async mounted() {
     // debugger
-    console.log(getSinger)
-    const singerList = await getSinger()
-    this.singerList = singerList
-    console.log(this.farst)
-    this.farst = this.singerList.artists.slice(0, 18)
-    this.last = this.singerList.artists.slice(18, 50)
+    // console.log(getSinger);
+    const singerList = await getSinger();
+    this.singerList = singerList;
+    console.log("singerList", singerList);
+    console.log(this.farst);
+    this.farst = this.singerList.artists.slice(0, 18);
+    this.last = this.singerList.artists.slice(18, 50);
   },
   components: {},
-}
+};
 </script>
 
 <style lang="less" scoped>
@@ -265,7 +267,7 @@ export default {
         margin-right: 1px;
         color: #333;
         font-size: 15px;
-        font-family: '微软雅黑';
+        font-family: "微软雅黑";
       }
       a:hover {
         background: rgba(133, 210, 242);

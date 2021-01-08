@@ -13,24 +13,33 @@ instance.interceptors.request.use(
     // debugger
     // 开始设置进度条
     NProgress.start();
-    if (config.url.indexOf('/artist') !== -1) {
-      config.baseURL = ''
+    let arr = ['/artist', '/search', '/personalized', '/dj', '/mv', '/captcha', '/song']
+    for (let i = 0; i < arr.length; i++) {
+      if (config.url.indexOf(arr[i]) !== -1) {
+        config.baseURL = ''
+      }
     }
-    if (config.url.indexOf('/mv') !== -1) {
-      config.baseURL = ''
-    }
-    if (config.url.indexOf('/captcha') !== -1) {
-      config.baseURL = ''
-    }
-    if (config.url.indexOf('/song') !== -1) {
-      config.baseURL = ''
-    }
-    if (config.url.indexOf('/search') !== -1) {
-      config.baseURL = ''
-    }
-    if (config.url.indexOf('/dj') !== -1) {
-      config.baseURL = ''
-    }
+    // if (arr.indexOf(config.url) !== -1) {
+    //   config.baseURL = ''
+    // }
+    // if (config.url.indexOf('/artist') !== -1) {
+    //   config.baseURL = ''
+    // }
+    // if (config.url.indexOf('/mv') !== -1) {
+    //   config.baseURL = ''
+    // }
+    // if (config.url.indexOf('/captcha') !== -1) {
+    //   config.baseURL = ''
+    // }
+    // if (config.url.indexOf('/song') !== -1) {
+    //   config.baseURL = ''
+    // }
+    // if (config.url.indexOf('/search') !== -1) {
+    //   config.baseURL = ''
+    // }
+    // if (config.url.indexOf('/dj') !== -1) {
+    //   config.baseURL = ''
+    // }
 
     return config;
   }
@@ -42,6 +51,12 @@ instance.interceptors.response.use(
     // 不管是不是成功还是失败，都结束进度条
     NProgress.done();
     let { data, config } = res;
+    // let { data } = res;
+    // let arr = ['/artist', '/search', '/personalized', '/dj', '/mv', '/mcaptchav', '/song']
+    // if (arr.indexOf(config.url) > -1) {
+    //   return data;
+    // }
+
     if (config.url.indexOf("/artist") !== -1) {
       return data;
     }
