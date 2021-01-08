@@ -1,6 +1,20 @@
 <template>
   <div class="mainPage">
-    <Header />
+    <!-- 轮播图 -->
+    <div class="banners">
+      <div class="swiper-container" ref="homeSwi">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="banner in banners" :key="banner.id">
+            <!-- 新加的 -->
+            <a :style="'background-image:url(' + banner.imgUrl + ')'"></a>
+          </div>
+        </div>
+        <!-- 小点点 -->
+        <ul class="pagin swiper-pagination" v-if="banners">
+          <li v-for="(item, index) in banners.length" :key="index"></li>
+        </ul>
+      </div>
+    </div>
     <div class="content">
       <div class="subContent">
         <div class="selectSongList">
@@ -12,12 +26,16 @@
             <a href="#">更多</a>
           </div>
           <div class="itemContent">
-            <div class="cptBig">
+            <div
+              class="cptBig"
+              v-for="(item, index) in hotSongsDataOne"
+              :key="index"
+            >
               <p class="cptT">
                 <i class="iconfont icon-erji"></i>
                 <span class="num">36.2万</span>
               </p>
-              <img src="@assets/images/ia_100000003.jpg" alt="" />
+              <img :src="item.imgUrl" alt="" />
               <div class="cover">
                 <a target="_blank" href="#"> </a>
                 <div
@@ -27,17 +45,21 @@
                 ></div>
               </div>
               <div class="cptB">
-                <p class="songListName">乡村之旅：安静惬意·与自然同在</p>
-                <p class="songListSinger">蔓若</p>
+                <p class="songListName">{{ item.songsName }}</p>
+                <p class="songListSinger">{{ item.singer }}</p>
               </div>
             </div>
             <div class="smallDiv">
-              <div class="cptMid">
+              <div
+                class="cptMid"
+                v-for="(item, index) in hotSongsDataTwo"
+                :key="index"
+              >
                 <p class="cptT">
                   <span class="iconfont icon-erji"></span>
                   <span class="num">2.1万</span>
                 </p>
-                <img src="@assets/images/ia_100000004.jpg" />
+                <img :src="item.imgUrl" />
                 <div class="cover">
                   <a target="_blank" href="#"> </a>
                   <div
@@ -47,65 +69,8 @@
                   ></div>
                 </div>
                 <div class="cptB">
-                  <p class="songListName">通勤必备！独享耳机里欢快的小轻松</p>
-                  <p class="songListSinger">高珊珊</p>
-                </div>
-              </div>
-              <div class="cptMid">
-                <p class="cptT">
-                  <span class="iconfont icon-erji"></span>
-                  <span class="num">2.1万</span>
-                </p>
-                <img src="@assets/images/ia_100000004.jpg" />
-                <div class="cover">
-                  <a target="_blank" href="#"> </a>
-                  <div
-                    class="playBtn iconfont icon-jiantou"
-                    data-index="0"
-                    data-id="3339907"
-                  ></div>
-                </div>
-                <div class="cptB">
-                  <p class="songListName">通勤必备！独享耳机里欢快的小轻松</p>
-                  <p class="songListSinger">高珊珊</p>
-                </div>
-              </div>
-              <div class="cptMid">
-                <p class="cptT">
-                  <span class="iconfont icon-erji"></span>
-                  <span class="num">2.1万</span>
-                </p>
-                <img src="@assets/images/ia_100000004.jpg" />
-                <div class="cover">
-                  <a target="_blank" href="#"> </a>
-                  <div
-                    class="playBtn iconfont icon-jiantou"
-                    data-index="0"
-                    data-id="3339907"
-                  ></div>
-                </div>
-                <div class="cptB">
-                  <p class="songListName">通勤必备！独享耳机里欢快的小轻松</p>
-                  <p class="songListSinger">高珊珊</p>
-                </div>
-              </div>
-              <div class="cptMid">
-                <p class="cptT">
-                  <span class="iconfont icon-erji"></span>
-                  <span class="num">2.1万</span>
-                </p>
-                <img src="@assets/images/ia_100000004.jpg" />
-                <div class="cover">
-                  <a target="_blank" href="#"> </a>
-                  <div
-                    class="playBtn iconfont icon-jiantou"
-                    data-index="0"
-                    data-id="3339907"
-                  ></div>
-                </div>
-                <div class="cptB">
-                  <p class="songListName">通勤必备！独享耳机里欢快的小轻松</p>
-                  <p class="songListSinger">高珊珊</p>
+                  <p class="songListName">{{ item.songsName }}</p>
+                  <p class="songListSinger">{{ item.singer }}</p>
                 </div>
               </div>
             </div>
@@ -120,41 +85,22 @@
             <a href="#">更多</a>
           </div>
           <div class="itemContent">
-            <div class="listItem">
+            <div
+              class="listItem"
+              v-for="(item, index) in hotSongList"
+              :key="index"
+            >
               <a href="#">
                 <span></span>
-                <img src="@assets/images/ia_100000008.jpg" alt="" />
+                <img :src="item.imgUrl" alt="" />
                 <div>
                   <dl class="list">
-                    <dt>酷狗飙升榜</dt>
-                    <dd>1 . 黄凯芹 - 焚情</dd>
-                    <dd>2 . 阮言Ruany - 难生恨</dd>
-                  </dl>
-                </div>
-              </a>
-            </div>
-            <div class="listItem">
-              <a href="#">
-                <span></span>
-                <img src="@assets/images/ia_100000008.jpg" alt="" />
-                <div>
-                  <dl class="list">
-                    <dt>酷狗飙升榜</dt>
-                    <dd>1 . 黄凯芹 - 焚情</dd>
-                    <dd>2 . 阮言Ruany - 难生恨</dd>
-                  </dl>
-                </div>
-              </a>
-            </div>
-            <div class="listItem">
-              <a href="#">
-                <span></span>
-                <img src="@assets/images/ia_100000008.jpg" alt="" />
-                <div>
-                  <dl class="list">
-                    <dt>酷狗飙升榜</dt>
-                    <dd>1 . 黄凯芹 - 焚情</dd>
-                    <dd>2 . 阮言Ruany - 难生恨</dd>
+                    <dt>{{ item.Name }}</dt>
+                    <dd v-for="(song, index) in item.songs" :key="index">
+                      <!-- 1 . 黄凯芹 - 焚情 -->
+                      {{ song.id }}. {{ song.singer }}-{{ song.songName }}
+                    </dd>
+                    <!-- <dd>2 . 阮言Ruany - 难生恨</dd> -->
                   </dl>
                 </div>
               </a>
@@ -189,10 +135,10 @@
           <div class="itemContent">
             <div class="tabC">
               <ul>
-                <li>
+                <li v-for="(item, index) in 16" :key="index">
                   <a href="#">
-                    <span>杨小壮 - 烟雨成思</span>
-                    <span class="songtips"></span>
+                    <span class="songName">杨小壮 - 烟雨成思</span>
+                    <span class="songTips"></span>
                     <span class="songTime">03:10</span>
                     <span class="iconfont" style="display: none"></span>
                     <span class="iconfont"></span>
@@ -201,7 +147,9 @@
               </ul>
             </div>
           </div>
-          <div class="pages"></div>
+          <div class="page">
+            <span class="currentPage">1</span>/<span class="allPage">3</span>
+          </div>
         </div>
         <div class="albumList">
           <div class="itemTitle">
@@ -211,7 +159,118 @@
             </h3>
             <a href="#">更多</a>
           </div>
-          <div class="itemContent"></div>
+          <div class="itemContent">
+            <div class="cptBigL" v-for="item in mvLarge" :key="item.id">
+              <a href="#">
+                <img :src="item.picUrl" alt="" />
+                <div class="cover">
+                  <div class="playBtn iconfont icon-jiantou"></div>
+                </div>
+                <div class="cptB">
+                  <p class="songListName">{{ item.name }}</p>
+                  <p class="songListSinger">{{ item.artists[0].name }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="cptMidL" v-for="item in mvSmall" :key="item.id">
+              <a href="#">
+                <img :src="item.picUrl" alt="" />
+                <div class="cover">
+                  <div class="playBtn iconfont icon-jiantou"></div>
+                </div>
+                <div class="cptB">
+                  <p class="songListName">{{ item.name }}</p>
+                  <p class="songListSinger">{{ item.artists[0].name }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hardWare">
+        <a href="#" class="bannerLink">
+          <img class="bannerImg" src="@assets/images/ia_100000011.jpg" alt="" />
+        </a>
+      </div>
+      <div class="subContentF">
+        <div class="hotRadio">
+          <div class="itemTitle">
+            <h3>
+              <b>热门</b>
+              <span>电台</span>
+            </h3>
+            <a href="#">更多</a>
+          </div>
+          <div class="itemContent">
+            <ul>
+              <li v-for="(item, index) in djProgram" :key="index">
+                <a href="#" class="">
+                  <div class="cover">
+                    <div class="playBtn iconfont icon-kongxinjiantou33"></div>
+                  </div>
+                  <div class="radioLogo">
+                    <img :src="item.picUrl" alt="" />
+                  </div>
+                  <div class="radiokind">{{ item.rcmdtext }}</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="hotSinger">
+          <div class="itemTitle">
+            <h3>
+              <b>精选</b>
+              <span>歌单</span>
+            </h3>
+            <div class="tabT">
+              <span class="active" data="0">华语</span>
+              <span data="1" class="">欧美</span>
+              <span data="2" class="">日韩</span>
+              <span data="3"><a class="more" href="#">更多</a></span>
+            </div>
+          </div>
+          <div class="itemContent">
+            <div
+              class="cptMid"
+              v-for="(item, index) in hotSingerMid"
+              :key="index"
+            >
+              <a href="#">
+                <img :src="item.picUrl" alt="" />
+                <div class="cover"></div>
+                <div class="cptB">
+                  <p class="songListSinger">{{ item.name }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="cptSmall" v-for="item in hotSingerSmall" :key="item.id">
+              <a href="#">
+                <img :src="item.picUrl" alt="" />
+                <div class="cover"></div>
+                <div class="cptB">
+                  <p class="songListSinger">{{ item.name }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hardWare">
+        <a href="#" class="bannerLink">
+          <img class="bannerImg" src="@assets/images/ia_100000011.jpg" alt="" />
+        </a>
+      </div>
+      <div class="friendLink">
+        <div class="itemTitle">
+          <h3>
+            <b>友情</b>
+            <span>链接</span>
+          </h3>
+          <a href="#">更多</a>
+        </div>
+        <div class="itemContent">
+          <a v-for="(item, index) in 16" :key="index">爱美网</a>
         </div>
       </div>
     </div>
@@ -219,21 +278,129 @@
 </template>
 
 <script>
-// import Header from "@comps/Header";
+import {
+  getHomeBannersData,
+  getSelectedHotSongs,
+  gethotSongsList,
+  djProgram,
+  getHotSinger,
+  getCommendMv,
+} from "@api/home";
+//import { mapActions } from "vuex";
+
+import Swiper, { Pagination, Autoplay, EffectFade } from "swiper";
+Swiper.use([Pagination, Autoplay, EffectFade]);
 export default {
   name: "Home",
-  // components: {
-  //   Header,
-  // },
+  data() {
+    return {
+      banners: [],
+      hotSongsDataOne: [],
+      hotSongsDataTwo: [],
+      hotSongList: [],
+      djProgram: [],
+      hotSinger: [],
+      hotSingerMid: [],
+      hotSingerSmall: [],
+      mvLarge: [],
+      mvSmall: [],
+    };
+  },
+  methods: {
+    //...mapActions(["hotSongs"]),
+  },
+  watch: {
+    banners() {
+      this.$nextTick(() => {
+        new Swiper(this.$refs.homeSwi, {
+          loop: true,
+          // If we need pagination
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          effect: "fade",
+          // 自动轮播
+          autoplay: {
+            delay: 2000, // 间隔时间
+            disableOnInteraction: false, // 当用户点击下一页之后，轮播继续
+          },
+        });
+      });
+    },
+  },
+  async mounted() {
+    //获取轮播图数据
+    let bannerData = await getHomeBannersData();
+    this.banners = bannerData.banners;
+    //获取精选歌单数据
+    let hotSongsData = await getSelectedHotSongs();
+    this.hotSongsDataOne = hotSongsData.selectedHotSongs.slice(0, 1);
+    this.hotSongsDataTwo = hotSongsData.selectedHotSongs.slice(1, 5);
+    //获取热门榜单数据
+    let hotSongListData = await gethotSongsList();
+    this.hotSongList = hotSongListData.selectedHotSongs;
+    //获取电台数据
+    let djProgramData = await djProgram();
+    this.djProgram = djProgramData.djRadios.slice(0, 10);
+    //热门歌手数据
+    let hotSingerData = await getHotSinger();
+    this.hotSingerMid = hotSingerData.artists.slice(0, 2);
+    this.hotSingerSmall = hotSingerData.artists.slice(2, 5);
+    //推荐MV数据
+    let commendMv = await getCommendMv();
+    this.mvLarge = commendMv.result.slice(0, 1);
+    this.mvSmall = commendMv.result.slice(1, 3);
+  },
 };
 </script>
 
 <style lang="less" scoped>
+.banners {
+  .swiper-container {
+    height: 445px;
+    a {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      padding: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-origin: top;
+      background-size: contain;
+      transform: scale(1.5);
+    }
+    .swiper-pagination-bullet {
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+    }
+  }
+  .pagin {
+    width: 320px;
+    height: 30px;
+    position: absolute;
+    display: flex;
+    bottom: 4px;
+    left: 40%;
+    z-index: 6;
+    align-items: center;
+    justify-content: space-evenly;
+    /deep/.swiper-pagination-bullet,
+    li {
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: 0 10px;
+    }
+  }
+}
 .content {
   width: 1000px;
-  // height: 500px;
   margin: 0 auto;
-  border: 1px pink solid;
+  box-sizing: border-box;
+  margin-top: 40px;
   .subContent {
     width: 100%;
     display: flex;
@@ -349,7 +516,6 @@ export default {
     }
   }
 }
-
 .selectSongList .itemContent .smallDiv {
   width: 330px;
   height: 330px;
@@ -545,7 +711,6 @@ export default {
           }
         }
       }
-
       .playAll {
         border: 1px solid #dbdbdb;
         border-radius: 2px;
@@ -571,11 +736,21 @@ export default {
               display: block;
               z-index: 999;
               padding: 0 10px;
+              text-decoration: none;
               color: #333;
+              font-size: 13px;
+              .songTime {
+                position: absolute;
+                top: 0;
+                right: 10px;
+              }
             }
           }
         }
       }
+    }
+    .page {
+      text-align: center;
     }
   }
   .albumList {
@@ -601,7 +776,412 @@ export default {
         font-size: 13px;
       }
     }
+    .itemContent {
+      width: 332px;
+      display: flex;
+      flex-wrap: wrap;
+      .cptBigL {
+        width: 320px;
+        height: 175px;
+        margin-bottom: 12px;
+        // border: 1px black solid;
+        box-sizing: border-box;
+        a {
+          position: relative;
+          display: block;
+          width: 320px;
+          height: 175px;
+          img {
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+          }
+          &:hover .cover {
+            display: block;
+          }
+          .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            .playBtn {
+              position: absolute;
+              top: 33%;
+              left: 46%;
+              font-size: 45px;
+              color: white;
+              z-index: 9999;
+              cursor: pointer;
+            }
+          }
+          .cptB {
+            width: 304px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            padding: 6px 8px;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 14px;
+            height: 38px;
+            .songListName {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              color: #fff;
+              line-height: 19px;
+            }
+            .songListSinger {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              color: #cfcfcf;
+              line-height: 19px;
+              z-index: 5;
+            }
+          }
+        }
+      }
+      .cptMidL {
+        position: relative;
+        width: 154px;
+        height: 125px;
+        margin-right: 12px;
+        // border: 1px black solid;
+        box-sizing: border-box;
+        a {
+          position: relative;
+          display: block;
+          width: 154px;
+          height: 125px;
+          img {
+            z-index: 1;
+            width: 100%;
+            height: 84px;
+          }
+          &:hover .cover {
+            display: block;
+          }
+          .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            width: 100%;
+            height: 84px;
+            z-index: 2;
+            .playBtn {
+              position: absolute;
+              top: 16%;
+              left: 39%;
+              font-size: 45px;
+              color: white;
+              z-index: 9999;
+              cursor: pointer;
+            }
+          }
+          .cptB {
+            width: 138px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            padding: 5px 0 0;
+            background: 0 0;
+            font-size: 14px;
+            height: 38px;
+            .songListName {
+              width: 154px;
+              color: #444;
+              font-size: 14px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            .songListSinger {
+              white-space: nowrap;
+              // overflow: hidden;
+              text-overflow: ellipsis;
+              color: #888;
+              font-size: 12px;
+              line-height: 19px;
+              z-index: 5;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.subContentF {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  .hotRadio {
+    width: 650px;
+    .itemTitle {
+      height: 30px;
+      padding-bottom: 30px;
+      background: url(../../assets/images/ia_100000463.jpg) no-repeat 0 0;
+      display: flex;
+      justify-content: space-between;
+      h3 {
+        font-size: 0;
+      }
+      a {
+        margin-top: 7px;
+        color: #999;
+        text-decoration: none;
+      }
+    }
+    .itemContent {
+      width: 700px;
+      ul {
+        display: flex;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        li {
+          width: 100px;
+          margin-right: 37px;
+          margin-bottom: 25px;
+          &:hover a .cover {
+            display: block;
+          }
+          a {
+            position: relative;
+            outline: none;
+            text-decoration: none;
+            // font-size: 100%;
+            .cover {
+              display: none;
+              position: absolute;
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              visibility: visible;
+              z-index: 999;
+              background: rgba(0, 0, 0, 0.3);
+              background-size: 100% 100%;
+              .playBtn {
+                position: absolute;
+                top: 49%;
+                left: 57%;
+                margin-top: -21px;
+                margin-left: -21px;
+                font-size: 35px;
+                color: #fff;
+              }
+            }
+            .radioLogo {
+              width: 100px;
+              height: 100px;
+              margin-bottom: 10px;
+              margin-right: 0;
+              img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+              }
+            }
+            .radioKind {
+              width: 100px;
+              text-align: center;
+              line-height: 20px;
+              font-size: 14px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+  }
+  .hotSinger {
+    width: 330px;
+    .itemTitle {
+      height: 30px;
+      padding-bottom: 30px;
+      background: url(../../assets/images/ia_100000474.jpg) no-repeat 0 0;
+      display: flex;
+      justify-content: space-between;
+      h3 {
+        display: block;
+        width: 120px;
+        height: 30px;
+        margin-right: 15px;
+        color: #555;
+        font-size: 0;
+      }
+      .tabT {
+        width: 210px;
+        line-height: 30px;
+        .more {
+          margin-top: 7px;
+          color: #999;
+          text-decoration: none;
+        }
+        span {
+          margin-right: 20px;
+          cursor: pointer;
+          font-size: 14px;
+        }
+      }
+    }
+    .itemContent {
+      display: flex;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      // display: float;
+      // float: left;
+      .cptMid {
+        width: 160px;
+        height: 160px;
+        padding: 0;
+        position: relative;
+        margin: 0 5px 5px 0;
+        // border: 1px black solid;
+        box-sizing: border-box;
+        a {
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          outline: none;
+          font-size: 100%;
+          &:hover .cover {
+            display: block;
+          }
+          img {
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+          }
+          .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 160px;
+            height: 160px;
+            display: none;
+            background: rgba(0, 0, 0, 0.3);
+          }
+          .cptB {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            padding: 6px 8px;
+            font-size: 14px;
+            height: 38px;
+            .songListSinger {
+              line-height: 50px;
+              color: #fff;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+      .cptSmall {
+        position: relative;
+        width: 105px;
+        height: 105px;
+        padding: 0;
+        margin: 0 5px 0 0;
+        // border: 1px black solid;
+        box-sizing: border-box;
+        a {
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          outline: none;
+          font-size: 100%;
+          &:hover .cover {
+            display: block;
+          }
+          img {
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+          }
+          .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 105px;
+            height: 105px;
+            display: none;
+            background: rgba(0, 0, 0, 0.3);
+          }
+          .cptB {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            padding: 6px 8px;
+            font-size: 14px;
+            height: 38px;
+            .songListSinger {
+              line-height: 50px;
+              color: #fff;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.friendLink {
+  width: 100%;
+  .itemTitle {
+    height: 30px;
+    padding-bottom: 30px;
+    background: url(../../assets/images/ia_100000488.jpg) no-repeat 0 0;
+    display: flex;
+    justify-content: space-between;
+    h3 {
+      display: block;
+      width: 120px;
+      height: 30px;
+      margin-right: 15px;
+      color: #555;
+      font-size: 0;
+    }
+    a {
+      margin-top: 7px;
+      color: #999;
+      text-decoration: none;
+      font-size: 13px;
+    }
+  }
+  .itemContent {
+    padding-bottom: 20px;
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    a {
+      overflow: hidden;
+      display: block;
+      width: 125px;
+      height: 24px;
+      line-height: 24px;
+      margin-bottom: 20px;
+      color: #555;
+      text-decoration: none;
+      outline: none;
+      &:hover {
+        color: #009af3;
+      }
+    }
   }
 }
 </style>
-

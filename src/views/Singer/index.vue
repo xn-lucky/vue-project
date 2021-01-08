@@ -41,7 +41,11 @@
             <div class="imgList">
               <div v-for="(list, index) in farst" :key="list.id">
                 <div>
-                  <a class="pic" hidefocus="true">
+                  <a
+                    class="pic"
+                    hidefocus="true"
+                    @click="jumpNext(list.id, list.picUrl)"
+                  >
                     <img :src="list.picUrl" id="image" />
                     <i>{{ lst + index }}<em>st</em></i>
                   </a>
@@ -55,7 +59,9 @@
           <ul class="bottomList">
             <li v-for="(las, index) in last" :key="las.id">
               <span>{{ lsto + index }}<em>st</em></span>
-              <a class="text">{{ las.name }}</a>
+              <a class="text" @click="jumpNext(las.id, las.picUrl)">{{
+                las.name
+              }}</a>
             </li>
           </ul>
         </div>
@@ -178,10 +184,17 @@ export default {
         this.prevList()
       }
     },
+    jumpNext(id, img) {
+      this.$router.push({ path: '/singerDetails', query: { id } })
+      localStorage.setItem('image', img)
+    },
   },
   async mounted() {
+    // debugger
+    console.log(getSinger)
     const singerList = await getSinger()
     this.singerList = singerList
+    console.log(this.farst)
     this.farst = this.singerList.artists.slice(0, 18)
     this.last = this.singerList.artists.slice(18, 50)
   },
@@ -197,11 +210,14 @@ export default {
 }
 .content {
   background-color: rgba(255, 255, 255;);
+  width: 1000px;
+  height: 700px;
+  margin: 0 auto;
 }
 .context {
   display: flex;
   width: 1000px;
-  margin: 0 auto;
+  height: 700px;
   height: 590px;
   justify-content: space-between;
   .left {

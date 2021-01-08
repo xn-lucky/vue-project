@@ -3,187 +3,60 @@
     <div class="left">
       <dl class="dl">
         <dt>
-          <a class="active" href="javascript(0)">推荐</a>
+          <a
+            :class="currentIndex === 1 ? 'active' : ''"
+            href="javascript:;"
+            @click.prevent="changeSong(1)"
+            >推荐</a
+          >
         </dt>
         <dt>
-          <a href="javascript(0)">最热</a>
+          <a
+            href="javascript:;"
+            @click.prevent="changeSong(2)"
+            :class="currentIndex === 2 ? 'active' : ''"
+            >最热</a
+          >
         </dt>
         <dt>
-          <a href="javascript(0)">热藏</a>
+          <a
+            href="javascript:;"
+            @click.prevent="changeSong(3)"
+            :class="currentIndex === 3 ? 'active' : ''"
+            >热藏</a
+          >
         </dt>
         <dt>
-          <a href="javascript(0)">飙升</a>
+          <a
+            href="javascript:;"
+            @click.prevent="changeSong(4)"
+            :class="currentIndex === 4 ? 'active' : ''"
+            >飙升</a
+          >
         </dt>
       </dl>
     </div>
     <div class="right">
-      <ul class="ulAlbums">
-        <li>
+      <ul class="ulAlbums" ref="wrapper">
+        <li v-for="item in songList" :key="item.id">
           <div class="pic">
-            <router-link to="/songshowlist">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
+            <router-link :to="`/songshowlist/${item.id}`">
+              <img :src="item.image" alt="" />
             </router-link>
           </div>
           <div class="detail">
             <div class="top">
               <strong
                 ><a
-                  title="一键收藏！100首抖音热歌合集"
+                  :title="item.title"
                   href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
+                  >{{ item.title }}</a
                 >
                 <!--<span>()</span>-->
               </strong>
-              <em>制作人：下雨啦</em>
+              <em>制作人：{{ item.producer }}</em>
             </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
-            <div class="btn">
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
-                </span></a
-              >
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
-                </span></a
-              >
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="pic">
-            <router-link to="/songshowlist">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
-            </router-link>
-          </div>
-          <div class="detail">
-            <div class="top">
-              <strong
-                ><a
-                  title="一键收藏！100首抖音热歌合集"
-                  href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
-                >
-                <!--<span>()</span>-->
-              </strong>
-              <em>制作人：下雨啦</em>
-            </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
-            <div class="btn">
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
-                </span></a
-              >
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
-                </span></a
-              >
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="pic">
-            <router-link to="/songshowlist">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
-            </router-link>
-          </div>
-          <div class="detail">
-            <div class="top">
-              <strong
-                ><a
-                  title="一键收藏！100首抖音热歌合集"
-                  href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
-                >
-                <!--<span>()</span>-->
-              </strong>
-              <em>制作人：下雨啦</em>
-            </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
-            <div class="btn">
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
-                </span></a
-              >
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
-                </span></a
-              >
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="pic">
-            <router-link to="/songshowlist">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
-            </router-link>
-          </div>
-          <div class="detail">
-            <div class="top">
-              <strong
-                ><a
-                  title="一键收藏！100首抖音热歌合集"
-                  href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
-                >
-                <!--<span>()</span>-->
-              </strong>
-              <em>制作人：下雨啦</em>
-            </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
-            <div class="btn">
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-kongxinjiantou33"></i><i>播放全部</i>
-                </span></a
-              >
-              <a href="javascript:void(0)"
-                ><span
-                  ><i class="iconfont icon-fenxiang1"></i><i>分享</i>
-                </span></a
-              >
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="pic">
-            <router-link to="/songshowlist">
-              <img
-                src="https://imgessl.kugou.com/custom/150/20201112/20201112171715881992.jpg"
-                alt=""
-              />
-            </router-link>
-          </div>
-          <div class="detail">
-            <div class="top">
-              <strong
-                ><a
-                  title="一键收藏！100首抖音热歌合集"
-                  href="https://www.kugou.com/yy/special/single/3205324.html"
-                  >一键收藏！100首抖音热歌合集</a
-                >
-                <!--<span>()</span>-->
-              </strong>
-              <em>制作人：下雨啦</em>
-            </div>
-            <div class="text">热门好歌一键收藏！再也不怕歌荒啦~</div>
+            <div class="text">{{ item.paper }}</div>
             <div class="btn">
               <a href="javascript:void(0)"
                 ><span
@@ -211,12 +84,73 @@ export default {
   data() {
     return {
       currentIndex: 1,
+      songList: [],
+      result: {},
     };
+  },
+  created() {
+    // this.loadData();
+  },
+
+  methods: {
+    changeSong(index) {
+      if (index === 1) {
+        this.songList = this.result.songList1;
+        this.currentIndex = 1;
+      }
+      if (index === 2) {
+        this.songList = this.result.songList2;
+        this.currentIndex = 2;
+      }
+      if (index === 3) {
+        this.songList = this.result.songList3;
+        this.currentIndex = 3;
+      }
+      if (index === 4) {
+        this.songList = this.result.songList4;
+        this.currentIndex = 4;
+      }
+    },
+
+    /* loadData() {
+      getSongList().then((res) => {
+        this.result = res;
+        // console.log(res);
+        // console.log(!this.songList);
+
+        // console.log(res);
+        // this.songList = this.result.songList1;
+        // console.log(this.songList );
+        // console.log(res.songList2, "2222");
+        this.songList = this.songList.concat(res.songList2);
+        // console.log(this.songList);
+        // console.log(this.songList);
+      });
+    }, */
   },
   async mounted() {
     let result = await getSongList();
-    console.log(JSON.parse(result));
+    this.result = result;
+    // console.log(result);
+    this.songList = result.songList1;
+
+    window.onscroll = () => {
+      if (
+        //html滚动高度大于html本身高度大于视口高度时候触发这个事件，用concat连接即可
+        document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - window.innerHeight
+      ) {
+        // this.loadData();
+        this.songList = this.songList.concat(this.result.songList4);
+      }
+    };
   },
+  // watch: {
+  //   songList(value) {
+  //     if (!value.length) return;
+  //     this.$nextTick(() => {});
+  //   },
+  // },
 };
 </script>
 
@@ -266,6 +200,7 @@ export default {
   }
   .right {
     width: 790px;
+
     color: #8e8e8e;
     margin-top: 20px;
     position: relative;

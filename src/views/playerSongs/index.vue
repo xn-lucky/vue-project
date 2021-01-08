@@ -5,7 +5,7 @@
         <div class="playerSongsItem-box-left">
           <div class="playerSongsItem-box-left-img">
             <!-- src="https://www.kugou.com/yy/static/images/play/default.jpg" -->
-            <img :src="this.checkedSongs1[0].songimg" alt="" />
+            <img :src="checkedSongs1[thisSongsId].songimg" alt="" />
           </div>
           <div class="playerSongsItem-box-left-botton">
             <span>下载这首歌曲</span>
@@ -16,14 +16,19 @@
         </div>
         <div class="layerSongsItem-box-right">
           <div class="layerSongsItem-box-right-title">
-            <p>{{ this.checkedSongs1[0].songsName }}</p>
+            <p>{{ checkedSongs1[thisSongsId].songsName }}</p>
           </div>
           <div class="layerSongsItem-box-right-singer">
-            <p><span>专辑:</span> {{ this.checkedSongs1[0].zhuanji }}</p>
-            <p><span>歌手:</span> {{ this.checkedSongs1[0].singer }}</p>
+            <p><span>专辑:</span> {{ checkedSongs1[thisSongsId].zhuanji }}</p>
+            <p><span>歌手:</span> {{ checkedSongs1[thisSongsId].singer }}</p>
           </div>
           <div class="layerSongsItem-box-right-lyric">
-            <section class="layerSongsItem-box-right-lyric-box">
+            <GcShow
+              :currentTime="currentTime"
+              :duration="duration"
+              :lyrics="checkedSongs1[thisSongsId].lyrics"
+            />
+            <!-- <section class="layerSongsItem-box-right-lyric-box">
               <p>词:小壮</p>
               <p>曲:杨林聪</p>
               <p>混音:和平</p>
@@ -39,39 +44,53 @@
               <section class="huakuai-box">
                 <p class="huakuai"></p>
               </section>
-            </section>
+            </section> -->
           </div>
         </div>
       </div>
     </div>
     <div class="playerSongsFooter">
       <section class="playerSongsFooter-playerBox">
-        <div class="playerSongsFooter-playerBox1"></div>
-        <div
+        <div class="playerSongsFooter-playerBox1" @click="preSongs"></div>
+        <!-- <div
           :class="{
             playerSongsFooterPlayerBox2: !isPlaying,
             playerSongsFooterPlayerBoxBone: isPlaying,
           }"
           @click="isPlay"
+        ></div> -->
+        <!-- <div class="playerSongsFooter-playerBox3" @click="nextSongs"></div> -->
+        <div
+          :class="{
+            playerSongsFooterPlayerBox2: !isPlay,
+            playerSongsFooterPlayerBoxBone: isPlay,
+          }"
+          @click="playMusic"
         ></div>
         <div class="playerSongsFooter-playerBox3" @click="nextSongs"></div>
       </section>
       <section class="playerSongsFooter-playerMain">
-        <img :src="this.checkedSongs1[0].songimg" alt="" />
+        <img :src="checkedSongs1[thisSongsId].songimg" alt="" />
         <div class="playerSongsFooter-playerMain-box">
           <p class="playerSongsFooter-playerMain-box1">
-            <span>{{ this.checkedSongs1[0].songsName }}</span
-            ><span class="playerSongsFooter-playerMain-box1-span2"
-              >0{{ Math.floor(this.checkedSongs1[0].songsTime / 60) }}:{{
-                Math.floor(this.checkedSongs1[0].songsTime % 60) >= 10
-                  ? Math.floor(this.checkedSongs1[0].songsTime % 60)
-                  : "0" + Math.floor(this.checkedSongs1[0].songsTime % 60)
+            <span>{{ checkedSongs1[thisSongsId].songsName }} </span>
+            <span>{{ filterCurrentTime }}/{{ filterDuration }}</span>
+            <!-- <span class="playerSongsFooter-playerMain-box1-span2"
+              >0{{ Math.floor(checkedSongs1[0].songsTime / 60) }}:{{
+                Math.floor(checkedSongs1[0].songsTime % 60) >= 10
+                  ? Math.floor(checkedSongs1[0].songsTime % 60)
+                  : "0" + Math.floor(checkedSongs1[0].songsTime % 60)
               }}</span
-            >
+            > -->
           </p>
           <p class="playerSongsFooter-playerMain-box2">
-            <span class="playerSongsFooter-playerMain-box2-span1"></span
-            ><span class="playerSongsFooter-playerMain-box2-span2"></span>
+            <span class="playerSongsFooter-playerMain-box2-span1"></span>
+            <span
+              class="playerSongsFooter-playerMain-box2-span3"
+              :style="{ width: currentWidth + '%' }"
+            >
+              <span class="playerSongsFooter-playerMain-box2-span2"></span>
+            </span>
           </p>
         </div>
       </section>
@@ -87,63 +106,106 @@
           >
             <p class="playerSongsFooter-playerMain-right-box5-box-p1">
               <span class="playerSongsFooter-playerMain-right-box5-box-p1"
-                >播放队列/{{ this.checkedSongs1.length }}</span
-              >
-              <span class="playerSongsFooter-playerMain-right-box5-box-p1-box">
+                >播放队列/{{ checkedSongs1.length }}
                 <span
-                  class="playerSongsFooter-playerMain-right-box5-box-p1-span2"
-                ></span>
-                |<span
-                  class="playerSongsFooter-playerMain-right-box5-box-p1-span3"
-                ></span>
+                  class="playerSongsFooter-playerMain-right-box5-box-p1-box"
+                >
+                  <span
+                    class="playerSongsFooter-playerMain-right-box5-box-p1-span2"
+                  ></span>
+                  |<span
+                    @click="closeHandle"
+                    class="playerSongsFooter-playerMain-right-box5-box-p1-span3"
+                  ></span>
+                </span>
+              </span>
+
+              <span
+                class="playerSongsFooter-playerMain-right-box5-box2"
+                v-for="item in checkedSongs1"
+                :key="item.id"
+              >
+                <span>{{ item.id }}</span>
+                <span>{{ item.songsName }}</span>
+                <span>{{ item.singer }}</span>
+                <span
+                  >0{{ Math.floor(item.songsTime / 60) }}:{{
+                    Math.floor(item.songsTime % 60) >= 10
+                      ? Math.floor(item.songsTime % 60)
+                      : "0" + Math.floor(item.songsTime % 60)
+                  }}</span
+                >
               </span>
             </p>
           </div>
           <span class="playerSongsFooter-playerMain-right-box5" @click="touch">
             <span class="playerSongsFooter-playerMain-right-box5-span">{{
-              this.checkedSongs1.length
+              checkedSongs1.length
             }}</span>
           </span>
         </div>
       </section>
+      <!-- xn加的 -->
+      <!-- <audio
+        style="display: none"
+        ref="player"
+        controls
+        autoplay
+        :src="checkedSongs1[0].songurl"
+      ></audio>
+    </div> -->
+      <audio
+        id="audio"
+        ref="player"
+        :src="this.checkedSongs1[thisSongsId].songurl"
+        autoplay
+        muted
+      ></audio>
+      <!-- controls="controls" -->
+      <!-- <audio :src="checkedSongs1[0].songurl" controls="controls" autoplay></audio> -->
     </div>
-    <audio
-      id="audio"
-      ref="isplay"
-      :src="this.checkedSongs1[0].songurl"
-      autoplay
-      muted
-    ></audio>
-    <!-- controls="controls" -->
   </div>
 </template>
 
 <script>
+import GcShow from "@views/GcShow";
 import { mapState } from "vuex";
 export default {
   name: "playerSongs",
   data() {
     return {
+      currentTime: 0,
+      duration: 0,
+      isPlay: true,
       isShow: false,
-      isPlaying: true,
+      thisSongsId: 0,
+      // isPlaying: true,
     };
-  },
-  mounted() {
-    document.body.style.height = "100vh";
-    document.body.style["overflow-y"] = "hidden";
-    // console.log(this.checkedSongs1);
-    // console.log(this.$refs.isplay);
   },
   computed: {
     ...mapState({
       checkedSongs1: (state) => state.hotList.checkedSongs1,
     }),
+    filterDuration() {
+      return this.filter(this.duration);
+    },
+    filterCurrentTime() {
+      return this.filter(this.currentTime);
+    },
+    currentWidth() {
+      let { currentTime, duration } = this;
+      // console.log(Math.floor((currentTime / duration) * 100));
+      return Math.floor((currentTime / duration) * 100);
+    },
+  },
+  components: {
+    GcShow,
   },
   methods: {
     touch() {
       this.isShow = !this.isShow;
     },
-    isPlay() {
+    /* isPlay() {
       var audio = document.querySelector("#audio");
       // console.dir(audio);
       if (this.isPlaying) {
@@ -156,10 +218,23 @@ export default {
         this.isPlaying = true;
         return;
       }
-    },
+    }, */
+    // 点击下一首
     nextSongs() {
       // var audio = document.querySelector("#audio");
-      console.log(this.checkedSongs1);
+      this.thisSongsId++;
+      this.isPlay = true;
+      if (this.thisSongsId === this.checkedSongs1.length) {
+        this.thisSongsId = 0;
+      }
+    },
+    // 点击上一首
+    preSongs() {
+      if (this.thisSongsId === 0) {
+        this.thisSongsId = this.checkedSongs1.length;
+      }
+      this.thisSongsId--;
+      this.isPlay = true;
     },
     /*  stop() {
       var audio = document.querySelector("#audio");
@@ -168,6 +243,54 @@ export default {
         audio.currentTime = 0;
       }
     }, */
+    //点击播放音乐
+    playMusic() {
+      if (this.isPlay) {
+        this.$refs.player.pause();
+      } else {
+        this.$refs.player.play();
+      }
+      this.isPlay = !this.isPlay;
+    },
+    //处理显示时间
+    filter(time) {
+      // time是传过来的时间,要的是分和秒 格式mm:ss
+      // 对时间做处理
+      time = Math.floor(time);
+      // 获的分钟 向下取整
+      var min = Math.floor(time / 60);
+      var sec = time % 60; //取余
+
+      if (min < 10) {
+        min = "0" + min;
+      }
+      if (sec < 10) {
+        sec = "0" + sec;
+      }
+      return min + ":" + sec;
+    },
+    // 获取显示时间
+    getTime() {
+      this.$refs.player.addEventListener("timeupdate", () => {
+        // console.log("当前", this.$refs.player.currentTime);
+        this.currentTime = this.$refs.player.currentTime;
+      });
+      this.$refs.player.addEventListener("canplay", () => {
+        // console.log("总", this.$refs.player.duration);
+        this.duration = this.$refs.player.duration;
+      });
+    },
+    // 关闭列表对话框
+    closeHandle() {
+      this.isShow = false;
+    },
+  },
+  mounted() {
+    document.body.style.height = "100vh";
+    document.body.style["overflow-y"] = "hidden";
+    this.$nextTick(() => {
+      this.getTime();
+    });
   },
 };
 </script>
@@ -191,7 +314,7 @@ export default {
         img {
           width: 260px;
           height: 260px;
-          margin-top: 25px;
+          margin: 25px 0;
         }
       }
       .playerSongsItem-box-left-botton {
@@ -248,24 +371,24 @@ export default {
         opacity: 0.5;
         color: #fff;
         overflow: hidden;
-        .layerSongsItem-box-right-lyric-box {
-          position: relative;
-          top: -16px;
-          height: 385px;
-        }
-        p {
-          margin-top: 10px;
-        }
-        p.huakuai {
-          position: absolute;
-          opacity: 0.8;
-          right: 0;
-          top: 0;
-          width: 8px;
-          height: 35px;
-          background-color: #fff;
-          border-radius: 10px;
-        }
+        // .layerSongsItem-box-right-lyric-box {
+        //   position: relative;
+        //   top: -16px;
+        //   height: 385px;
+        // }
+        // p {
+        //   margin-top: 10px;
+        // }
+        // p.huakuai {
+        //   position: absolute;
+        //   opacity: 0.8;
+        //   right: 0;
+        //   top: 0;
+        //   width: 8px;
+        //   height: 35px;
+        //   background-color: #fff;
+        //   border-radius: 10px;
+        // }
       }
     }
   }
@@ -274,7 +397,7 @@ export default {
     display: flex;
     justify-content: space-around;
     position: relative;
-    top: 10px;
+    top: 13px;
 
     width: 100%;
 
@@ -347,9 +470,10 @@ export default {
           display: flex;
           padding-top: 18px;
           height: 24px;
-          width: 370px;
+          width: 529px;
           color: #fff;
           justify-content: space-around;
+          color: #fff;
           margin: -6px -50px;
           .playerSongsFooter-playerMain-box1-span2 {
             position: relative;
@@ -364,20 +488,30 @@ export default {
           position: relative;
           .playerSongsFooter-playerMain-box2-span1 {
             display: block;
-            width: 300px;
+            width: 370px;
             height: 5px;
             margin: 10px 0;
             border-radius: 10px;
             background-color: rgba(171, 223, 220);
           }
-          .playerSongsFooter-playerMain-box2-span2 {
+
+          .playerSongsFooter-playerMain-box2-span3 {
+            // width: 30px;
+            height: 5px;
             position: absolute;
-            top: 9px;
-            display: block;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: rgb(102, 159, 212);
+            top: 10px;
+            background-color: #4fa6e3;
+            border-radius: 10px;
+            .playerSongsFooter-playerMain-box2-span2 {
+              position: absolute;
+              right: -3.5px;
+              top: -1px;
+              display: block;
+              width: 7px;
+              height: 7px;
+              border-radius: 50%;
+              background-color: #fff;
+            }
           }
         }
       }
@@ -440,6 +574,7 @@ export default {
           background-position: -256px 0;
         }
         .playerSongsFooter-playerMain-right-box5-box {
+          overflow: auto;
           position: absolute;
           top: -332px;
           left: -165px;
@@ -448,16 +583,16 @@ export default {
           background-color: rgba(42, 46, 53, 0.9);
 
           .playerSongsFooter-playerMain-right-box5-box-p1 {
+            width: 380px;
             color: #fff;
-            display: flex;
-            justify-content: space-between;
+            float: left;
             padding: 10px 0;
+            flex-direction: column;
             .playerSongsFooter-playerMain-right-box5-box-p1-box {
-              display: flex;
               width: 117px;
-
-              align-items: center;
+              float: right;
               .playerSongsFooter-playerMain-right-box5-box-p1-span2 {
+                cursor: pointer;
                 background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
                 background-repeat: no-repeat;
                 float: left;
@@ -468,6 +603,7 @@ export default {
                 background-position: -240px -64px;
               }
               .playerSongsFooter-playerMain-right-box5-box-p1-span3 {
+                cursor: pointer;
                 background-image: url("https://www.kugou.com/yy/static/images/play/btn.png");
                 background-repeat: no-repeat;
                 float: right;
@@ -477,6 +613,11 @@ export default {
                 margin-right: 20px;
                 background-position: -240px -96px;
               }
+            }
+            .playerSongsFooter-playerMain-right-box5-box2 {
+              display: flex;
+              justify-content: space-evenly;
+              width: 100%;
             }
           }
         }
