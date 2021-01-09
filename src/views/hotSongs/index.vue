@@ -242,7 +242,8 @@ export default {
     // 点击进入播放页面功能
     toPlayer() {
       if (this.checkedSongs.length) {
-        this.$router.push("/playerSong");
+        // this.$router.push("/playerSong");
+        this.$router.push("/vplayer");
         this.$store.commit("checkedSongs1", this.checkedSongs);
       } else {
         this.$message.warning("请先添加歌曲");

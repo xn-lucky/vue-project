@@ -21,6 +21,8 @@ const SongList = () =>
   import( /* webpackChunkName: "Home" */ "@views/SongList");
 const Search = () =>
   import("@views/search");
+const Vplayer = () =>
+  import("@views/vplayer");
 
 // 重写push和replace方法
 // 目的：为了让编程式导航重复点击时不报错~
@@ -99,6 +101,10 @@ const router = new VueRouter({
       name: SongList,
       path: '/songlist',
       component: SongList
+    },
+    {
+      path: '/vplayer',
+      component: Vplayer
     }],
   // 每次切换路由页面滚动条位置
   scrollBehavior() {
